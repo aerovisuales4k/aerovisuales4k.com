@@ -1114,8 +1114,10 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     class="hero-video"
     autoplay muted loop playsinline
     poster="hero-poster.jpg"
-    oncanplay="this.classList.add('loaded')"
-    preload="metadata">
+    oncanplay="this.play();this.classList.add('loaded')"
+    preload="auto"
+    disablepictureinpicture
+    disableremoteplayback>
     <source src="hero-loop.mp4" type="video/mp4">
   </video>
   <div class="hero-video-overlay"></div>
@@ -2440,6 +2442,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const dd   = String(today.getDate()).padStart(2,'0');
     fechaEl.min = `${yyyy}-${mm}-${dd}`;
   }
+});
+
+
+// ── FORCE AUTOPLAY DESKTOP ──
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.querySelector('.hero-video');
+  if (!video) return;
+
+  video.muted = true;
+  video.volume = 0;
+
+  const tryPlay = function() {
+    const promise = video.play();
+    if (promise !== undefined) {
+      promise.catch(function() {
+        // Autoplay blocked - play on first user interaction
+        const playOnInteraction = function() {
+          video.play();
+          document.removeEventListener('click', playOnInteraction);
+          document.removeEventListener('scroll', playOnInteraction);
+          document.removeEventListener('touchstart', playOnInteraction);
+        };
+        document.addEventListener('click', playOnInteraction);
+        document.addEventListener('scroll', playOnInteraction);
+        document.addEventListener('touchstart', playOnInteraction);
+      });
+    }
+  };
+
+  // Try immediately
+  tryPlay();
+
+  // Also try after a short delay for slower connections
+  setTimeout(tryPlay, 500);
+  setTimeout(tryPlay, 1500);
 });
 
 </script>
