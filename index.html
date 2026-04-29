@@ -1112,7 +1112,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
   <!-- Video de fondo en loop — reemplaza hero-loop.mp4 con tu archivo -->
   <video
     class="hero-video"
-    autoplay muted loop playsinline
+    autoplay muted loop playsinline webkit-playsinline x5-playsinline
     poster="hero-poster.jpg"
     oncanplay="this.play();this.classList.add('loaded')"
     preload="auto"
@@ -2445,39 +2445,67 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// ── FORCE AUTOPLAY DESKTOP ──
-document.addEventListener('DOMContentLoaded', function() {
-  const video = document.querySelector('.hero-video');
-  if (!video) return;
+// ── FORCE AUTOPLAY ALL BROWSERS INCLUDING SAFARI ──
+(function() {
+  function initVideo() {
+    const video = document.querySelector('.hero-video');
+    if (!video) return;
 
-  video.muted = true;
-  video.volume = 0;
+    // Safari requires these to be set via JS as well as HTML
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
 
-  const tryPlay = function() {
-    const promise = video.play();
-    if (promise !== undefined) {
-      promise.catch(function() {
-        // Autoplay blocked - play on first user interaction
-        const playOnInteraction = function() {
-          video.play();
-          document.removeEventListener('click', playOnInteraction);
-          document.removeEventListener('scroll', playOnInteraction);
-          document.removeEventListener('touchstart', playOnInteraction);
-        };
-        document.addEventListener('click', playOnInteraction);
-        document.addEventListener('scroll', playOnInteraction);
-        document.addEventListener('touchstart', playOnInteraction);
-      });
+    function tryPlay() {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(function() {
+          // Still blocked - play on any user interaction
+          ['click','scroll','touchstart','keydown','mousemove'].forEach(function(ev) {
+            document.addEventListener(ev, function handler() {
+              video.play();
+              document.removeEventListener(ev, handler);
+            }, { once: true });
+          });
+        });
+      }
     }
-  };
 
-  // Try immediately
-  tryPlay();
+    // Safari sometimes needs the video to be loaded first
+    if (video.readyState >= 2) {
+      tryPlay();
+    } else {
+      video.addEventListener('loadeddata', tryPlay);
+      video.addEventListener('canplay', tryPlay);
+    }
 
-  // Also try after a short delay for slower connections
-  setTimeout(tryPlay, 500);
-  setTimeout(tryPlay, 1500);
-});
+    // Use IntersectionObserver for Safari - play when visible
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            video.play();
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(video);
+    }
+
+    // Retry attempts
+    setTimeout(tryPlay, 300);
+    setTimeout(tryPlay, 800);
+    setTimeout(tryPlay, 2000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVideo);
+  } else {
+    initVideo();
+  }
+})();
 
 </script>
 
