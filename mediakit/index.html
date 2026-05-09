@@ -156,8 +156,8 @@ body{font-family:var(--fb);background:#DDDDD8;color:var(--carbon);padding:2rem;l
 .mk-act-btn.email:hover{background:var(--blue);color:white}
 
 @media print{
-  body{background:white;padding:0}
-  .mk{box-shadow:none;border-radius:0;max-width:100%}
+  body{background:white;padding:0; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
+  .mk{box-shadow:none;border-radius:0;max-width:100%; -webkit-print-color-adjust: exact; print-color-adjust: exact;}
   .mk-actions{display:none}
   .mk-section{break-inside:avoid}
 }
