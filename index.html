@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ═══ SEO BÁSICO ═══ -->
   <title>Aerovisuales 4K — Grabación y fotografía aérea con dron en Lima, Perú</title>
   <meta name="description" content="Producción aérea profesional en 4K con dron DJI Mavic 2 Pro. Grabación, edición y entrega en 24h. Piloto certificado DGAC. Desde S/ 450. Lima, Perú.">
   <meta name="keywords" content="dron lima, grabación aérea 4K, video con dron peru, fotografía aérea lima, drone video peru, piloto certificado DGAC, producción aérea profesional, inmobiliaria video aéreo, evento aéreo lima">
@@ -11,6 +12,7 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.aerovisuales4k.com/">
 
+  <!-- ═══ FAVICON ═══ -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -19,6 +21,7 @@
   <meta name="theme-color" content="#1A1A18">
   <meta name="msapplication-TileColor" content="#1A1A18">
 
+  <!-- ═══ OPEN GRAPH (Facebook, LinkedIn, WhatsApp) ═══ -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.aerovisuales4k.com/">
   <meta property="og:title" content="Aerovisuales 4K — Grabación aérea profesional en Lima">
@@ -30,21 +33,25 @@
   <meta property="og:locale" content="es_PE">
   <meta property="og:site_name" content="Aerovisuales 4K">
 
+  <!-- ═══ TWITTER CARD ═══ -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://www.aerovisuales4k.com/">
   <meta name="twitter:title" content="Aerovisuales 4K — Grabación aérea 4K en Lima">
   <meta name="twitter:description" content="Video y fotografía con dron profesional. Piloto certificado DGAC. Entrega en 24h. Desde S/ 450.">
   <meta name="twitter:image" content="https://www.aerovisuales4k.com/og-image.jpg">
 
+  <!-- ═══ GEO / LOCAL SEO ═══ -->
   <meta name="geo.region" content="PE-LIM">
   <meta name="geo.placename" content="Lima">
   <meta name="geo.position" content="-12.0464;-77.0428">
   <meta name="ICBM" content="-12.0464, -77.0428">
 
+  <!-- ═══ GOOGLE FONTS ═══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- ═══ STRUCTURED DATA (JSON-LD) ═══ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -132,19 +139,2534 @@
     }
   }
   </script>
+<style>
+:root {
+  --carbon: #1A1A18;
+  --sand: #E1E1DC;
+  --blue: #2D5FA0;
+  --warm: #F0EDE6;
+  --mid: #8C8C88;
+  --light: #F7F6F2;
+  --border: rgba(26,26,24,0.10);
+  --fd: 'DM Serif Display', serif;
+  --fb: 'Manrope', sans-serif;
+  --fm: 'DM Mono', monospace;
+  --green: #3B6D11;
+}
 
-  <style>
-  :root {
-    --carbon: #1A1A18;
-    --sand: #E1E1DC;
-    --blue: #2D5FA0;
-    --warm: #F0EDE6;
-    --mid: #8C8C88;
-    --light: #F7F6F2;
-    --border: rgba(26,26,24,0.10);
-    --fd: 'DM Serif Display', serif;
-    --fb: 'Manrope', sans-serif;
-    --fm: 'DM Mono', monospace;
-    --green: #3B6D11;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--fb);
+  background: var(--light);
+  color: var(--carbon);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══ NAVIGATION ═══ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(26,26,24,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 0.5px solid rgba(225,225,220,0.08);
+  transition: background 0.4s ease;
+}
+.nav.scrolled { background: rgba(26,26,24,0.97); }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 62px;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none;
+}
+.nav-brand svg { width: 24px; height: 24px; flex-shrink: 0; }
+.nav-brand-text {
+  font-family: var(--fm); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; color: var(--sand);
+}
+.nav-links { display: flex; gap: 0; align-items: center; }
+.nav-links a {
+  font-family: var(--fm); font-size: 12px; letter-spacing: 0.08em;
+  color: rgba(225,225,220,0.80); text-decoration: none;
+  padding: 22px 14px; transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--sand); }
+.nav-cta {
+  font-family: var(--fm) !important; font-size: 12px !important; letter-spacing: 0.08em !important;
+  color: var(--carbon) !important; background: var(--sand);
+  padding: 8px 18px !important; border-radius: 5px;
+  margin-left: 8px; font-weight: 500;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.85 !important; }
+
+.nav-toggle {
+  display: none; background: none; border: none; cursor: pointer;
+  padding: 8px; flex-direction: column;
+}
+.nav-toggle span {
+  display: block; width: 20px; height: 1.5px; background: var(--sand);
+  margin: 5px 0; transition: all 0.3s;
+}
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: var(--carbon);
+  position: relative; overflow: hidden;
+  padding: 6rem 2rem 4rem;
+}
+/* ── HERO VIDEO ── */
+.hero-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+  opacity: 0; transition: opacity 1.2s ease;
+}
+.hero-video.loaded { opacity: 0.45; }
+.hero-video-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(26,26,24,0.55) 0%,
+    rgba(26,26,24,0.30) 50%,
+    rgba(26,26,24,0.75) 100%
+  );
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 2;
+  background-image:
+    linear-gradient(rgba(225,225,220,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(225,225,220,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.hero-gradient {
+  position: absolute; inset: 0; z-index: 2;
+  background:
+    radial-gradient(ellipse 600px 400px at 30% 40%, rgba(45,95,160,0.08), transparent),
+    radial-gradient(ellipse 500px 500px at 70% 60%, rgba(45,95,160,0.05), transparent);
+}
+.hero-content {
+  position: relative; text-align: center; z-index: 3;
+  max-width: 800px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--fm); font-size: 12px; letter-spacing: 0.12em;
+  color: rgba(225,225,220,0.75);
+  margin-bottom: 2.5rem;
+  padding: 6px 16px;
+  border: 0.5px solid rgba(225,225,220,0.08);
+  border-radius: 20px;
+}
+.hero-badge-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.hero-logo {
+  width: 80px; height: 80px; margin: 0 auto 2rem;
+  border: 0.5px solid rgba(225,225,220,0.15); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  animation: logoReveal 1s ease 0.3s both;
+}
+@keyframes logoReveal {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+.hero h1 {
+  font-family: var(--fd); font-size: clamp(42px, 7vw, 80px);
+  color: var(--sand); line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+.hero-tagline {
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.12em;
+  color: rgba(225,225,220,0.70);
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.8s ease 0.7s both;
+}
+.hero-desc {
+  font-size: 16px; color: rgba(225,225,220,0.80);
+  line-height: 1.7; max-width: 500px; margin: 0 auto 3rem;
+  animation: fadeUp 0.8s ease 0.9s both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-actions {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.8s ease 1.1s both;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.08em;
+  font-weight: 500; color: var(--carbon);
+  background: var(--sand); border: none; border-radius: 6px;
+  padding: 13px 28px; cursor: pointer;
+  text-decoration: none; transition: all 0.3s;
+}
+.btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.08em;
+  color: rgba(225,225,220,0.80);
+  background: none; border: 0.5px solid rgba(225,225,220,0.12);
+  border-radius: 6px; padding: 12px 24px;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.3s;
+}
+.btn-ghost:hover { color: var(--sand); border-color: rgba(225,225,220,0.75); }
+
+.hero-stats {
+  display: flex; gap: 3.5rem; justify-content: center;
+  margin-top: 4rem; padding-top: 3rem;
+  border-top: 0.5px solid rgba(225,225,220,0.06);
+  animation: fadeUp 0.8s ease 1.3s both;
+}
+.hero-stat-num {
+  font-family: var(--fd); font-size: 32px; color: var(--sand);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.10em;
+  color: rgba(225,225,220,0.75); margin-top: 6px;
+}
+
+/* ═══ SECTIONS COMMON ═══ */
+.section {
+  max-width: 1200px; margin: 0 auto;
+  padding: 7rem 2.5rem;
+}
+.s-label {
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.12em;
+  color: var(--mid); margin-bottom: 0.75rem;
+}
+.s-title {
+  font-family: var(--fd); font-size: clamp(32px, 4vw, 48px);
+  color: var(--carbon); line-height: 1.1;
+  letter-spacing: -0.02em; margin-bottom: 1rem;
+}
+.s-desc {
+  font-size: 15px; color: var(--mid); line-height: 1.8;
+  max-width: 560px; margin-bottom: 3rem;
+}
+
+/* ═══ SCROLL REVEAL ═══ */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══ TRUST BAR ═══ */
+.trust-bar {
+  background: var(--warm);
+  border-bottom: 0.5px solid var(--border);
+  padding: 2.5rem;
+}
+.trust-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  gap: 3rem; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 10px;
+}
+.trust-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: white; border: 0.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.trust-text {
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.06em;
+  color: var(--carbon); font-weight: 500;
+}
+.trust-sub {
+  font-size: 11px; color: var(--mid); margin-top: 2px;
+  font-family: var(--fb);
+}
+
+/* ═══ SERVICES ═══ */
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--border); border-radius: 16px; overflow: hidden;
+  border: 0.5px solid var(--border);
+}
+.service-card {
+  background: white; padding: 2.5rem 2rem;
+  transition: background 0.3s;
+}
+.service-card:hover { background: var(--warm); }
+.service-num {
+  font-family: var(--fd); font-size: 48px; color: var(--warm);
+  line-height: 1; margin-bottom: 1.5rem;
+  transition: color 0.3s;
+}
+.service-card:hover .service-num { color: rgba(45,95,160,0.15); }
+.service-name {
+  font-size: 16px; font-weight: 600; color: var(--carbon);
+  margin-bottom: 0.5rem;
+}
+.service-desc {
+  font-size: 13px; color: var(--mid); line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.service-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.service-tag {
+  font-family: var(--fm); font-size: 8px; letter-spacing: 0.06em;
+  padding: 3px 10px; border-radius: 20px;
+  background: var(--light); color: var(--mid);
+  border: 0.5px solid var(--border);
+}
+
+/* ═══ PORTFOLIO ═══ */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.portfolio-item {
+  border-radius: 12px; overflow: hidden;
+  position: relative;
+  background: var(--carbon);
+  aspect-ratio: 16/10;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+.portfolio-item:hover { transform: scale(1.015); }
+.portfolio-item.wide {
+  grid-column: 1 / -1;
+  aspect-ratio: 21/9;
+}
+.portfolio-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0.5; transition: opacity 0.4s, transform 0.6s;
+}
+.portfolio-item:hover .portfolio-bg { opacity: 0.65; transform: scale(1.05); }
+.portfolio-overlay {
+  position: relative; z-index: 2; text-align: center; padding: 2rem;
+}
+.portfolio-tag {
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.10em;
+  color: rgba(225,225,220,0.70); margin-bottom: 6px;
+}
+.portfolio-title {
+  font-family: var(--fd); font-size: 22px; color: var(--sand);
+  line-height: 1.15;
+}
+.portfolio-item.wide .portfolio-title { font-size: 32px; }
+.portfolio-cta {
+  font-family: var(--fm); font-size: 12px; letter-spacing: 0.08em;
+  color: var(--blue); margin-top: 10px;
+  opacity: 0; transform: translateY(8px);
+  transition: all 0.3s;
+}
+.portfolio-item:hover .portfolio-cta { opacity: 1; transform: translateY(0); }
+
+/* ═══ PACKAGES ═══ */
+.pkg-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border-radius: 16px; overflow: hidden;
+  border: 0.5px solid var(--border);
+}
+.pkg {
+  background: white; padding: 2.5rem 2rem;
+  display: flex; flex-direction: column;
+  transition: transform 0.3s;
+}
+.pkg:hover { transform: translateY(-4px); }
+.pkg.featured { background: var(--carbon); position: relative; }
+.pkg.featured::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--blue);
+}
+.pkg-tag {
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.10em;
+  color: var(--mid); margin-bottom: 0.5rem;
+}
+.pkg.featured .pkg-tag { color: rgba(225,225,220,0.70); }
+.pkg-name {
+  font-family: var(--fd); font-size: 26px; color: var(--carbon);
+  margin-bottom: 0.25rem;
+}
+.pkg.featured .pkg-name { color: var(--sand); }
+.pkg-subtitle {
+  font-size: 13px; color: var(--mid); margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+.pkg.featured .pkg-subtitle { color: rgba(225,225,220,0.80); }
+.pkg-price-row {
+  display: flex; align-items: baseline; gap: 8px;
+  margin-bottom: 0.25rem;
+}
+.pkg-price {
+  font-family: var(--fd); font-size: 36px; color: var(--carbon);
+}
+.pkg.featured .pkg-price { color: var(--sand); }
+.pkg-currency {
+  font-family: var(--fm); font-size: 11px; color: var(--mid);
+}
+.pkg.featured .pkg-currency { color: rgba(225,225,220,0.75); }
+.pkg-usd {
+  font-family: var(--fm); font-size: 10px; color: var(--mid);
+  margin-bottom: 2rem;
+}
+.pkg.featured .pkg-usd { color: rgba(225,225,220,0.75); }
+.pkg-features {
+  list-style: none; margin-bottom: 2rem; flex: 1;
+}
+.pkg-features li {
+  font-size: 13px; color: var(--mid); padding: 7px 0;
+  border-bottom: 0.5px solid rgba(26,26,24,0.05);
+  display: flex; gap: 10px; align-items: flex-start;
+  line-height: 1.4;
+}
+.pkg.featured .pkg-features li {
+  color: rgba(225,225,220,0.80);
+  border-bottom-color: rgba(225,225,220,0.06);
+}
+.pkg-features li:last-child { border-bottom: none; }
+.pkg-inc {
+  color: var(--green); font-size: 12px; flex-shrink: 0; margin-top: 1px;
+}
+.pkg.featured .pkg-inc { color: #9FE1CB; }
+.pkg-exc {
+  color: #ccc; font-size: 12px; flex-shrink: 0; margin-top: 1px;
+}
+.pkg.featured .pkg-exc { color: rgba(225,225,220,0.65); }
+.pkg-ideal {
+  font-family: var(--fm); font-size: 12px; color: var(--mid);
+  line-height: 1.6; margin-bottom: 1.5rem;
+}
+.pkg.featured .pkg-ideal { color: rgba(225,225,220,0.75); }
+.pkg-btn {
+  width: 100%; text-align: center;
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.08em;
+  font-weight: 500; padding: 12px; border-radius: 6px;
+  border: none; cursor: pointer;
+  transition: all 0.3s; text-decoration: none;
+  display: inline-block;
+}
+.pkg:not(.featured) .pkg-btn { background: var(--carbon); color: var(--sand); }
+.pkg.featured .pkg-btn { background: var(--sand); color: var(--carbon); }
+.pkg-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.pkg-note {
+  font-family: var(--fm); font-size: 10px; color: var(--mid);
+  line-height: 1.8; margin-top: 1.5rem; text-align: center;
+}
+
+/* ═══ PROCESS ═══ */
+.process-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--border); border-radius: 16px; overflow: hidden;
+  border: 0.5px solid var(--border);
+}
+.process-step {
+  background: white; padding: 2rem 1.5rem;
+  transition: background 0.3s;
+}
+.process-step:hover { background: var(--warm); }
+.process-num {
+  font-family: var(--fd); font-size: 40px; color: var(--warm);
+  line-height: 1; margin-bottom: 1rem;
+}
+.process-step:hover .process-num { color: rgba(45,95,160,0.12); }
+.process-title {
+  font-size: 14px; font-weight: 600; color: var(--carbon);
+  margin-bottom: 0.5rem;
+}
+.process-desc {
+  font-size: 12px; color: var(--mid); line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.process-auto {
+  font-family: var(--fm); font-size: 8px; letter-spacing: 0.06em;
+  color: var(--blue); background: rgba(45,95,160,0.06);
+  padding: 3px 10px; border-radius: 20px;
+  display: inline-block;
+}
+
+/* ═══ TESTIMONIALS ═══ */
+.testimonial-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+}
+.testimonial-card {
+  background: white; border: 0.5px solid var(--border);
+  border-radius: 12px; padding: 2rem;
+}
+.testimonial-stars {
+  font-size: 12px; letter-spacing: 2px; margin-bottom: 1rem;
+  color: #D4A843;
+}
+.testimonial-text {
+  font-size: 14px; color: var(--carbon); line-height: 1.7;
+  font-style: italic; margin-bottom: 1.5rem;
+}
+.testimonial-author {
+  display: flex; align-items: center; gap: 10px;
+}
+.testimonial-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--warm); display: flex; align-items: center; justify-content: center;
+  font-family: var(--fm); font-size: 11px; color: var(--mid); font-weight: 500;
+}
+.testimonial-name {
+  font-size: 13px; font-weight: 600; color: var(--carbon);
+}
+.testimonial-role {
+  font-family: var(--fm); font-size: 12px; color: var(--mid);
+  letter-spacing: 0.04em;
+}
+
+/* ═══ CTA ═══ */
+.cta-section {
+  background: var(--carbon);
+  padding: 7rem 2.5rem;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(225,225,220,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(225,225,220,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.cta-content { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
+.cta-title {
+  font-family: var(--fd); font-size: clamp(32px, 4vw, 48px);
+  color: var(--sand); line-height: 1.1; margin-bottom: 1rem;
+}
+.cta-desc {
+  font-size: 15px; color: rgba(225,225,220,0.80); line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+.cta-actions {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.cta-whatsapp {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.08em;
+  font-weight: 500; color: white;
+  background: #25D366; border: none; border-radius: 6px;
+  padding: 13px 28px; cursor: pointer;
+  text-decoration: none; transition: all 0.3s;
+}
+.cta-whatsapp:hover { opacity: 0.85; transform: translateY(-1px); }
+
+/* ═══ FOOTER ═══ */
+.footer {
+  background: var(--carbon);
+  border-top: 0.5px solid rgba(225,225,220,0.06);
+  padding: 3rem 2.5rem 2rem;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+}
+.footer-brand {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;
+}
+.footer-brand svg { width: 20px; height: 20px; flex-shrink: 0; }
+.footer-brand-text {
+  font-family: var(--fm); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; color: var(--sand);
+}
+.footer-tagline {
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.10em;
+  color: rgba(225,225,220,0.70); margin-bottom: 1rem;
+}
+.footer-desc {
+  font-size: 12px; color: rgba(225,225,220,0.75); line-height: 1.7;
+  max-width: 280px;
+}
+.footer-col-title {
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.10em;
+  color: rgba(225,225,220,0.70); margin-bottom: 1rem;
+}
+.footer-col a {
+  display: block; font-size: 13px; color: rgba(225,225,220,0.80);
+  text-decoration: none; padding: 4px 0; transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--sand); }
+.footer-bottom {
+  max-width: 1200px; margin: 2rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid rgba(225,225,220,0.06);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copy {
+  font-family: var(--fm); font-size: 12px; letter-spacing: 0.06em;
+  color: rgba(225,225,220,0.65);
+}
+.footer-socials { display: flex; gap: 16px; }
+.footer-socials a {
+  font-family: var(--fm); font-size: 12px; letter-spacing: 0.06em;
+  color: rgba(225,225,220,0.70); text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-socials a:hover { color: var(--sand); }
+
+/* ═══ MOBILE NAV ═══ */
+.mobile-nav {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(26,26,24,0.98);
+  backdrop-filter: blur(20px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.mobile-nav.active { opacity: 1; pointer-events: all; }
+.mobile-nav a {
+  font-family: var(--fd); font-size: 28px; color: var(--sand);
+  text-decoration: none; padding: 12px 0;
+  opacity: 0.7; transition: opacity 0.2s;
+}
+.mobile-nav a:hover { opacity: 1; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 1024px) {
+  .services-grid,
+  .pkg-grid,
+  .process-grid { grid-template-columns: 1fr; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .hero-stats { gap: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .section { padding: 4rem 1.5rem; }
+  .hero { padding: 5rem 1.5rem 3rem; }
+  .hero-stats { flex-direction: column; gap: 1.5rem; align-items: center; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-item.wide { aspect-ratio: 16/10; }
+  .trust-inner { justify-content: center; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .cta-section { padding: 4rem 1.5rem; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .process-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; align-items: center; }
+}
+/* ── NUEVOS CAMPOS CALCULADORA ── */
+.calc-input-select,.calc-input-text{width:100%;padding:12px;border-radius:8px;border:.5px solid var(--border);font-family:var(--fm);font-size:11.0px;margin-bottom:10px;background:var(--light);color:var(--carbon);outline:none;transition:border-color .2s}
+.calc-input-select:focus,.calc-input-text:focus{border-color:rgba(26,26,24,.3)}
+.comprobante-toggle{display:flex;gap:15px;margin-bottom:1.5rem;background:var(--light);padding:12px;border-radius:8px}
+.comp-opt{font-size:11.0px;font-family:var(--fm);cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--carbon);letter-spacing:.04em}
+.comp-opt input{accent-color:var(--carbon)}
+.user-data-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.calc-label-mini{display:block;font-family:var(--fm);font-size:11px;letter-spacing:.1em;color:var(--mid);margin-bottom:5px;text-transform:uppercase}
+@media(max-width:900px){.user-data-fields{grid-template-columns:1fr}}
+
+/* ── CALCULATOR ── */
+.calc-section{background:white;padding:4rem 0}
+.calc-inner{max-width:1040px;margin:0 auto;padding:0 3rem}
+.calc-grid{display:grid;grid-template-columns:1fr 380px;gap:2.5rem;margin-top:2rem;align-items:start}
+.calc-controls{}
+.calc-pkg-toggle{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:1.5rem}
+.calc-pkg-btn{font-family:var(--fm);font-size:12px;letter-spacing:.07em;padding:10px;border-radius:8px;border:.5px solid var(--border);background:var(--light);color:var(--mid);cursor:pointer;transition:all .18s;text-align:center}
+.calc-pkg-btn:hover{border-color:rgba(26,26,24,.25);color:var(--carbon)}
+.calc-pkg-btn.active{background:var(--carbon);color:var(--sand);border-color:var(--carbon)}
+.calc-pkg-btn .cpb-name{font-size:12px;font-weight:500;margin-bottom:2px;display:block}
+.calc-pkg-btn .cpb-price{font-family:var(--fd);font-size:18px;display:block;line-height:1}
+.calc-pkg-btn.active .cpb-price{color:var(--sand)}
+.calc-pkg-btn .cpb-price.muted{color:var(--mid)}
+
+.calc-label{font-family:var(--fm);font-size:12px;letter-spacing:.12em;color:var(--mid);margin-bottom:.75rem;display:block}
+.addon-toggle-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.addon-toggle{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1rem;background:var(--light);border:.5px solid var(--border);border-radius:9px;cursor:pointer;transition:all .15s;user-select:none}
+.addon-toggle:hover{border-color:rgba(26,26,24,.2)}
+.addon-toggle.active{background:white;border-color:var(--carbon)}
+.at-info{display:flex;flex-direction:column;gap:2px}
+.at-label{font-size:13px;font-weight:500;color:var(--carbon)}
+.at-price{font-family:var(--fm);font-size:11px;color:var(--mid)}
+.at-switch{width:36px;height:20px;border-radius:10px;background:rgba(26,26,24,.1);position:relative;flex-shrink:0;transition:background .2s}
+.addon-toggle.active .at-switch{background:var(--carbon)}
+.at-thumb{width:16px;height:16px;border-radius:50%;background:white;position:absolute;top:2px;left:2px;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.addon-toggle.active .at-thumb{transform:translateX(16px)}
+
+/* sector filter */
+.sector-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.5rem}
+.sf-btn{font-family:var(--fm);font-size:12px;letter-spacing:.06em;padding:5px 12px;border-radius:20px;border:.5px solid var(--border);background:white;color:var(--mid);cursor:pointer;transition:all .15s}
+.sf-btn:hover{border-color:rgba(26,26,24,.25);color:var(--carbon)}
+.sf-btn.active{background:var(--carbon);color:var(--sand);border-color:var(--carbon)}
+
+/* price display */
+.price-display{background:var(--carbon);border-radius:16px;padding:2rem;position:sticky;top:72px}
+.pd-header{font-family:var(--fm);font-size:11px;letter-spacing:.14em;color:rgba(225,225,220,.3);margin-bottom:1.5rem}
+.pd-pkg-name{font-family:var(--fd);font-size:26px;color:var(--sand);line-height:1;letter-spacing:-.02em;margin-bottom:.25rem}
+.pd-pkg-sub{font-size:12px;color:rgba(225,225,220,.4);margin-bottom:1.5rem}
+.pd-breakdown{display:flex;flex-direction:column;gap:.375rem;margin-bottom:1rem}
+.pd-row{display:flex;align-items:center;justify-content:space-between;font-size:12px}
+.pd-row-label{color:rgba(225,225,220,.5)}
+.pd-row-val{font-family:var(--fm);font-size:11.0px;color:rgba(225,225,220,.7)}
+.pd-row.addon{color:rgba(225,225,220,.55)}
+.pd-row-val.addon-val{color:rgba(186,117,23,.9)}
+.pd-divider{height:.5px;background:rgba(225,225,220,.1);margin:.75rem 0}
+.pd-total{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.5rem}
+.pd-total-label{font-family:var(--fm);font-size:12px;letter-spacing:.1em;color:rgba(225,225,220,.35)}
+.pd-total-price{font-family:var(--fd);font-size:38px;color:var(--sand);line-height:1;letter-spacing:-.02em}
+.pd-currency{font-family:var(--fm);font-size:14px;color:rgba(225,225,220,.4);margin-left:3px}
+.pd-anticipo{font-family:var(--fm);font-size:12px;color:rgba(225,225,220,.3);margin-bottom:1.5rem}
+.pd-anticipo span{color:rgba(225,225,220,.55)}
+.btn-pd-cta{width:100%;background:var(--sand);color:var(--carbon);border:none;border-radius:9px;font-family:var(--fm);font-size:11px;letter-spacing:.1em;font-weight:500;padding:14px;cursor:pointer;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-pd-cta:hover{opacity:.88}
+.pd-note{font-family:var(--fm);font-size:12px;color:rgba(225,225,220,.2);margin-top:.75rem;line-height:1.6;text-align:center}
+
+/* ── USE CASES ── */
+.cases-section{background:var(--light);padding:4rem 0}
+.cases-inner{max-width:1040px;margin:0 auto;padding:0 3rem}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:2rem}
+.case-card{background:white;border:.5px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .15s,transform .15s}
+.case-card:hover{border-color:rgba(26,26,24,.2);transform:translateY(-2px)}
+.case-top{padding:1.25rem 1.5rem;background:var(--carbon);position:relative;overflow:hidden}
+.case-top::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(225,225,220,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(225,225,220,.03) 1px,transparent 1px);background-size:32px 32px;pointer-events:none}
+.case-num{font-family:var(--fd);font-size:52px;color:rgba(225,225,220,.05);position:absolute;top:0;right:1rem;line-height:1;letter-spacing:-.04em}
+.case-sector{font-family:var(--fm);font-size:11px;letter-spacing:.12em;color:rgba(225,225,220,.3);margin-bottom:.5rem;position:relative}
+.case-client{font-family:var(--fd);font-size:20px;color:var(--sand);line-height:1.1;position:relative}
+.case-body{padding:1.25rem 1.5rem}
+.case-pkg-pill{font-family:var(--fm);font-size:11px;letter-spacing:.09em;padding:3px 9px;border-radius:20px;display:inline-block;margin-bottom:.75rem}
+.case-detail{font-size:13px;color:var(--mid);line-height:1.65;margin-bottom:.875rem}
+.case-outcome{display:flex;align-items:center;gap:8px;font-family:var(--fm);font-size:11px;color:var(--carbon)}
+.case-outcome::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
+
+/* ── FAQ ── */
+.faq-section{background:white;padding:4rem 0}
+.faq-inner{max-width:700px;margin:0 auto;padding:0 3rem}
+.faq-list{margin-top:2rem;display:flex;flex-direction:column;gap:.5rem}
+.faq-item{border:.5px solid var(--border);border-radius:10px;overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;cursor:pointer;user-select:none;transition:background .15s}
+.faq-q:hover{background:var(--light)}
+.faq-q-text{font-size:14px;font-weight:500;color:var(--carbon);line-height:1.35}
+.faq-icon{width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--light);transition:transform .2s,background .2s}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--carbon)}
+.faq-item.open .faq-icon svg{stroke:var(--sand)}
+.faq-a{display:none;padding:0 1.25rem 1rem;font-size:13px;color:var(--mid);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+
+/* ── CTA FINAL ── */
+.cta-final{background:var(--carbon);padding:5rem 3rem;text-align:center;position:relative;overflow:hidden}
+.cta-final::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(225,225,220,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(225,225,220,.03) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+.cta-inner{max-width:540px;margin:0 auto;position:relative}
+.cta-eyebrow{font-family:var(--fm);font-size:11px;letter-spacing:.2em;color:rgba(225,225,220,.25);margin-bottom:1rem}
+.cta-title{font-family:var(--fd);font-size:clamp(30px,5vw,52px);color:var(--sand);line-height:1.05;letter-spacing:-.02em;margin-bottom:1rem}
+.cta-sub{font-size:15px;color:rgba(225,225,220,.4);line-height:1.7;margin-bottom:2.5rem}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-cta-main{font-family:var(--fm);font-size:11px;letter-spacing:.1em;padding:14px 28px;background:var(--sand);color:var(--carbon);border:none;border-radius:8px;cursor:pointer;font-weight:500;transition:opacity .2s;text-decoration:none;display:inline-block}
+.btn-cta-main:hover{opacity:.88}
+.btn-cta-ghost{font-family:var(--fm);font-size:11px;letter-spacing:.1em;padding:14px 28px;border:.5px solid rgba(225,225,220,.2);color:rgba(225,225,220,.55);background:transparent;border-radius:8px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block}
+.btn-cta-ghost:hover{border-color:rgba(225,225,220,.5);color:var(--sand)}
+
+/* ── FOOTER ── */
+footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padding:1.75rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.ft-brand{font-family:var(--fm);font-size:12px;letter-spacing:.12em;color:rgba(225,225,220,.2)}
+.ft-legal{font-family:var(--fm);font-size:12px;color:rgba(225,225,220,.15)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RESERVA ── */
+.reserva-section{background:var(--carbon);padding:4rem 0;position:relative;overflow:hidden}
+.reserva-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(225,225,220,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(225,225,220,.03) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+.reserva-inner{max-width:1040px;margin:0 auto;padding:0 3rem;position:relative}
+.reserva-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;margin-top:2rem}
+.reserva-info{}
+.reserva-card{background:var(--carbon2);border:.5px solid rgba(225,225,220,.1);border-radius:16px;padding:2rem}
+.reserva-label{font-family:var(--fm);font-size:11px;letter-spacing:.14em;color:rgba(225,225,220,.3);margin-bottom:.5rem;display:block}
+.date-picker-wrap{position:relative;margin-bottom:1rem}
+.date-input{
+  width:100%;background:rgba(225,225,220,.06);border:.5px solid rgba(225,225,220,.12);
+  border-radius:9px;font-family:var(--fm);font-size:13px;color:var(--sand);
+  padding:12px 14px;outline:none;transition:border-color .2s;
+  color-scheme:dark;
+}
+.date-input:focus{border-color:rgba(225,225,220,.4)}
+.date-input::-webkit-calendar-picker-indicator{filter:invert(.6);cursor:pointer;padding-left:8px}
+.date-validation-msg{font-family:var(--fm);font-size:12px;letter-spacing:.06em;padding:6px 10px;border-radius:6px;margin-top:.5rem;display:none}
+.date-validation-msg.error{display:block;background:rgba(163,45,45,.15);color:#F09595;border:.5px solid rgba(163,45,45,.25)}
+.date-validation-msg.ok{display:block;background:rgba(59,109,17,.15);color:#9FE1CB;border:.5px solid rgba(59,109,17,.2)}
+.reserva-note-input{
+  width:100%;background:rgba(225,225,220,.05);border:.5px solid rgba(225,225,220,.1);
+  border-radius:9px;font-family:var(--fb);font-size:13px;color:var(--sand);
+  padding:11px 14px;outline:none;resize:none;line-height:1.6;margin-top:.5rem;
+  transition:border-color .2s;
+}
+.reserva-note-input:focus{border-color:rgba(225,225,220,.35)}
+.reserva-note-input::placeholder{color:rgba(225,225,220,.2)}
+.availability-strip{display:grid;grid-template-columns:1fr 1fr;gap:.625rem;margin-top:1.25rem}
+.avail-item{background:rgba(225,225,220,.04);border:.5px solid rgba(225,225,220,.08);border-radius:8px;padding:.75rem 1rem}
+.avail-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:7px;vertical-align:middle}
+.avail-dot.free{background:#9FE1CB}
+.avail-dot.busy{background:#F09595}
+.avail-label{font-family:var(--fm);font-size:12px;letter-spacing:.05em;color:rgba(225,225,220,.5);vertical-align:middle}
+.reserva-info-text{font-size:14px;color:rgba(225,225,220,.45);line-height:1.75;margin-bottom:1.5rem}
+.reserva-info-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:.875rem}
+.rii-dot{width:6px;height:6px;border-radius:50%;background:rgba(225,225,220,.25);flex-shrink:0;margin-top:6px}
+.rii-text{font-size:13px;color:rgba(225,225,220,.5);line-height:1.6}
+.rii-text strong{color:rgba(225,225,220,.8);font-weight:500}
+@media(max-width:900px){.reserva-grid{grid-template-columns:1fr}.reserva-inner{padding:0 1.5rem}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 1.5rem}.nav-links{display:none}
+  .hero,.section,.calc-inner,.cases-inner,.faq-inner,.quiz-inner,.cta-final{padding-left:1.5rem;padding-right:1.5rem}
+  .table-inner{padding-left:1.5rem;padding-right:1.5rem}
+  .calc-grid{grid-template-columns:1fr}
+  .price-display{position:static}
+}
+@media(max-width:768px){
+  .table-inner{padding:0 1rem}
+  .table-scroll{
+    margin-top:1.5rem;
+    background:linear-gradient(to right,white 30%,rgba(255,255,255,0)),
+               linear-gradient(to right,rgba(255,255,255,0),white 70%) 0 100%,
+               radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.1),rgba(0,0,0,0)),
+               radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.1),rgba(0,0,0,0)) 0 100%;
+    background-repeat:no-repeat;
+    background-size:40px 100%,40px 100%,14px 100%,14px 100%;
+    background-attachment:local,local,scroll,scroll;
   }
-  /* ... resto de tus estilos CSS (el archivo original continúa aquí) ... */
+  .cmp-table{min-width:600px}
+  .th-feature,.td-feature{
+    width:140px !important;min-width:140px;
+    padding:1rem .75rem !important;
+    font-size:12px;
+  }
+  .pkg-th-name{font-size:18px}
+  .pkg-th-price{font-size:12px}
+  .td-feature .feat-sub{font-size:11px;line-height:1.2}
+  .td-val{padding:.75rem .5rem;min-width:130px}
+  .val-text{font-size:11px}
+  .check{width:16px;height:16px}
+}
+@media(max-width:600px){
+  .quiz-options{grid-template-columns:1fr 1fr}
+  .cases-grid{grid-template-columns:1fr}
+  footer{padding:1.5rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+/* ─── MOBILE RESPONSIVE ADDITIONS ─── */
+@media(max-width:768px){.calc-grid{grid-template-columns:1fr}.reserva-grid{grid-template-columns:1fr}}
+
+/* ═══ FLOATING WHATSAPP BUTTON ═══ */
+.wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  width: 58px;
+  height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.15);
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: waPulse 2.5s ease infinite;
+}
+.wa-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.55), 0 4px 12px rgba(0,0,0,0.2);
+  animation: none;
+}
+.wa-float svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+.wa-float-tooltip {
+  position: absolute;
+  right: 68px;
+  background: var(--carbon);
+  color: var(--sand);
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 7px 14px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.wa-float-tooltip::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right: none;
+  border-left-color: var(--carbon);
+}
+.wa-float:hover .wa-float-tooltip {
+  opacity: 1;
+}
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.15); }
+  50%       { box-shadow: 0 4px 28px rgba(37,211,102,0.70), 0 2px 8px rgba(0,0,0,0.15); }
+}
+@media (max-width: 600px) {
+  .wa-float { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+  .wa-float svg { width: 26px; height: 26px; }
+  .wa-float-tooltip { display: none; }
+}
+
+/* ═══ MOBILE BOTTOM BAR ═══ */
+.mobile-cta-bar {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 9998;
+  background: #1A1A18;
+  border-top: 1px solid rgba(225,225,220,0.12);
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.mobile-cta-bar .mob-brand {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(225,225,220,0.65);
+  white-space: nowrap;
+}
+.mobile-cta-bar .mob-btn {
+  display: flex; align-items: center; gap: 7px;
+  background: #25D366;
+  color: white;
+  font-family: var(--fm);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.mobile-cta-bar .mob-btn svg {
+  width: 15px; height: 15px; fill: white; flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .mobile-cta-bar { display: flex; }
+  body { padding-bottom: 72px; }
+  /* Hide FAB on mobile since we have bottom bar */
+  .wa-float { display: none; }
+}
+
+/* ═══ SERVICE ICONS ═══ */
+.service-icon {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.2rem;
+  background: rgba(26,26,24,0.06);
+  color: #1A1A18;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.service-card:hover .service-icon {
+  background: #1A1A18;
+  color: #E1E1DC;
+}
+.service-num { display: none; }
+
+/* ═══ CLICKABLE SERVICE CARDS ═══ */
+.service-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(26,26,24,0.10);
+}
+.service-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.service-card-hint {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: #2D5FA0;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.service-card:hover .service-card-hint {
+  opacity: 1;
+}
+
+/* ═══ FECHA Y HORA DE VUELO ═══ */
+.fecha-hora-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 0.5rem;
+}
+.fecha-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.fecha-sublabel {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(225,225,220,0.55);
+  text-transform: uppercase;
+}
+.calc-input-date,
+.calc-input-time {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 0.5px solid var(--border, rgba(225,225,220,0.12));
+  font-family: var(--fm);
+  font-size: 12px;
+  background: rgba(255,255,255,0.04);
+  color: var(--sand, #E1E1DC);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  -webkit-appearance: none;
+}
+.calc-input-date:focus,
+.calc-input-time:focus {
+  outline: none;
+  border-color: #2D5FA0;
+}
+.calc-input-date::-webkit-calendar-picker-indicator,
+.calc-input-time::-webkit-calendar-picker-indicator {
+  filter: invert(0.7);
+  cursor: pointer;
+}
+.fecha-nota {
+  font-family: var(--fm);
+  font-size: 10px;
+  color: rgba(225,225,220,0.40);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+.fecha-nota.ok { color: #25D366; }
+.fecha-nota.warn { color: #f0a500; }
+@media (max-width: 600px) {
+  .fecha-hora-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <svg viewBox="0 0 100 100" fill="none">
+        <g stroke="#E1E1DC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M42 35 v30 a8 8 0 0 0 16 0 v-30 a8 8 0 0 0 -16 0 z"/>
+          <path d="M46 35 v-6 h8 v6"/>
+          <circle cx="50" cy="27" r="2.5" fill="#E1E1DC" stroke="none"/>
+          <path d="M42 42 L25 25"/><path d="M58 42 L75 25"/>
+          <path d="M42 58 L25 75"/><path d="M58 58 L75 75"/>
+          <path d="M14 25 L36 25" stroke-width="4"/><path d="M64 25 L86 25" stroke-width="4"/>
+          <path d="M14 75 L36 75" stroke-width="4"/><path d="M64 75 L86 75" stroke-width="4"/>
+        </g>
+      </svg>
+      <span class="nav-brand-text">AEROVISUALES 4K</span>
+    </a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#paquetes">Paquetes</a>
+      <a href="#calculadora">Cotizador</a>
+              <a href="#proceso">Proceso</a>
+      <a href="#contacto" class="nav-cta">Cotizar proyecto</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#servicios" onclick="closeMobile()">Servicios</a>
+  <a href="#portafolio" onclick="closeMobile()">Portafolio</a>
+  <a href="#paquetes" onclick="closeMobile()">Paquetes</a>
+  <a href="#proceso" onclick="closeMobile()">Proceso</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+</div>
+
+
+<!-- ═══ URGENCY BANNER ═══ -->
+<div style="background:#2D5FA0;padding:12px 2.5rem;text-align:center;">
+  <p style="font-family:var(--fm);font-size:12px;letter-spacing:0.08em;color:white;margin:0;">
+    ⚡ DISPONIBILIDAD LIMITADA — Solo <strong>3 slots disponibles</strong> esta semana en Lima · 
+    <a href="https://wa.me/51927929541?text=Quiero%20reservar%20mi%20slot%20de%20grabacion"
+       style="color:#E1E1DC;text-decoration:underline;" target="_blank">Reserva el tuyo ahora</a>
+  </p>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <!-- Video de fondo en loop — reemplaza hero-loop.mp4 con tu archivo -->
+  <video
+    class="hero-video"
+    autoplay muted loop playsinline webkit-playsinline x5-playsinline
+    poster="hero-poster.jpg"
+    oncanplay="this.play();this.classList.add('loaded')"
+    preload="auto"
+    disablepictureinpicture
+    disableremoteplayback>
+    <source src="hero-loop.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      PILOTO CERTIFICADO DGAC · LIMA, PERÚ
+    </div>
+    <div class="hero-logo">
+      <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+        <g stroke="#E1E1DC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M42 35 v30 a8 8 0 0 0 16 0 v-30 a8 8 0 0 0 -16 0 z"/>
+          <path d="M46 35 v-6 h8 v6"/>
+          <circle cx="50" cy="27" r="2.5" fill="#E1E1DC" stroke="none"/>
+          <path d="M42 42 L25 25"/><path d="M58 42 L75 25"/>
+          <path d="M42 58 L25 75"/><path d="M58 58 L75 75"/>
+          <path d="M14 25 L36 25" stroke-width="4"/><path d="M64 25 L86 25" stroke-width="4"/>
+          <path d="M14 75 L36 75" stroke-width="4"/><path d="M64 75 L86 75" stroke-width="4"/>
+        </g>
+      </svg>
+    </div>
+    <h1>Aerovisuales</h1>
+    <p class="hero-tagline">PRODUCCIÓN AÉREA 4K · LIMA, PERÚ</p>
+    <p class="hero-desc">Fotografía y video aéreo profesional en 4K. Grabamos en 4K con DJI Mavic 2 Pro y entregamos material editado en 24–48h. Más de 6 años de experiencia aérea en Lima, con piloto certificado DGAC.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Cotizar proyecto →</a>
+      <a href="#portafolio" class="btn-ghost">Ver trabajos</a>
+    </div>
+    <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">+50</span>
+          <span class="stat-label">Proyectos completados</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">30+</span>
+          <span class="stat-label">Clientes en Lima</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">6 años</span>
+          <span class="stat-label">Experiencia aérea</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">24h</span>
+          <span class="stat-label">Entrega garantizada</span>
+        </div>
+      </div>
+      <div>
+        <div class="hero-stat-num">24h</div>
+        <div class="hero-stat-label">ENTREGA ESTÁNDAR</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">DGAC</div>
+        <div class="hero-stat-label">PILOTO CERTIFICADO</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST BAR ═══ -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">🎬</div>
+      <div>
+        <div class="trust-text">Material RAW 4K</div>
+        <div class="trust-sub">MP4 / MOV</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">⚡</div>
+      <div>
+        <div class="trust-text">Entrega en 24h</div>
+        <div class="trust-sub">Vía WeTransfer</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🛡️</div>
+      <div>
+        <div class="trust-text">Certificado DGAC</div>
+        <div class="trust-sub">Operación legal</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📋</div>
+      <div>
+        <div class="trust-text">Contrato de licencia</div>
+        <div class="trust-sub">D.L. 822</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="section" id="servicios">
+  <div class="reveal">
+    <p class="s-label">01 — SERVICIOS</p>
+    <h2 class="s-title">Lo que hacemos</h2>
+    <p class="s-desc">Producción aérea completa. Desde el vuelo hasta la entrega final, todo con un solo proveedor.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card" onclick="scrollToPkg(0)">
+      <div class="service-icon"><svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M42 38 v24 a8 8 0 0 0 16 0 V38 a8 8 0 0 0 -16 0 z"/>
+    <path d="M46 38 v-7 h8 v7"/>
+    <circle cx="50" cy="29" r="3" fill="currentColor" stroke="none"/>
+    <path d="M42 45 L26 29"/><path d="M58 45 L74 29"/>
+    <path d="M42 61 L26 77"/><path d="M58 61 L74 77"/>
+    <path d="M15 29 L37 29" stroke-width="5" stroke-linecap="round"/>
+    <path d="M63 29 L85 29" stroke-width="5" stroke-linecap="round"/>
+    <path d="M15 77 L37 77" stroke-width="5" stroke-linecap="round"/>
+    <path d="M63 77 L85 77" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg></div>
+      <div class="service-name">Grabación aérea 4K</div>
+      <div class="service-desc">Filmación profesional con drones certificados. Hasta 35 minutos de vuelo efectivo por sesión. Múltiples ángulos y movimientos.</div>
+      <div class="service-tags">
+        <span class="service-tag">4K UHD</span>
+        <span class="service-tag">RAW</span>
+        <span class="service-tag">Estabilizado</span>
+      </div>
+      <div class="service-card-hint">Ver paquete Raw Air →</div>
+    </div>
+    <div class="service-card" onclick="scrollToPkg(1)">
+      <div class="service-icon"><svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="15" y="38" width="70" height="48" rx="5"/>
+    <path d="M15 52 L85 52"/>
+    <path d="M15 38 L15 22 L85 22 L85 38"/>
+    <path d="M35 22 L28 38"/><path d="M50 22 L43 38"/><path d="M65 22 L58 38"/>
+    <circle cx="38" cy="65" r="5" fill="currentColor" stroke="none"/>
+    <path d="M48 65 L70 65" stroke-width="3"/>
+    <path d="M38 75 L70 75" stroke-width="3"/>
+  </g>
+</svg></div>
+      <div class="service-name">Edición profesional</div>
+      <div class="service-desc">Montaje, colorización cinematográfica y masterización. Videos listos para web, redes sociales o broadcast.</div>
+      <div class="service-tags">
+        <span class="service-tag">Color grading</span>
+        <span class="service-tag">Montaje</span>
+        <span class="service-tag">Masterización</span>
+      </div>
+    </div>
+    <div class="service-card" onclick="scrollToPkg(2)">
+      <div class="service-icon"><svg width="36" height="36" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="12" y="20" width="45" height="60" rx="5"/>
+    <rect x="43" y="30" width="45" height="32" rx="5"/>
+    <path d="M57 72 L87 72"/><path d="M57 80 L80 80"/>
+    <path d="M20 32 L48 32"/><path d="M20 40 L48 40"/>
+    <rect x="20" y="48" width="28" height="18" rx="3" fill="currentColor" opacity="0.15" stroke="currentColor"/>
+  </g>
+</svg></div>
+      <div class="service-name">Multi-formato</div>
+      <div class="service-desc">Entregamos en todos los formatos que necesites: horizontal, cuadrado y vertical. Optimizado para cada plataforma.</div>
+      <div class="service-tags">
+        <span class="service-tag">16:9</span>
+        <span class="service-tag">1:1</span>
+        <span class="service-tag">9:16</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PORTFOLIO ═══ -->
+<section class="section" id="portafolio">
+  <div class="reveal">
+    <p class="s-label">02 — PORTAFOLIO</p>
+    <h2 class="s-title">Proyectos recientes</h2>
+    <p class="s-desc">Cada proyecto es una perspectiva única. Estos son algunos de nuestros trabajos más recientes.</p>
+  </div>
+  <div class="portfolio-grid reveal">
+    <!-- Card 1 (wide): Reemplaza src con tu foto real en WebP -->
+    <div class="portfolio-item wide">
+      <div class="portfolio-bg" style="background: linear-gradient(135deg, #1a2a3a, #2d4a6a, #1a3a5a);">
+        <img src="proyecto-larcomar.jpg"
+             alt="Larcomar vista aérea nocturna"
+             loading="lazy"
+             onerror="this.style.display='none'"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
+             onload="this.style.opacity='1'">
+      </div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-tag">EVENTO · LARCOMAR</div>
+        <div class="portfolio-title">Larcomar — Danza y cultura peruana</div>
+        <div class="portfolio-cta">Ver proyecto →</div>
+      </div>
+    </div>
+    <!-- Card 2: Reemplaza src con tu foto real en WebP -->
+    <div class="portfolio-item">
+      <div class="portfolio-bg" style="background: linear-gradient(135deg, #2a3a1a, #4a6a2d, #3a5a1a);">
+        <img src="proyecto-corporativo.jpg"
+             alt="Evento corporativo aéreo"
+             loading="lazy"
+             onerror="this.style.display='none'"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
+             onload="this.style.opacity='1'">
+      </div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-tag">CORPORATIVO · GLORIA S.A.</div>
+        <div class="portfolio-title">Flota logística — Vista aérea</div>
+        <div class="portfolio-cta">Ver proyecto →</div>
+      </div>
+    </div>
+    <!-- Card 3: Reemplaza src con tu foto real en WebP -->
+    <div class="portfolio-item">
+      <div class="portfolio-bg" style="background: linear-gradient(135deg, #3a2a1a, #6a4a2d, #5a3a1a);">
+        <img src="proyecto-obra.jpg"
+             alt="Avance de obra Miraflores"
+             loading="lazy"
+             onerror="this.style.display='none'"
+             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
+             onload="this.style.opacity='1'">
+      </div>
+      <div class="portfolio-overlay">
+        <div class="portfolio-tag">INMOBILIARIA · MIRAFLORES</div>
+        <div class="portfolio-title">Proyecto residencial — Avance de obra</div>
+        <div class="portfolio-cta">Ver proyecto →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PACKAGES ═══ -->
+<section class="section" id="paquetes">
+  <div class="reveal">
+    <p class="s-label">03 — PAQUETES</p>
+    <h2 class="s-title">Elige tu nivel</h2>
+    <p class="s-desc">Tres opciones claras. Desde material bruto hasta producción completa lista para campaña.</p>
+  </div>
+  <div class="pkg-grid reveal">
+    <div class="pkg" id="pkg-raw-air">
+      <div class="pkg-tag">ESENCIAL</div>
+      <div class="pkg-name">Raw Air</div>
+      <div class="pkg-subtitle">Material bruto profesional. Para quien tiene editor propio.</div>
+      <div class="pkg-price-row">
+        <span class="pkg-price">S/ 450</span>
+        <span class="pkg-currency">PEN</span>
+      </div>
+      <div class="pkg-usd">aprox. $120 USD</div>
+      <ul class="pkg-features">
+        <li><span class="pkg-inc">✓</span>Hasta 35 min de vuelo efectivo</li>
+        <li><span class="pkg-inc">✓</span>Material RAW en 4K (MP4/MOV)</li>
+        <li><span class="pkg-inc">✓</span>Hasta 4 ángulos en locación</li>
+        <li><span class="pkg-inc">✓</span>Entrega vía WeTransfer en 24h</li>
+        <li><span class="pkg-inc">✓</span>Piloto certificado DGAC</li>
+        <li><span class="pkg-exc">✕</span>Edición ni colorización</li>
+        <li><span class="pkg-exc">✕</span>Traslado fuera Lima Centro*</li>
+      </ul>
+      <div class="pkg-ideal">Ideal para: agencias, productoras y noticieros con editor propio.</div>
+      <a href="#calculadora" class="pkg-btn" onclick="selectPkgFromCard(0);return false;">Elegir Raw Air <span style="font-size:10px;opacity:0.7;">↓ Ver precio exacto</span></a>
+    </div>
+    <div class="pkg featured" id="pkg-aerial-ready">
+      <div class="pkg-tag">MÁS SOLICITADO</div>
+      <div class="pkg-name">Aerial Ready</div>
+      <div class="pkg-subtitle">Vuelo + edición + colorización. Listo para publicar.</div>
+      <div class="pkg-price-row">
+        <span class="pkg-price">S/ 1,050</span>
+        <span class="pkg-currency">PEN</span>
+      </div>
+      <div class="pkg-usd">aprox. $280 USD</div>
+      <ul class="pkg-features">
+        <li><span class="pkg-inc">✓</span>Todo lo de Raw Air incluido</li>
+        <li><span class="pkg-inc">✓</span>Video editado hasta 90 seg</li>
+        <li><span class="pkg-inc">✓</span>Colorización cinematográfica</li>
+        <li><span class="pkg-inc">✓</span>1 revisión sin costo</li>
+        <li><span class="pkg-inc">✓</span>Entrega en 24–48h</li>
+        <li><span class="pkg-exc">✕</span>Versiones para redes (vertical)</li>
+        <li><span class="pkg-exc">✕</span>Traslado fuera Lima Centro*</li>
+      </ul>
+      <div class="pkg-ideal">Ideal para: inmobiliarias y marcas que publican en web o redes.</div>
+      <a href="#calculadora" class="pkg-btn" onclick="selectPkgFromCard(1);return false;">Elegir Aerial Ready <span style="font-size:10px;opacity:0.7;">↓ Ver precio exacto</span></a>
+    </div>
+    <div class="pkg" id="pkg-signature">
+      <div class="pkg-tag">PREMIUM</div>
+      <div class="pkg-name">Signature Aerial</div>
+      <div class="pkg-subtitle">Producción completa para campaña. Todos los formatos.</div>
+      <div class="pkg-price-row">
+        <span class="pkg-price">S/ 1,875</span>
+        <span class="pkg-currency">PEN</span>
+      </div>
+      <div class="pkg-usd">aprox. $500 USD</div>
+      <ul class="pkg-features">
+        <li><span class="pkg-inc">✓</span>Todo lo de Aerial Ready</li>
+        <li><span class="pkg-inc">✓</span>3 formatos: H · cuadrado · vertical</li>
+        <li><span class="pkg-inc">✓</span>Música licenciada incluida</li>
+        <li><span class="pkg-inc">✓</span>Briefing previo 30 min</li>
+        <li><span class="pkg-inc">✓</span>2 revisiones sin costo</li>
+        <li><span class="pkg-inc">✓</span>Traslado Lima incluido</li>
+        <li><span class="pkg-inc">✓</span>Archivos RAW al finalizar</li>
+      </ul>
+      <div class="pkg-ideal">Ideal para: campañas publicitarias, lanzamientos, marcas de viaje.</div>
+      <a href="#calculadora" class="pkg-btn" onclick="selectPkgFromCard(2);return false;">Elegir Signature <span style="font-size:10px;opacity:0.7;">↓ Ver precio exacto</span></a>
+    </div>
+  </div>
+  <p class="pkg-note reveal">* Traslado fuera Lima Centro: desde S/ 40 adicionales · Revisión extra: S/ 80 c/u · Reprogramación por clima: sin penalidad · Anticipo: 50% para confirmar · Validez: 7 días</p>
+</section>
+
+
+<!-- ═══ CALCULADORA + RESERVA ═══ -->
+<section style="background:var(--warm);padding:2rem 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 2.5rem">
+    <p class="s-label reveal" style="margin-bottom:0.5rem">CALCULA TU INVERSIÓN</p>
+    <h2 class="s-title reveal">¿Cuánto cuesta<br>tu vuelo exactamente?</h2>
+    <p class="s-desc reveal">Selecciona paquete, adicionales, distrito y tipo de comprobante. El precio se actualiza en tiempo real.</p>
+  </div>
+</section>
+<div class="calc-section" id="calculadora">
+  <div class="calc-inner">
+    <div class="s-eyebrow">CALCULADORA DE PRECIO</div>
+    <h2 class="s-title">Arma tu paquete<br>a medida.</h2>
+    <p class="s-desc">Selecciona el paquete base y activa los servicios adicionales que necesites. El precio se actualiza en tiempo real.</p>
+    <div class="calc-grid">
+      <div class="calc-controls">
+        <div class="calc-pkg-toggle" id="calc-pkg-toggle"></div>
+
+        <span class="calc-label">SERVICIOS ADICIONALES</span>
+        <div class="addon-toggle-list" id="addon-toggle-list"></div>
+
+        <span class="calc-label" style="margin-top:1.5rem">DISTRITO DE DESPEGUE</span>
+        <input 
+          type="text" 
+          class="calc-input-text" 
+          id="calc-direccion" 
+          placeholder="Dirección exacta del vuelo (ej: Av. La Marina 2000, San Miguel)"
+          style="margin-bottom:0.6rem;"
+        />
+        <span class="calc-label" style="font-size:10px;margin-bottom:0.4rem;opacity:0.7;">SELECCIONA TU DISTRITO — incluye traslado automático</span>
+        <select class="calc-input-select" id="calc-distrito" onchange="updatePriceDisplay()">
+          <option value="" data-price="0" data-name="">Selecciona tu distrito</option>
+          <option value="Ancón" data-price="126.8" data-name="Ancón">Ancón — S/ 126.80</option>
+          <option value="Ate" data-price="68.2" data-name="Ate">Ate — S/ 68.20</option>
+          <option value="Barranco" data-price="58.5" data-name="Barranco">Barranco — S/ 58.50</option>
+          <option value="Breña" data-price="19.5" data-name="Breña">Breña — S/ 19.50</option>
+          <option value="Callao" data-price="48.8" data-name="Callao">Callao — S/ 48.80</option>
+          <option value="Carabayllo" data-price="87.8" data-name="Carabayllo">Carabayllo — S/ 87.80</option>
+          <option value="Chaclacayo" data-price="107.2" data-name="Chaclacayo">Chaclacayo — S/ 107.20</option>
+          <option value="Chorrillos" data-price="68.2" data-name="Chorrillos">Chorrillos — S/ 68.20</option>
+          <option value="Cieneguilla" data-price="136.5" data-name="Cieneguilla">Cieneguilla — S/ 136.50</option>
+          <option value="Comas" data-price="58.5" data-name="Comas">Comas — S/ 58.50</option>
+          <option value="El Agustino" data-price="39.0" data-name="El Agustino">El Agustino — S/ 39.00</option>
+          <option value="Independencia" data-price="48.8" data-name="Independencia">Independencia — S/ 48.80</option>
+          <option value="Jesús María" data-price="29.2" data-name="Jesús María">Jesús María — S/ 29.20</option>
+          <option value="La Molina" data-price="78.0" data-name="La Molina">La Molina — S/ 78.00</option>
+          <option value="La Victoria" data-price="35.1" data-name="La Victoria">La Victoria — S/ 35.10</option>
+          <option value="Lima (Cercado)" data-price="23.4" data-name="Lima (Cercado)">Lima (Cercado) — S/ 23.40</option>
+          <option value="Lince" data-price="35.1" data-name="Lince">Lince — S/ 35.10</option>
+          <option value="Los Olivos" data-price="58.5" data-name="Los Olivos">Los Olivos — S/ 58.50</option>
+          <option value="Lurigancho-Chosica" data-price="117.0" data-name="Lurigancho-Chosica">Lurigancho-Chosica — S/ 117.00</option>
+          <option value="Lurín" data-price="146.2" data-name="Lurín">Lurín — S/ 146.20</option>
+          <option value="Magdalena del Mar" data-price="39.0" data-name="Magdalena del Mar">Magdalena del Mar — S/ 39.00</option>
+          <option value="Miraflores" data-price="54.6" data-name="Miraflores">Miraflores — S/ 54.60</option>
+          <option value="Pachacámac" data-price="136.5" data-name="Pachacámac">Pachacámac — S/ 136.50</option>
+          <option value="Pucusana" data-price="234.0" data-name="Pucusana">Pucusana — S/ 234.00</option>
+          <option value="Pueblo Libre" data-price="29.2" data-name="Pueblo Libre">Pueblo Libre — S/ 29.20</option>
+          <option value="Puente Piedra" data-price="87.8" data-name="Puente Piedra">Puente Piedra — S/ 87.80</option>
+          <option value="Punta Hermosa" data-price="195.0" data-name="Punta Hermosa">Punta Hermosa — S/ 195.00</option>
+          <option value="Punta Negra" data-price="214.5" data-name="Punta Negra">Punta Negra — S/ 214.50</option>
+          <option value="Rímac" data-price="29.2" data-name="Rímac">Rímac — S/ 29.20</option>
+          <option value="San Bartolo" data-price="214.5" data-name="San Bartolo">San Bartolo — S/ 214.50</option>
+          <option value="San Borja" data-price="48.8" data-name="San Borja">San Borja — S/ 48.80</option>
+          <option value="San Isidro" data-price="42.9" data-name="San Isidro">San Isidro — S/ 42.90</option>
+          <option value="San Juan de Lurigancho" data-price="68.2" data-name="San Juan de Lurigancho">San Juan de Lurigancho — S/ 68.20</option>
+          <option value="San Juan de Miraflores" data-price="68.2" data-name="San Juan de Miraflores">San Juan de Miraflores — S/ 68.20</option>
+          <option value="San Luis" data-price="42.9" data-name="San Luis">San Luis — S/ 42.90</option>
+          <option value="San Martín de Porres" data-price="39.0" data-name="San Martín de Porres">San Martín de Porres — S/ 39.00</option>
+          <option value="San Miguel" data-price="39.0" data-name="San Miguel">San Miguel — S/ 39.00</option>
+          <option value="Santa Anita" data-price="54.6" data-name="Santa Anita">Santa Anita — S/ 54.60</option>
+          <option value="Santa María del Mar" data-price="234.0" data-name="Santa María del Mar">Santa María del Mar — S/ 234.00</option>
+          <option value="Santa Rosa" data-price="117.0" data-name="Santa Rosa">Santa Rosa — S/ 117.00</option>
+          <option value="Santiago de Surco" data-price="58.5" data-name="Santiago de Surco">Santiago de Surco — S/ 58.50</option>
+          <option value="Surquillo" data-price="48.8" data-name="Surquillo">Surquillo — S/ 48.80</option>
+          <option value="Villa El Salvador" data-price="87.8" data-name="Villa El Salvador">Villa El Salvador — S/ 87.80</option>
+          <option value="Villa María del Triunfo" data-price="78.0" data-name="Villa María del Triunfo">Villa María del Triunfo — S/ 78.00</option>
+          <option value="Aeropuerto Jorge Chávez" data-price="68.2" data-name="Aeropuerto Jorge Chávez">Aeropuerto Jorge Chávez — S/ 68.20</option>
+        </select>
+
+
+        <span class="calc-label" style="margin-top:1.5rem">FECHA Y HORA DEL VUELO</span>
+        <div class="fecha-hora-grid">
+          <div class="fecha-input-wrap">
+            <span class="fecha-sublabel">📅 Fecha preferida</span>
+            <input 
+              type="date" 
+              class="calc-input-date" 
+              id="calc-fecha"
+              onchange="validateFecha(); updatePriceDisplay();"
+            />
+          </div>
+          <div class="fecha-input-wrap">
+            <span class="fecha-sublabel">⏰ Hora de inicio</span>
+            <select class="calc-input-time" id="calc-hora" onchange="updatePriceDisplay()">
+              <option value="">Selecciona horario</option>
+              <option value="06:00 – 09:00">06:00 – 09:00 (amanecer / luz suave)</option>
+              <option value="09:00 – 12:00">09:00 – 12:00 (mañana / luz limpia)</option>
+              <option value="12:00 – 15:00">12:00 – 15:00 (mediodía)</option>
+              <option value="15:00 – 18:00">15:00 – 18:00 (tarde / luz cálida)</option>
+              <option value="18:00 – 20:00">18:00 – 20:00 (golden hour)</option>
+            </select>
+          </div>
+        </div>
+        <div class="fecha-nota" id="fecha-msg">📌 Reserva con mínimo 48h de anticipación para coordinar permisos DGAC.</div>
+
+
+        <span class="calc-label" style="margin-top:1.5rem">TIPO DE COMPROBANTE</span>
+        <div class="comprobante-toggle">
+          <label class="comp-opt">
+            <input type="radio" name="tipo_doc" value="boleta" checked onclick="updatePriceDisplay()">
+            <span>Boleta / RxH</span>
+          </label>
+          <label class="comp-opt">
+            <input type="radio" name="tipo_doc" value="factura" onclick="updatePriceDisplay()">
+            <span>Factura (+18% IGV)</span>
+          </label>
+        </div>
+
+        <div class="user-data-fields">
+          <input type="text" id="user-ruc" placeholder="RUC o DNI" class="calc-input-text" oninput="updatePriceDisplay()">
+          <input type="email" id="user-email" placeholder="Correo Principal" class="calc-input-text" oninput="updatePriceDisplay()">
+          <div style="grid-column:1/-1">
+            <span class="calc-label-mini">CC: COPIAS ADICIONALES (Cobranzas / Contabilidad)</span>
+            <input type="text" id="user-cc-email" placeholder="ejemplo@empresa.com, contabilidad@empresa.com" class="calc-input-text" oninput="updatePriceDisplay()">
+          </div>
+        </div>
+
+        <span class="calc-label" style="margin-top:1.5rem">FILTRAR POR SECTOR</span>
+        <div class="sector-filter" id="sector-filter"></div>
+        <div id="sector-rec" style="background:var(--light);border-radius:10px;padding:1rem 1.25rem;font-size:13px;color:var(--mid);line-height:1.65;min-height:48px"></div>
+      </div>
+      <div class="price-display" id="price-display">
+        <div class="pd-header">RESUMEN DE INVERSIÓN</div>
+        <div class="pd-pkg-name" id="pd-pkg-name">Aerial Ready</div>
+        <div class="pd-pkg-sub" id="pd-pkg-sub">Listo para publicar · 48h</div>
+        <div class="pd-breakdown" id="pd-breakdown"></div>
+        <div class="pd-divider"></div>
+        <div class="pd-total">
+          <span class="pd-total-label">TOTAL</span>
+          <div>
+            <span class="pd-total-price" id="pd-total">1,050</span>
+            <span class="pd-currency">S/</span>
+          </div>
+        </div>
+        <div class="pd-anticipo" id="pd-anticipo">Anticipo 50%: <span>S/ 525</span> · Saldo: <span>S/ 525</span></div>
+        <a class="btn-pd-cta" id="pd-wa-btn" href="#" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          Cotizar este paquete
+        </a>
+        <div class="pd-note">50% anticipo confirma fecha · Reprogramación sin costo si el clima impide el vuelo</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- RESERVA DE FECHA -->
+<div class="reserva-section" id="reserva">
+  <div class="reserva-inner">
+    <div class="s-eyebrow" style="color:rgba(225,225,220,.3)">RESERVA TU VUELO</div>
+    <h2 class="s-title" style="color:var(--sand)">Elige la fecha<br>y asegura tu slot.</h2>
+    <div class="reserva-grid">
+
+      <div class="reserva-info">
+        <p class="reserva-info-text">Confirmar fecha con anticipo garantiza prioridad en agenda. Sin reserva, la fecha queda sujeta a disponibilidad.</p>
+        <div class="reserva-info-item"><div class="rii-dot"></div><div class="rii-text"><strong>50% de anticipo</strong> confirma y bloquea la fecha en agenda.</div></div>
+        <div class="reserva-info-item"><div class="rii-dot"></div><div class="rii-text"><strong>Reprogramación sin costo</strong> si el clima impide el vuelo el día acordado.</div></div>
+        <div class="reserva-info-item"><div class="rii-dot"></div><div class="rii-text">Vuelos DGAC requieren <strong>48h de anticipación mínima</strong> para gestionar permiso en zonas CTR.</div></div>
+        <div class="reserva-info-item"><div class="rii-dot"></div><div class="rii-text">Horario estándar de operación: <strong>6:00 am – 6:00 pm</strong>. Vuelos nocturnos bajo consulta.</div></div>
+        <div class="availability-strip" style="margin-top:1.75rem">
+          <div class="avail-item"><span class="avail-dot free"></span><span class="avail-label">Disponible esta semana</span></div>
+          <div class="avail-item"><span class="avail-dot free"></span><span class="avail-label">Fines de semana libres</span></div>
+          <div class="avail-item"><span class="avail-dot busy"></span><span class="avail-label">Sábado 19 ocupado</span></div>
+          <div class="avail-item"><span class="avail-dot free"></span><span class="avail-label">Zonas sur disponibles</span></div>
+        </div>
+      </div>
+
+      <div class="reserva-card">
+        <span class="reserva-label">FECHA DEL VUELO</span>
+        <div class="date-picker-wrap">
+          <input type="date" class="date-input" id="fecha-vuelo" onchange="validateDate()">
+          <div class="date-validation-msg" id="date-msg"></div>
+        </div>
+
+        <span class="reserva-label" style="margin-top:1rem">HORARIO PREFERIDO</span>
+        <select class="calc-input-select" id="horario-vuelo" style="background:rgba(225,225,220,.06);border-color:rgba(225,225,220,.12);color:var(--sand);color-scheme:dark;margin-bottom:1rem" onchange="updatePriceDisplay()">
+          <option value="">Sin preferencia de horario</option>
+          <option value="6:00 – 9:00 am">6:00 – 9:00 am (luz dorada)</option>
+          <option value="9:00 am – 12:00 pm">9:00 am – 12:00 pm (mañana)</option>
+          <option value="12:00 – 3:00 pm">12:00 – 3:00 pm (mediodía)</option>
+          <option value="3:00 – 6:00 pm">3:00 – 6:00 pm (tarde / luz cálida)</option>
+        </select>
+
+        <span class="reserva-label">NOTAS ADICIONALES (opcional)</span>
+        <textarea class="reserva-note-input" id="reserva-nota" rows="3" placeholder="Punto de encuentro, indicaciones de acceso, número de contacto en locación…" oninput="updatePriceDisplay()"></textarea>
+
+        <div style="margin-top:1.25rem;padding:1rem;background:rgba(225,225,220,.04);border:.5px solid rgba(225,225,220,.08);border-radius:8px">
+          <div style="font-family:var(--fm);font-size:8px;letter-spacing:.1em;color:rgba(225,225,220,.3);margin-bottom:.5rem">RESUMEN DE RESERVA</div>
+          <div id="reserva-summary" style="font-family:var(--fm);font-size:11px;color:rgba(225,225,220,.5);line-height:1.8">Selecciona fecha y paquete para ver el resumen.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ PROCESS ═══ -->
+<section class="section" id="proceso">
+  <div class="reveal">
+    <p class="s-label">04 — PROCESO</p>
+    <h2 class="s-title">Cómo trabajamos</h2>
+    <p class="s-desc">Cuatro pasos simples. Del primer contacto a la entrega final, sin fricción.</p>
+  </div>
+  <div class="process-grid reveal">
+    <div class="process-step">
+      <div class="process-num">1</div>
+      <div class="process-title">Briefing</div>
+      <div class="process-desc">Nos cuentas qué necesitas: locación, momentos clave, duración y uso del material.</div>
+      <span class="process-auto">5 preguntas · 5 min</span>
+    </div>
+    <div class="process-step">
+      <div class="process-num">2</div>
+      <div class="process-title">Propuesta</div>
+      <div class="process-desc">Recibes un PDF con los tres paquetes. Elegimos el que mejor se ajuste. Validez 7 días.</div>
+      <span class="process-auto">Automático</span>
+    </div>
+    <div class="process-step">
+      <div class="process-num">3</div>
+      <div class="process-title">Vuelo</div>
+      <div class="process-desc">Nos desplazamos a la locación, volamos y capturamos todo el material necesario.</div>
+      <span class="process-auto">Día de producción</span>
+    </div>
+    <div class="process-step">
+      <div class="process-num">4</div>
+      <div class="process-title">Entrega</div>
+      <div class="process-desc">Material editado, corregido y entregado. Incluye contrato de licencia de uso.</div>
+      <span class="process-auto">24–48h</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="section">
+  <div class="reveal">
+    <p class="s-label">05 — CONFIANZA</p>
+    <h2 class="s-title">Lo que dicen nuestros clientes</h2>
+    <p class="s-desc">Trabajamos con agencias, inmobiliarias y marcas que necesitan perspectiva aérea profesional.</p>
+  </div>
+  <div class="testimonial-grid reveal">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"El material que nos entregó Julio superó nuestras expectativas. La calidad 4K y la rapidez de entrega nos permitieron lanzar la campaña a tiempo."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">SL</div>
+        <div>
+          <div class="testimonial-name">Singular Latin</div>
+          <div class="testimonial-role">Agencia de comunicación</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Necesitábamos imágenes aéreas del proyecto inmobiliario para la preventa. El resultado fue impecable y las ventas se dispararon."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">GR</div>
+        <div>
+          <div class="testimonial-name">Grupo Inmobiliario</div>
+          <div class="testimonial-role">Desarrollo inmobiliario</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"Profesional, puntual y con un ojo increíble para los ángulos. El video del evento quedó espectacular. Ya lo tenemos contratado para el próximo."</div>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">EP</div>
+        <div>
+          <div class="testimonial-name">Agencia de Eventos Magia y Brillo</div>
+          <div class="testimonial-role">Eventos · Lima, Perú</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section" id="contacto">
+  <div class="cta-grid-bg"></div>
+  <div class="cta-content reveal">
+    <h2 class="cta-title">Tu proyecto merece<br>ser visto desde arriba</h2>
+    <p class="cta-desc">Cuéntanos qué necesitas y te enviamos una propuesta en menos de 10 minutos. Sin compromiso, con la claridad que mereces.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/51927929541?text=Hola%20Julio%2C%20quiero%20cotizar%20un%20proyecto%20aereo" class="cta-whatsapp" target="_blank">WhatsApp directo</a>
+      <a href="mailto:aerovisuales4k@gmail.com?subject=Cotizacion%20proyecto%20aereo" class="btn-ghost" style="color: rgba(225,225,220,0.80); border-color: rgba(225,225,220,0.15);">aerovisuales4k@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <svg viewBox="0 0 100 100" fill="none" width="20" height="20">
+          <g stroke="#E1E1DC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M42 35 v30 a8 8 0 0 0 16 0 v-30 a8 8 0 0 0 -16 0 z"/>
+            <path d="M46 35 v-6 h8 v6"/>
+            <circle cx="50" cy="27" r="2.5" fill="#E1E1DC" stroke="none"/>
+            <path d="M42 42 L25 25"/><path d="M58 42 L75 25"/>
+            <path d="M42 58 L25 75"/><path d="M58 58 L75 75"/>
+            <path d="M14 25 L36 25" stroke-width="4"/><path d="M64 25 L86 25" stroke-width="4"/>
+            <path d="M14 75 L36 75" stroke-width="4"/><path d="M64 75 L86 75" stroke-width="4"/>
+          </g>
+        </svg>
+        <span class="footer-brand-text">AEROVISUALES 4K</span>
+      </div>
+      <div class="footer-tagline">PRODUCCIÓN AÉREA 4K · LIMA, PERÚ</div>
+      <p class="footer-desc">Fotografía y video aéreo profesional en 4K. Julio César Cornejo, piloto certificado DGAC. Lima, Perú.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">SERVICIOS</div>
+      <a href="#servicios">Grabación 4K</a>
+      <a href="#servicios">Edición profesional</a>
+      <a href="#servicios">Multi-formato</a>
+      <a href="#paquetes">Ver paquetes</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">EMPRESA</div>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#calculadora">Cotizador</a>
+              <a href="#proceso">Proceso</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">CONTACTO</div>
+      <a href="mailto:aerovisuales4k@gmail.com">aerovisuales4k@gmail.com</a>
+      <a href="https://wa.me/51927929541">WhatsApp</a>
+      <a href="#">aerovisuales4k.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Aerovisuales 4K · Julio César Cornejo · Lima, Perú</span>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/aerovisuales4k/" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com/@aerovisuales.4k" target="_blank">TikTok</a>
+      <a href="#">YouTube</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── WEBSITE ORIGINAL JS ──
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+const navToggle = document.getElementById('navToggle');
+const mobileNav = document.getElementById('mobileNav');
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  mobileNav.classList.toggle('active');
+  document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+});
+function closeMobile() {
+  navToggle.classList.remove('active');
+  mobileNav.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+
+// ── COMPARADOR JS (Calculadora, Recomendador, Reserva) ──
+
+/* ══════════════════════════════
+   DATA
+══════════════════════════════ */
+const PKGS = [
+  {id:0, name:'Raw Air',        tagline:'El vuelo. Sin más.',          price:450,  delivery:'24h', eyebrow:'BÁSICO'},
+  {id:1, name:'Aerial Ready',   tagline:'Listo para publicar.',         price:1050, delivery:'48h', eyebrow:'MÁS POPULAR'},
+  {id:2, name:'Signature Aerial',tagline:'Producción a medida.',       price:1875, delivery:'5 días', eyebrow:'COMPLETO'},
+];
+const ADDONS = [
+  {id:'urgencia',  label:'Urgencia / mismo día',         price:150, desc:'Confirmación en menos de 2h'},
+  {id:'publi',     label:'Licencia publicidad pagada',   price:200, desc:'Ads, TV, uso comercial ampliado'},
+  {id:'vertical',  label:'Formato vertical adicional',   price:100, desc:'9:16 para Stories / Reels extra'},
+  {id:'foto',      label:'Fotografía aérea seleccionada',price:150, desc:'JPG + DNG editados, 20 tomas'},
+];
+const TABLE_ROWS = [
+  {group:'Vuelo', rows:[
+    {label:'Equipo',      sub:'',            vals:['DJI Mavic 2 Pro','DJI Mavic 2 Pro','DJI Mavic 2 Pro'],                 types:['text','text','text']},
+    {label:'Resolución',  sub:'',            vals:['4K · 10 bits','4K · 10 bits','4K · 10 bits'],                         types:['text','text','text']},
+    {label:'Perfil color',sub:'para edición', vals:['D-Log','D-Log','D-Log'],                                              types:['text','text','text']},
+    {label:'DGAC',        sub:'piloto certificado',vals:[true,true,true],                                                  types:['bool','bool','bool']},
+    {label:'Permiso de vuelo',sub:'gestión incluida', vals:[true,true,true],                                               types:['bool','bool','bool']},
+  ]},
+  {group:'Entregables', rows:[
+    {label:'Material RAW', sub:'sin comprimir',  vals:[true,true,true],                                                    types:['bool','bool','bool']},
+    {label:'Edición',      sub:'',               vals:[false,true,true],                                                   types:['bool','bool','bool']},
+    {label:'Colorización', sub:'',               vals:[false,true,true],                                                   types:['bool','bool','bool']},
+    {label:'Versión horizontal', sub:'16:9',     vals:[false,true,true],                                                   types:['bool','bool','bool']},
+    {label:'Versión vertical',   sub:'9:16',     vals:[false,true,true],                                                   types:['bool','bool','bool']},
+    {label:'Música',       sub:'',               vals:[false,false,true],                                                  types:['bool','bool','bool']},
+    {label:'Motion graphics',sub:'',             vals:[false,false,true],                                                  types:['bool','bool','bool']},
+    {label:'Fotografía aérea',sub:'seleccionada',vals:[false,false,true],                                                  types:['bool','bool','bool']},
+    {label:'Revisiones',   sub:'',               vals:['—','1 revisión','Ilimitadas'],                                    types:['text','text','text-best']},
+  ]},
+  {group:'Plazos y proceso', rows:[
+    {label:'Entrega',      sub:'',            vals:['24 horas','48 horas','5 días hábiles'],                               types:['text-best','text','text']},
+    {label:'Brief previo', sub:'',            vals:['Básico','Estándar','Estratégico incluido'],                           types:['text','text','text-best']},
+    {label:'Validez propuesta',sub:'',        vals:['7 días','7 días','7 días'],                                           types:['text','text','text']},
+  ]},
+  {group:'Precio y condiciones', rows:[
+    {label:'Precio base',  sub:'',            vals:['S/ 450','S/ 1,050','S/ 1,875'],                                      types:['text','text','text']},
+    {label:'Anticipo',     sub:'para confirmar', vals:['50% = S/ 225','50% = S/ 525','50% = S/ 937'],                     types:['text','text','text']},
+    {label:'Clima',        sub:'sin penalidad', vals:[true,true,true],                                                    types:['bool','bool','bool']},
+    {label:'Contrato',     sub:'incluido',     vals:[true,true,true],                                                     types:['bool','bool','bool']},
+    {label:'RUC activo',   sub:'recibo honorarios', vals:[true,true,true],                                                types:['bool','bool','bool']},
+  ]},
+  {group:'Licencia (D.L. 822)', rows:[
+    {label:'Redes orgánicas', sub:'',          vals:[true,true,true],                                                     types:['bool','bool','bool']},
+    {label:'Web corporativa', sub:'',          vals:[false,true,true],                                                    types:['bool','bool','bool']},
+    {label:'Publicidad pagada',sub:'ads/TV',   vals:[false,false,true],                                                   types:['bool','bool','bool']},
+  ]},
+];
+const SECTORS = ['Todos','Inmobiliaria','Retail','Eventos','Corporativo','Publicidad'];
+const SECTOR_RECS = {
+  'Todos':      'Selecciona un sector para ver la recomendación específica para tu industria.',
+  'Inmobiliaria':'Para inmobiliarias que venden departamentos o lotes: <strong>Aerial Ready</strong> es el estándar. El cliente necesita ver el entorno — edición + color listos para publicar en redes y web.',
+  'Retail':     'Aperturas y eventos de centro comercial: <strong>Aerial Ready</strong> o <strong>Signature</strong> según el presupuesto del evento. Si hay patrocinadores, considera la licencia de publicidad pagada (+S/ 200).',
+  'Eventos':    'Para eventos deportivos, sociales o convenciones: <strong>Aerial Ready</strong> incluye el clip listo para el día siguiente. Si el evento tiene sponsors, agrega la licencia de publicidad.',
+  'Corporativo':'Video institucional para universidades, clínicas o constructoras: <strong>Signature Aerial</strong> si quieren un producto editorial terminado. <strong>Aerial Ready</strong> si tienen equipo de post.',
+  'Publicidad': 'Para agencias y productoras: <strong>Raw Air</strong> si tienen colorista propio. <strong>Aerial Ready</strong> si necesitan entrega rápida. Agrega licencia de publicidad pagada si el material va a ads.',
+};
+const CASES = [
+  {num:'01',sector:'INMOBILIARIA',client:'V&V Inmobiliaria',pkg:1,pkgName:'Aerial Ready',pkgColor:'#1A1A18',detail:'37 videos de venta de departamentos en Lima desde 2019. El cliente recibe el material listo para publicar en portal inmobiliario y redes el mismo día.',outcome:'Relación sostenida de 6 años · cliente más fiel del portafolio'},
+  {num:'02',sector:'RETAIL · GRUPO PARQUE ARAUCO',client:'Larcomar',pkg:1,pkgName:'Aerial Ready',pkgColor:'#1A1A18',detail:'Cobertura aérea de eventos y campañas para el centro comercial de Miraflores. 8 videos de eventos de temporada para redes del cliente.',outcome:'8 videos producidos · recontratados para cada temporada'},
+  {num:'03',sector:'EVENTOS DEPORTIVOS',client:'Maratón Asia / Toyota',pkg:0,pkgName:'Raw Air',pkgColor:'#4578C0',detail:'Grabación aérea del recorrido de la maratón desde Lima hasta Asia, Cañete. Material RAW para la producción de ACME Studio.',outcome:'Producción integrada con equipo de agencia · flujo rápido'},
+  {num:'04',sector:'OIL & GAS',client:'Hunt Oil Company of Perú',pkg:2,pkgName:'Signature Aerial',pkgColor:'#7B5E3A',detail:'Campaña corporativa institucional para Hunt Oil. Producción completa con brief estratégico, edición y colorización para web y comunicaciones internas.',outcome:'Producción completa en 5 días · aprobación en primera revisión'},
+  {num:'05',sector:'EDUCACIÓN',client:'Universidad César Vallejo',pkg:1,pkgName:'Aerial Ready',pkgColor:'#1A1A18',detail:'Spot de promoción institucional con perspectiva aérea de las instalaciones del campus. Entrega en 48h con versión horizontal y vertical.',outcome:'Entrega en plazo · versión redes y web incluidas'},
+  {num:'06',sector:'CONSTRUCCIÓN',client:'TNC Contratistas (Wong)',pkg:0,pkgName:'Raw Air',pkgColor:'#4578C0',detail:'Documentación fotográfica aérea del avance de obra al 90% del proyecto Wong Chacarilla. Material RAW para el informe del cliente final.',outcome:'Documentación de obra · entregada en 24h'},
+];
+const QUIZ_STEPS = [
+  {
+    q:'¿Qué tipo de proyecto necesitas filmar?',
+    opts:[
+      {icon:'🏢',label:'Inmobiliario',sub:'Departamentos, lotes, obra',val:'inmobiliaria'},
+      {icon:'🏬',label:'Apertura / evento',sub:'Centro comercial, inauguración',val:'evento'},
+      {icon:'🎬',label:'Publicidad / campaña',sub:'Spot, agencia, ads',val:'publicidad'},
+      {icon:'🏛️',label:'Corporativo',sub:'Institucional, industria',val:'corporativo'},
+      {icon:'🏃',label:'Evento deportivo',sub:'Maratón, competencia',val:'deportivo'},
+      {icon:'💒',label:'Boda / social',sub:'Evento privado',val:'social'},
+    ]
+  },
+  {
+    q:'¿Tienes equipo de post-producción propio?',
+    opts:[
+      {icon:'✅',label:'Sí, tenemos editor y colorista',sub:'Recibimos el RAW y lo procesamos',val:'tiene_post'},
+      {icon:'⚡',label:'No, necesitamos material listo',sub:'Queremos recibir el video terminado',val:'sin_post'},
+      {icon:'🎯',label:'Necesitamos producción completa',sub:'Brief, música, motion graphics',val:'full'},
+    ]
+  },
+  {
+    q:'¿En cuánto tiempo necesitas el material?',
+    opts:[
+      {icon:'🚀',label:'Mismo día / urgente',sub:'Menos de 12 horas',val:'urgente'},
+      {icon:'📅',label:'24 horas',sub:'Al día siguiente',val:'24h'},
+      {icon:'📬',label:'48–72 horas',sub:'Dos o tres días',val:'48h'},
+      {icon:'🗓️',label:'Sin urgencia',sub:'Una semana está bien',val:'relajado'},
+    ]
+  },
+];
+const QUIZ_LOGIC = (answers) => {
+  const [tipo, post, tiempo] = answers;
+  if(post==='full') return {pkg:2, reason:'Tu proyecto necesita un producto editorial terminado: brief estratégico, música, motion graphics y revisiones ilimitadas. Signature Aerial es la opción correcta.'};
+  if(post==='tiene_post' && tiempo!=='urgente') return {pkg:0, reason:'Como tienes equipo de post, Raw Air te da el material RAW en D-Log en 24h y tu equipo hace el resto. Es la opción más eficiente para tu flujo.'};
+  if(tipo==='publicidad') return {pkg:1, reason:'Para campañas publicitarias, Aerial Ready incluye edición, colorización y las versiones horizontal y vertical listas para subir a redes y entregar al cliente.'};
+  if(tiempo==='urgente') return {pkg:0, reason:'Si necesitas el material en menos de 12 horas, Raw Air te lo entrega sin pasar por post. Agrega el add-on de Urgencia (+S/ 150) para garantizar la prioridad.'};
+  return {pkg:1, reason:'Aerial Ready es el estándar más popular: edición completa, color grade profesional, versión horizontal + vertical, listo para publicar en 48h. Aplica para casi todos los sectores.'};
+};
+const FAQS = [
+  // Payment FAQs injected
+  {
+    q: "¿Cómo realizo el pago del anticipo?",
+    a: "Aceptamos transferencia bancaria (BCP, Interbank, BBVA), Yape, Plin y efectivo en Lima. El anticipo del 50% confirma tu fecha de grabación. El saldo se paga contra entrega del material."
+  },
+  {
+    q: "¿Qué métodos de pago aceptan?",
+    a: "Yape, Plin, transferencia bancaria en soles o dólares, y efectivo. Para clientes corporativos emitimos factura electrónica con RUC."
+  },
+  {
+    q: "¿Puedo cancelar o reprogramar mi sesión?",
+    a: "Puedes reprogramar sin penalidad hasta 48 horas antes de la sesión. Si cancelas con menos de 24 horas de anticipación, el anticipo no es reembolsable pero queda como crédito para tu próxima sesión."
+  },
+  {
+    q: "¿Qué pasa si el clima no permite el vuelo?",
+    a: "Si las condiciones climáticas o de seguridad impiden el vuelo, reagendamos sin costo adicional en la siguiente fecha disponible. Tu anticipo se mantiene válido. Nunca volamos en condiciones que pongan en riesgo el equipo o las personas."
+  }
+,
+  // Original FAQs follow:
+  {q:'¿Qué incluye exactamente la licencia de uso?',a:'Todos los paquetes incluyen licencia para redes orgánicas (30 días, territorio Perú) conforme al D.L. 822. Aerial Ready y Signature Aerial incluyen también uso en web corporativa. La publicidad pagada (ads, TV, uso internacional) se negocia por separado con el add-on correspondiente.'},
+  {q:'¿Qué pasa si el clima impide el vuelo?',a:'Reprogramamos sin costo alguno. El anticipo pagado se mantiene como reserva para la nueva fecha. No hay penalidades por condiciones climáticas adversas.'},
+  {q:'¿En qué formato entrega el material?',a:'RAW en MP4 o MOV con perfil D-Log (10 bits). El material editado en H.264 optimizado para redes. Los archivos se entregan vía Google Drive o WeTransfer según el volumen.'},
+  {q:'¿Necesito gestionar el permiso de vuelo DGAC yo mismo?',a:'No. Aerovisuales gestiona todos los permisos de vuelo necesarios. En zonas CTR cercanas a aeropuertos (como Miraflores o Lince), el trámite puede tomar 2–5 días hábiles adicionales, lo que se comunica al cotizar.'},
+  {q:'¿Cuál es la diferencia real entre Aerial Ready y Signature Aerial?',a:'Aerial Ready entrega el material editado y listo para publicar en 48h. Signature Aerial agrega el brief estratégico previo al vuelo, música licenciada, motion graphics, revisiones ilimitadas y formatos adicionales. Es la opción correcta cuando el material aéreo es el protagonista de la campaña.'},
+  {q:'¿Puedo cambiar de paquete después de contratar?',a:'Sí, puedes hacer upgrade al momento de recibir los archivos. Si decides pasar de Raw Air a Aerial Ready, se cobra la diferencia. Los downgrade no aplican una vez iniciada la producción.'},
+  {q:'¿Emiten factura o recibo por honorarios?',a:'Sí. Aerovisuales / Julio César Cornejo emite recibo por honorarios con RUC activo, válido para deducción como gasto empresarial. Si necesitas factura, consulta disponibilidad al cotizar.'},
+];
+
+/* ══════════════════════════════
+   QUIZ
+══════════════════════════════ */
+let quizStep = 0;
+let quizAnswers = [];
+let quizSelectedOpt = null;
+
+function renderQuiz(){
+  const content = document.getElementById('quiz-content');
+  if(quizStep >= QUIZ_STEPS.length){
+    renderQuizResult(content); return;
+  }
+  const step = QUIZ_STEPS[quizStep];
+  content.innerHTML = `
+    <div class="quiz-question">${step.q}</div>
+    <div class="quiz-options">
+      ${step.opts.map((o,i)=>`
+        <div class="quiz-option" id="qopt-${i}" onclick="selectQuizOpt(${i},'${o.val}')">
+          <span class="qo-icon">${o.icon}</span>
+          <div class="qo-label">${o.label}</div>
+          <div class="qo-sub">${o.sub}</div>
+        </div>`).join('')}
+    </div>
+    <div class="quiz-nav">
+      <div style="display:flex;align-items:center;gap:12px">
+        ${quizStep>0?`<button class="btn-quiz-back" onclick="quizBack()">← Atrás</button>`:''}
+        <div class="quiz-progress">
+          ${QUIZ_STEPS.map((_,i)=>`<div class="qp-dot ${i<quizStep?'done':i===quizStep?'active':''}"></div>`).join('')}
+        </div>
+      </div>
+      <button class="btn-quiz-next" id="btn-qnext" disabled onclick="quizNext()">Siguiente →</button>
+    </div>`;
+  quizSelectedOpt = null;
+}
+
+function selectQuizOpt(i, val){
+  quizSelectedOpt = val;
+  document.querySelectorAll('.quiz-option').forEach((el,j)=>el.classList.toggle('selected', j===i));
+  document.getElementById('btn-qnext').disabled = false;
+}
+
+function quizNext(){
+  if(!quizSelectedOpt) return;
+  quizAnswers[quizStep] = quizSelectedOpt;
+  quizStep++;
+  renderQuiz();
+}
+function quizBack(){
+  quizStep--;
+  quizAnswers.splice(quizStep);
+  renderQuiz();
+}
+
+function renderQuizResult(content){
+  const rec = QUIZ_LOGIC(quizAnswers);
+  const pkg = PKGS[rec.pkg];
+  content.innerHTML = `
+    <div class="quiz-result" style="display:block">
+      <div class="qr-rec">
+        <div style="flex:1">
+          <div class="qr-badge">RECOMENDADO PARA TU PROYECTO</div>
+          <div class="qr-pkg-name">${pkg.name}</div>
+          <div class="qr-pkg-price">S/ ${pkg.price.toLocaleString()} · Entrega en ${pkg.delivery}</div>
+          <div class="qr-reason">${rec.reason}</div>
+          <div class="qr-actions">
+            <button class="btn-qr-cta" onclick="applyQuizPkg(${rec.pkg})">Aplicar este paquete →</button>
+            <button class="btn-qr-reset" onclick="quizReset()">Reiniciar cuestionario</button>
+          </div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-family:var(--fd);font-size:64px;color:rgba(225,225,220,.06);line-height:1;letter-spacing:-.04em">${rec.pkg===0?'01':rec.pkg===1?'02':'03'}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function quizReset(){quizStep=0;quizAnswers=[];renderQuiz()}
+
+function applyQuizPkg(pkgId){
+  setCalcPkg(pkgId);
+  document.querySelector('#calculadora')?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ══════════════════════════════
+   COMPARISON TABLE
+══════════════════════════════ */
+function renderTable(){
+  const tbody = document.getElementById('cmp-tbody');
+  tbody.innerHTML = TABLE_ROWS.map(group=>{
+    const groupRow = `<tr class="row-group-header"><td colspan="4"><span class="row-group-label">${group.group.toUpperCase()}</span></td></tr>`;
+    const dataRows = group.rows.map(row=>`
+      <tr>
+        <td class="td-feature">
+          ${row.label}
+          ${row.sub?`<div class="feat-sub">${row.sub}</div>`:''}
+        </td>
+        ${row.vals.map((v,i)=>{
+          const t = row.types[i];
+          const feat = i===1;
+          let cell = '';
+          if(t==='bool') cell = v
+            ? `<div class="check check-yes"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="${feat?'#8ec45d':'#3B6D11'}" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>`
+            : `<div class="check check-no"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="${feat?'rgba(225,225,220,.25)':'rgba(26,26,24,.25)'}" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>`;
+          else if(t==='text-best') cell = `<span class="val-text">${v}</span><span class="best-badge">mejor</span>`;
+          else cell = `<span class="val-text ${v==='—'?'muted':''}">${v}</span>`;
+          return `<td class="td-val ${feat?'featured':''}">${cell}</td>`;
+        }).join('')}
+      </tr>`).join('');
+    return groupRow + dataRows;
+  }).join('');
+}
+
+/* ══════════════════════════════
+   CALCULATOR
+══════════════════════════════ */
+let calcPkg = 1;
+let activeAddons = new Set();
+let activeSector = 'Todos';
+
+function renderCalcPkgToggle(){
+  document.getElementById('calc-pkg-toggle').innerHTML = PKGS.map(p=>`
+    <div class="calc-pkg-btn ${p.id===calcPkg?'active':''}" onclick="setCalcPkg(${p.id})">
+      <span class="cpb-name">${p.name}</span>
+      <span class="cpb-price ${p.id===calcPkg?'':'muted'}">S/ ${p.price.toLocaleString()}</span>
+    </div>`).join('');
+}
+
+function renderAddonToggles(){
+  document.getElementById('addon-toggle-list').innerHTML = ADDONS.map(a=>`
+    <div class="addon-toggle ${activeAddons.has(a.id)?'active':''}" onclick="toggleAddon('${a.id}')">
+      <div class="at-info">
+        <span class="at-label">${a.label}</span>
+        <span class="at-price">+S/ ${a.price} · ${a.desc}</span>
+      </div>
+      <div class="at-switch"><div class="at-thumb"></div></div>
+    </div>`).join('');
+}
+
+function renderSectorFilter(){
+  const sf = document.getElementById('sector-filter');
+  const sr = document.getElementById('sector-rec');
+  if(!sf || !sr) return;
+  sf.innerHTML = SECTORS.map(s=>`
+    <button class="sf-btn ${s===activeSector?'active':''}" onclick="setSector('${s}')">${s}</button>`).join('');
+  sr.innerHTML = SECTOR_RECS[activeSector];
+}
+
+function setCalcPkg(id){calcPkg=id;renderCalcPkgToggle();updatePriceDisplay()}
+function toggleAddon(id){activeAddons.has(id)?activeAddons.delete(id):activeAddons.add(id);renderAddonToggles();updatePriceDisplay()}
+function setSector(s){activeSector=s;if(document.getElementById('sector-filter')) renderSectorFilter();}
+
+function updatePriceDisplay(){
+  const pkg = PKGS[calcPkg];
+
+  // 1. Sumar adicionales
+  const addonsTotal = [...activeAddons].reduce((acc,id)=>acc+(ADDONS.find(a=>a.id===id)?.price||0),0);
+
+  // 2. Obtener transporte (ida + vuelta del Excel)
+  const distSelect = document.getElementById('calc-distrito');
+  const selOpt = distSelect.options[distSelect.selectedIndex];
+  const transporteTotal = parseFloat(selOpt.getAttribute('data-price'))||0;
+  const distritoName = selOpt.getAttribute('data-name')||'';
+
+  // 3. Cálculo de impuestos
+  const subtotal = pkg.price + addonsTotal + transporteTotal;
+  const esFactura = document.querySelector('input[name="tipo_doc"]:checked').value==='factura';
+  const igv = esFactura ? (subtotal*0.18) : 0;
+  const total = subtotal + igv;
+  const anticipo = Math.round(total*0.5);
+
+  // 4. Actualizar interfaz
+  document.getElementById('pd-pkg-name').textContent = pkg.name;
+  document.getElementById('pd-pkg-sub').textContent  = pkg.tagline+' · '+pkg.delivery;
+
+  let breakdown = `<div class="pd-row"><span class="pd-row-label">Paquete ${pkg.name}</span><span class="pd-row-val">S/ ${pkg.price.toLocaleString()}</span></div>`;
+  [...activeAddons].forEach(id=>{
+    const a = ADDONS.find(x=>x.id===id);
+    if(a) breakdown += `<div class="pd-row addon"><span class="pd-row-label">${a.label}</span><span class="pd-row-val addon-val">+S/ ${a.price}</span></div>`;
+  });
+  if(transporteTotal>0) breakdown += `<div class="pd-row"><span class="pd-row-label">Transporte · ${distritoName}</span><span class="pd-row-val">S/ ${transporteTotal.toFixed(2)}</span></div>`;
+  if(esFactura) breakdown += `<div class="pd-row"><span class="pd-row-label">IGV (18%)</span><span class="pd-row-val">S/ ${igv.toFixed(2)}</span></div>`;
+
+  document.getElementById('pd-breakdown').innerHTML = breakdown;
+  document.getElementById('pd-total').textContent = Math.round(total).toLocaleString();
+  document.getElementById('pd-anticipo').innerHTML = `Anticipo 50%: <span>S/ ${anticipo.toLocaleString()}</span> · Saldo: <span>S/ ${(Math.round(total)-anticipo).toLocaleString()}</span>`;
+
+  // 5. Recoger datos completos para WhatsApp
+  const ruc    = document.getElementById('user-ruc').value||'No provisto';
+  const email  = document.getElementById('user-email').value||'No provisto';
+  const cc     = document.getElementById('user-cc-email').value;
+  const fecha  = document.getElementById('fecha-vuelo')?.value;
+  const horario= document.getElementById('horario-vuelo')?.value;
+  const nota   = document.getElementById('reserva-nota')?.value;
+  const addonsLabel = activeAddons.size>0
+    ? [...activeAddons].map(id=>ADDONS.find(a=>a.id===id)?.label).join(', ')
+    : 'Ninguno';
+
+  const fechaStr = fecha
+    ? new Date(fecha+'T12:00:00').toLocaleDateString('es-PE',{weekday:'long',day:'numeric',month:'long',year:'numeric'})
+    : 'Sin fecha seleccionada';
+
+  const fechaVal = document.getElementById('calc-fecha')?.value || '';
+  const horaVal  = document.getElementById('calc-hora')?.value  || '';
+  const fechaStrCalc = fechaVal ? new Date(fechaVal + 'T00:00:00').toLocaleDateString('es-PE', {weekday:'long', day:'numeric', month:'long', year:'numeric'}) : 'Por confirmar';
+  const waLines = [
+    `¡Hola Julio! Quiero cotizar y reservar un vuelo:`,
+    ``,
+    `📦 Paquete: ${pkg.name} (S/ ${pkg.price.toLocaleString()})`,
+    `➕ Adicionales: ${addonsLabel}`,
+    distritoName ? `🚗 Transporte: ${distritoName} — S/ ${transporteTotal.toFixed(2)}` : '',
+    `🧾 Comprobante: ${esFactura?'Factura + IGV':'Boleta / RxH'}`,
+    ``,
+    `💰 TOTAL: S/ ${Math.round(total).toLocaleString()}`,
+    `   Anticipo (50%): S/ ${anticipo.toLocaleString()}`,
+    ``,
+    `📅 Fecha de vuelo: ${fechaStr}`,
+    horario ? `⏰ Horario preferido: ${horario}` : '',
+    nota ? `📝 Notas: ${nota}` : '',
+    ``,
+    `-------------------------`,
+    `📧 Enviar proforma a: ${email}`,
+    cc ? `📩 CC: ${cc}` : '',
+    `📄 RUC/DNI: ${ruc}`,
+  ].filter(l => l !== null && l !== undefined);
+
+  const waMsg = encodeURIComponent(waLines.join('\n'));
+  const waBtn = document.getElementById('pd-wa-btn');
+  waBtn.href = `https://wa.me/51927929541?text=${waMsg}`;
+
+  // ── UPDATE ORDER SUMMARY BOX ──
+  const sumPkg = document.getElementById('sum-pkg');
+  const sumDuration = document.getElementById('sum-duration');
+  const sumDelivery = document.getElementById('sum-delivery');
+  const sumTransport = document.getElementById('sum-transport');
+  const sumTotal = document.getElementById('sum-total');
+  if (sumPkg) {
+    const pkg = PKGS[calcPkg];
+    const distritoEl = document.getElementById('calc-distrito');
+    const distritoName = distritoEl?.options[distritoEl.selectedIndex]?.dataset?.name || '';
+    const distritoPrice = parseFloat(distritoEl?.options[distritoEl.selectedIndex]?.dataset?.price || 0);
+    const addonTotal = activeAddons.reduce((s, id) => {
+      const a = ADDONS.find(x => x.id === id);
+      return s + (a ? a.price : 0);
+    }, 0);
+    const igv = useIGV ? Math.round((pkg.price + addonTotal + distritoPrice) * 0.18) : 0;
+    const total = pkg.price + addonTotal + distritoPrice + igv;
+    sumPkg.textContent = pkg.name;
+    sumDuration.textContent = 'Hasta 35 min de vuelo efectivo';
+    sumDelivery.textContent = pkg.delivery;
+    const fv = document.getElementById('calc-fecha')?.value;
+    const hv = document.getElementById('calc-hora')?.value;
+    if (document.getElementById('sum-fecha')) {
+      document.getElementById('sum-fecha').textContent = fv 
+        ? new Date(fv + 'T00:00:00').toLocaleDateString('es-PE', {day:'numeric', month:'long'}) + (hv ? ' · ' + hv : '')
+        : 'Por confirmar';
+    }
+    sumTransport.textContent = distritoName ? `${distritoName} · S/ ${distritoPrice.toFixed(0)}` : 'Sin traslado / me movilizo solo';
+    sumTotal.textContent = `S/ \${total.toLocaleString()}`;
+  }
+
+
+  // 6. Feedback visual del botón
+  const hasEmail = email.includes('@');
+  const hasFecha = fecha && document.getElementById('date-msg')?.classList.contains('ok');
+  const btnLabel = 'ENVIAR MI PRE-RESERVA POR WHATSAPP';
+  waBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> ${btnLabel}`;
+  waBtn.style.opacity = (hasEmail && hasFecha) ? '1' : '0.65';
+
+  // 7. Actualizar resumen de reserva
+  updateReservaSummary(pkg, Math.round(total), anticipo, fechaStr, horario, distritoName);
+}
+
+/* ══════════════════════════════
+   RESERVA DE FECHA
+══════════════════════════════ */
+function validateDate(){
+  const input = document.getElementById('fecha-vuelo');
+  const msg   = document.getElementById('date-msg');
+  if(!input.value){msg.className='date-validation-msg';return;}
+
+  const selected = new Date(input.value+'T12:00:00');
+  const today    = new Date(); today.setHours(0,0,0,0);
+  const tomorrow = new Date(today); tomorrow.setDate(today.getDate()+1);
+  const minDate  = new Date(today); minDate.setDate(today.getDate()+2); // min 48h para DGAC
+
+  if(selected < today){
+    msg.textContent = '✕  No se permiten fechas pasadas. Elige una fecha futura.';
+    msg.className = 'date-validation-msg error';
+    input.value = '';
+  } else if(selected < minDate){
+    msg.textContent = '⚠  Se recomienda mínimo 48h de anticipación para gestionar el permiso DGAC.';
+    msg.className = 'date-validation-msg error';
+  } else {
+    const dias = Math.ceil((selected-today)/(1000*60*60*24));
+    msg.textContent = `✓  Fecha disponible · ${dias} día${dias!==1?'s':''} de anticipación.`;
+    msg.className = 'date-validation-msg ok';
+  }
+  updatePriceDisplay();
+}
+
+function updateReservaSummary(pkg, total, anticipo, fechaStr, horario, distrito){
+  const el = document.getElementById('reserva-summary');
+  if(!el) return;
+  const fecha = document.getElementById('fecha-vuelo')?.value;
+  if(!fecha){
+    el.textContent = 'Selecciona fecha y paquete para ver el resumen.';
+    return;
+  }
+  el.innerHTML = [
+    `Paquete: <span style="color:var(--sand)">${pkg.name}</span>`,
+    `Fecha: <span style="color:var(--sand)">${fechaStr}</span>`,
+    horario ? `Horario: <span style="color:var(--sand)">${horario}</span>` : '',
+    distrito ? `Distrito: <span style="color:var(--sand)">${distrito}</span>` : '',
+    `Total: <span style="color:var(--sand)">S/ ${total.toLocaleString()}</span>`,
+    `Anticipo requerido: <span style="color:#9FE1CB">S/ ${anticipo.toLocaleString()}</span>`,
+  ].filter(Boolean).join('<br>');
+}
+
+/* ══════════════════════════════
+   USE CASES
+══════════════════════════════ */
+function renderCases(){
+  const pkgColors = ['#E6F1FB','#1A1A18','#FAEEDA'];
+  const pkgTextColors = ['#185FA5','#E1E1DC','#633806'];
+  document.getElementById('cases-grid').innerHTML = CASES.map(c=>`
+    <div class="case-card">
+      <div class="case-top">
+        <div class="case-num">${c.num}</div>
+        <div class="case-sector">${c.sector}</div>
+        <div class="case-client">${c.client}</div>
+      </div>
+      <div class="case-body">
+        <span class="case-pkg-pill" style="background:${pkgColors[c.pkg]};color:${pkgTextColors[c.pkg]}">${c.pkgName}</span>
+        <div class="case-detail">${c.detail}</div>
+        <div class="case-outcome">${c.outcome}</div>
+      </div>
+    </div>`).join('');
+}
+
+/* ══════════════════════════════
+   FAQ
+══════════════════════════════ */
+function renderFaq(){
+  document.getElementById('faq-list').innerHTML = FAQS.map((f,i)=>`
+    <div class="faq-item" id="faq-${i}">
+      <div class="faq-q" onclick="toggleFaq(${i})">
+        <span class="faq-q-text">${f.q}</span>
+        <div class="faq-icon">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">${f.a}</div>
+    </div>`).join('');
+}
+function toggleFaq(i){
+  const item = document.getElementById('faq-'+i);
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(el=>el.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+/* ══════════════════════════════
+   NAV SCROLL
+══════════════════════════════ */
+function scrollTo(id){document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'})}
+const sections = [{id:'#quiz',btn:0},{id:'#comparar',btn:1},{id:'#calculadora',btn:2},{id:'#reserva',btn:3},{id:'#casos',btn:4}];
+window.addEventListener('scroll',()=>{
+  const links = document.querySelectorAll('.nav-link');
+  sections.forEach(s=>{
+    const el = document.querySelector(s.id);
+    if(el && window.scrollY >= el.offsetTop - 80) {
+      links.forEach(l=>l.classList.remove('active'));
+      links[s.btn]?.classList.add('active');
+    }
+  });
+},{passive:true});
+
+/* ══════════════════════════════
+   INIT
+══════════════════════════════ */
+document.addEventListener('DOMContentLoaded',()=>{
+  // Only run comparador functions if their containers exist in the DOM
+  if(document.getElementById('quiz-content')) renderQuiz();
+  if(document.getElementById('cmp-tbody'))    renderTable();
+  if(document.getElementById('calc-pkg-toggle')) renderCalcPkgToggle();
+  if(document.getElementById('addon-toggle-list')) renderAddonToggles();
+  if(document.getElementById('sector-filter')) renderSectorFilter();
+  if(document.getElementById('price-display')) updatePriceDisplay();
+  if(document.getElementById('cases-grid'))   renderCases();
+  if(document.getElementById('faq-list'))     renderFaq();
+  // Set minimum date (today) on the date picker
+  const dateInput = document.getElementById('fecha-vuelo');
+  if(dateInput){
+    const today = new Date();
+    dateInput.min = today.toISOString().split('T')[0];
+  }
+});
+
+// ── SELECT PACKAGE FROM CARD ──
+function selectPkgFromCard(pkgId) {
+  // Set the calculator package variable and re-render
+  setCalcPkg(pkgId);
+
+  // Smooth scroll to calculadora section
+  const calcSection = document.getElementById('calculadora');
+  if (calcSection) {
+    const offset = 80;
+    const top = calcSection.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  // Visual pulse on calculator after scroll lands
+  setTimeout(() => {
+    const calcInner = document.querySelector('.calc-inner');
+    if (calcInner) {
+      calcInner.style.transition = 'box-shadow 0.4s ease';
+      calcInner.style.boxShadow = '0 0 0 3px #2D5FA0';
+      setTimeout(() => {
+        calcInner.style.boxShadow = '';
+      }, 1400);
+    }
+  }, 700);
+}
+
+
+// ── SCROLL TO PACKAGE FROM SERVICE CARD ──
+function scrollToPkg(pkgId) {
+  const ids = ['pkg-raw-air', 'pkg-aerial-ready', 'pkg-signature'];
+  const el = document.getElementById(ids[pkgId]);
+  if (!el) { 
+    console.warn('Package element not found:', ids[pkgId]); 
+    return; 
+  }
+
+  // Scroll directly to element
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  // Highlight after scroll
+  setTimeout(function() {
+    document.querySelectorAll('.pkg').forEach(function(c) {
+      c.style.boxShadow = '';
+      c.style.outline = '';
+    });
+    el.style.transition = 'box-shadow 0.3s ease';
+    el.style.boxShadow = '0 0 0 4px #2D5FA0';
+    setTimeout(function() { 
+      el.style.boxShadow = ''; 
+    }, 2000);
+  }, 800);
+}
+
+
+// ── FECHA VALIDATION ──
+function validateFecha() {
+  const fechaEl = document.getElementById('calc-fecha');
+  const msgEl   = document.getElementById('fecha-msg');
+  if (!fechaEl || !msgEl) return;
+
+  const val = fechaEl.value;
+  if (!val) {
+    msgEl.textContent = '📌 Reserva con mínimo 48h de anticipación para coordinar permisos DGAC.';
+    msgEl.className = 'fecha-nota';
+    return;
+  }
+
+  const selected = new Date(val + 'T00:00:00');
+  const today    = new Date();
+  today.setHours(0,0,0,0);
+  const diffDays = Math.floor((selected - today) / 86400000);
+
+  if (diffDays < 0) {
+    msgEl.textContent = '⚠️ Elige una fecha futura.';
+    msgEl.className = 'fecha-nota warn';
+  } else if (diffDays < 2) {
+    msgEl.textContent = '⚠️ Necesitamos mínimo 48h para coordinar. Elige una fecha más adelante.';
+    msgEl.className = 'fecha-nota warn';
+  } else {
+    const opts = { weekday:'long', day:'numeric', month:'long' };
+    const label = selected.toLocaleDateString('es-PE', opts);
+    msgEl.textContent = `✅ Fecha disponible: ${label} · Confirmaremos disponibilidad por WhatsApp.`;
+    msgEl.className = 'fecha-nota ok';
+  }
+}
+
+// Set minimum date to today on load
+document.addEventListener('DOMContentLoaded', function() {
+  const fechaEl = document.getElementById('calc-fecha');
+  if (fechaEl) {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm   = String(today.getMonth()+1).padStart(2,'0');
+    const dd   = String(today.getDate()).padStart(2,'0');
+    fechaEl.min = `${yyyy}-${mm}-${dd}`;
+  }
+});
+
+
+// ── FORCE AUTOPLAY ALL BROWSERS INCLUDING SAFARI ──
+(function() {
+  function initVideo() {
+    const video = document.querySelector('.hero-video');
+    if (!video) return;
+
+    // Safari requires these to be set via JS as well as HTML
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    function tryPlay() {
+      const p = video.play();
+      if (p !== undefined) {
+        p.catch(function() {
+          // Still blocked - play on any user interaction
+          ['click','scroll','touchstart','keydown','mousemove'].forEach(function(ev) {
+            document.addEventListener(ev, function handler() {
+              video.play();
+              document.removeEventListener(ev, handler);
+            }, { once: true });
+          });
+        });
+      }
+    }
+
+    // Safari sometimes needs the video to be loaded first
+    if (video.readyState >= 2) {
+      tryPlay();
+    } else {
+      video.addEventListener('loadeddata', tryPlay);
+      video.addEventListener('canplay', tryPlay);
+    }
+
+    // Use IntersectionObserver for Safari - play when visible
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            video.play();
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(video);
+    }
+
+    // Retry attempts
+    setTimeout(tryPlay, 300);
+    setTimeout(tryPlay, 800);
+    setTimeout(tryPlay, 2000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVideo);
+  } else {
+    initVideo();
+  }
+})();
+
+</script>
+
+<!-- ═══ FLOATING WHATSAPP BUTTON ═══ -->
+<a class="wa-float"
+   href="https://wa.me/51927929541?text=Hola%20Julio%2C%20quiero%20cotizar%20un%20proyecto%20a%C3%A9reo%20con%20Aerovisuales%204K"
+   target="_blank"
+   rel="noopener"
+   aria-label="Escríbenos por WhatsApp">
+  <span class="wa-float-tooltip">Cotiza en 10 min</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.87 9.87 0 0 1-.599-.024c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+  </svg>
+</a>
+
+
+<!-- ═══ MOBILE BOTTOM BAR ═══ -->
+<div class="mobile-cta-bar">
+  <span class="mob-brand">AEROVISUALES 4K</span>
+  <a class="mob-btn"
+     href="https://wa.me/51927929541?text=Hola%20Julio%2C%20quiero%20cotizar%20un%20proyecto%20a%C3%A9reo%20con%20Aerovisuales%204K"
+     target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.87 9.87 0 0 1-.599-.024c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+    </svg>
+    Cotizar ahora
+  </a>
+</div>
+
+</body>
+</html>
