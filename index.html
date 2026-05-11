@@ -46,10 +46,12 @@
   <meta name="geo.position" content="-12.0464;-77.0428">
   <meta name="ICBM" content="-12.0464, -77.0428">
 
-  <!-- ═══ GOOGLE FONTS ═══ -->
+  <!-- ═══ GOOGLE FONTS — non-blocking ═══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
   <!-- ═══ STRUCTURED DATA (JSON-LD) ═══ -->
   <script type="application/ld+json">
@@ -131,11 +133,6 @@
           "priceCurrency": "PEN"
         }
       ]
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": "3"
     }
   }
   </script>
@@ -152,6 +149,7 @@
   --fb: 'Manrope', sans-serif;
   --fm: 'DM Mono', monospace;
   --green: #3B6D11;
+  --carbon2: #222220;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -262,10 +260,10 @@ body {
 .hero-badge {
   display: inline-flex; align-items: center; gap: 6px;
   font-family: var(--fm); font-size: 9px; letter-spacing: 0.14em;
-  color: rgba(225,225,220,0.35);
+  color: rgba(225,225,220,0.75);
   margin-bottom: 2rem;
   padding: 4px 12px;
-  border: 0.5px solid rgba(225,225,220,0.08);
+  border: 0.5px solid rgba(225,225,220,0.25);
   border-radius: 20px;
   white-space: nowrap;
 }
@@ -417,7 +415,7 @@ body {
   font-family: var(--fm);
   font-size: 10px;
   letter-spacing: 0.14em;
-  color: rgba(225,225,220,0.45);
+  color: rgba(225,225,220,0.58);
   text-transform: uppercase;
 }
 
@@ -1044,7 +1042,7 @@ body {
 .calc-pkg-btn.active .cpb-price{color:var(--sand)}
 .calc-pkg-btn .cpb-price.muted{color:var(--mid)}
 
-.calc-label{font-family:var(--fm);font-size:12px;letter-spacing:.12em;color:var(--mid);margin-bottom:.75rem;display:block}
+.calc-label{font-family:var(--fm);font-size:12px;letter-spacing:.12em;color:#5a5a56;margin-bottom:.75rem;display:block}
 .addon-toggle-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
 .addon-toggle{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1rem;background:var(--light);border:.5px solid var(--border);border-radius:9px;cursor:pointer;transition:all .15s;user-select:none}
 .addon-toggle:hover{border-color:rgba(26,26,24,.2)}
@@ -1065,7 +1063,7 @@ body {
 
 /* price display */
 .price-display{background:var(--carbon);border-radius:16px;padding:2rem;position:sticky;top:72px}
-.pd-header{font-family:var(--fm);font-size:11px;letter-spacing:.14em;color:rgba(225,225,220,.55);margin-bottom:1.5rem}
+.pd-header{font-family:var(--fm);font-size:11px;letter-spacing:.14em;color:rgba(225,225,220,.80);margin-bottom:1.5rem}
 .pd-pkg-name{font-family:var(--fd);font-size:26px;color:var(--sand);line-height:1;letter-spacing:-.02em;margin-bottom:.25rem}
 .pd-pkg-sub{font-size:13px;color:rgba(225,225,220,.65);margin-bottom:1.5rem}
 .pd-breakdown{display:flex;flex-direction:column;gap:.375rem;margin-bottom:1rem}
@@ -1076,14 +1074,14 @@ body {
 .pd-row-val.addon-val{color:rgba(186,117,23,.9)}
 .pd-divider{height:.5px;background:rgba(225,225,220,.15);margin:.75rem 0}
 .pd-total{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.5rem}
-.pd-total-label{font-family:var(--fm);font-size:12px;letter-spacing:.1em;color:rgba(225,225,220,.65)}
+.pd-total-label{font-family:var(--fm);font-size:12px;letter-spacing:.1em;color:rgba(225,225,220,.85)}
 .pd-total-price{font-family:var(--fd);font-size:38px;color:var(--sand);line-height:1;letter-spacing:-.02em}
-.pd-currency{font-family:var(--fm);font-size:14px;color:rgba(225,225,220,.7);margin-right:3px}
-.pd-anticipo{font-family:var(--fm);font-size:13px;color:rgba(225,225,220,.6);margin-bottom:1.5rem}
+.pd-currency{font-family:var(--fm);font-size:14px;color:rgba(225,225,220,.85);margin-right:3px}
+.pd-anticipo{font-family:var(--fm);font-size:13px;color:rgba(225,225,220,.80);margin-bottom:1.5rem}
 .pd-anticipo span{color:rgba(225,225,220,.9)}
 .btn-pd-cta{width:100%;background:var(--sand);color:var(--carbon);border:none;border-radius:9px;font-family:var(--fm);font-size:11px;letter-spacing:.1em;font-weight:500;padding:14px;cursor:pointer;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px}
 .btn-pd-cta:hover{opacity:.88}
-.pd-note{font-family:var(--fm);font-size:12px;color:rgba(225,225,220,.55);margin-top:.75rem;line-height:1.7;text-align:center}
+.pd-note{font-family:var(--fm);font-size:12px;color:rgba(225,225,220,.78);margin-top:.75rem;line-height:1.7;text-align:center}
 
 /* ── USE CASES ── */
 .cases-section{background:var(--light);padding:4rem 0}
@@ -1122,7 +1120,7 @@ body {
 .cta-inner{max-width:540px;margin:0 auto;position:relative}
 .cta-eyebrow{font-family:var(--fm);font-size:11px;letter-spacing:.2em;color:rgba(225,225,220,.25);margin-bottom:1rem}
 .cta-title{font-family:var(--fd);font-size:clamp(30px,5vw,52px);color:var(--sand);line-height:1.05;letter-spacing:-.02em;margin-bottom:1rem}
-.cta-sub{font-size:15px;color:rgba(225,225,220,.4);line-height:1.7;margin-bottom:2.5rem}
+.cta-sub{font-size:15px;color:rgba(225,225,220,.58);line-height:1.7;margin-bottom:2.5rem}
 .cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .btn-cta-main{font-family:var(--fm);font-size:11px;letter-spacing:.1em;padding:14px 28px;background:var(--sand);color:var(--carbon);border:none;border-radius:8px;cursor:pointer;font-weight:500;transition:opacity .2s;text-decoration:none;display:inline-block}
 .btn-cta-main:hover{opacity:.88}
@@ -1392,7 +1390,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
   font-family: var(--fm);
   font-size: 9px;
   letter-spacing: 0.1em;
-  color: var(--mid);
+  color: #5a5a56;
   text-transform: uppercase;
 }
 .calc-input-date,
@@ -1527,7 +1525,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     autoplay muted loop playsinline webkit-playsinline x5-playsinline
     poster="hero-poster.jpg"
     oncanplay="this.play();this.classList.add('loaded')"
-    preload="auto"
+    preload="none"
     disablepictureinpicture
     disableremoteplayback>
     <source src="hero-loop.mp4" type="video/mp4">
@@ -1842,10 +1840,10 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
       <div class="calc-controls">
         <div class="calc-pkg-toggle" id="calc-pkg-toggle"></div>
 
-        <span class="calc-label">SERVICIOS ADICIONALES</span>
+        <span class="calc-label" role="group" aria-label="Servicios adicionales">SERVICIOS ADICIONALES</span>
         <div class="addon-toggle-list" id="addon-toggle-list"></div>
 
-        <span class="calc-label" style="margin-top:1.5rem">DISTRITO DE DESPEGUE</span>
+        <label class="calc-label" for="calc-direccion" style="margin-top:1.5rem">DISTRITO DE DESPEGUE</label>
         <input 
           type="text" 
           class="calc-input-text" 
@@ -1853,7 +1851,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
           placeholder="Dirección exacta del vuelo (ej: Av. La Marina 2000, San Miguel)"
           style="margin-bottom:0.6rem;"
         />
-        <span class="calc-label" style="font-size:10px;margin-bottom:0.4rem;opacity:0.7;">SELECCIONA TU DISTRITO — incluye traslado automático</span>
+        <label class="calc-label" for="calc-distrito" style="font-size:10px;margin-bottom:0.4rem;color:#5a5a56;">SELECCIONA TU DISTRITO — incluye traslado automático</label>
         <select class="calc-input-select" id="calc-distrito" onchange="updatePriceDisplay()">
           <option value="" data-price="0" data-name="">Selecciona tu distrito</option>
           <option value="Ancón" data-price="126.8" data-name="Ancón">Ancón — S/ 126.80</option>
@@ -1904,10 +1902,10 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         </select>
 
 
-        <span class="calc-label" style="margin-top:1.5rem">FECHA Y HORA DEL VUELO</span>
+        <span class="calc-label" style="margin-top:1.5rem" id="fecha-hora-label">FECHA Y HORA DEL VUELO</span>
         <div class="fecha-hora-grid">
           <div class="fecha-input-wrap">
-            <span class="fecha-sublabel">📅 Fecha preferida</span>
+            <label class="fecha-sublabel" for="calc-fecha">📅 Fecha preferida</label>
             <input 
               type="date" 
               class="calc-input-date" 
@@ -1916,7 +1914,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
             />
           </div>
           <div class="fecha-input-wrap">
-            <span class="fecha-sublabel">⏰ Hora de inicio</span>
+            <label class="fecha-sublabel" for="calc-hora">⏰ Hora de inicio</label>
             <select class="calc-input-time" id="calc-hora" onchange="onHorarioChange()">
               <option value="">Selecciona hora de inicio</option>
               <optgroup label="🕗 Horario laboral (08:00 – 18:00)">
