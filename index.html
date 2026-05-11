@@ -195,7 +195,8 @@ body {
   font-family: var(--fm); font-size: 12px; letter-spacing: 0.08em;
   color: rgba(225,225,220,0.80); text-decoration: none;
   padding: 22px 14px; transition: color 0.2s;
-  white-space: nowrap;
+  white-space: nowrap; min-height: 44px;
+  display: inline-flex; align-items: center;
 }
 .nav-links a:hover { color: var(--sand); }
 .nav-cta {
@@ -947,7 +948,8 @@ body {
 }
 .footer-col a {
   display: block; font-size: 13px; color: rgba(225,225,220,0.80);
-  text-decoration: none; padding: 4px 0; transition: color 0.2s;
+  text-decoration: none; padding: 10px 0; transition: color 0.2s;
+  min-height: 44px; display: flex; align-items: center;
 }
 .footer-col a:hover { color: var(--sand); }
 .footer-bottom {
@@ -964,7 +966,8 @@ body {
 .footer-socials a {
   font-family: var(--fm); font-size: 12px; letter-spacing: 0.06em;
   color: rgba(225,225,220,0.70); text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.2s; padding: 10px 4px; min-height: 44px;
+  display: inline-flex; align-items: center;
 }
 .footer-socials a:hover { color: var(--sand); }
 
@@ -1312,7 +1315,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 }
 .mobile-cta-bar .mob-btn {
   display: flex; align-items: center; gap: 7px;
-  background: #25D366;
+  background: #0d7a5f;
   color: white;
   font-family: var(--fm);
   font-size: 11px;
