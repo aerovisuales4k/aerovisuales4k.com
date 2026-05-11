@@ -52,9 +52,9 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=optional">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=optional" rel="stylesheet"></noscript>
 
   <!-- ═══ STRUCTURED DATA (JSON-LD) ═══ -->
   <script type="application/ld+json">
@@ -145,7 +145,7 @@
   --sand: #E1E1DC;
   --blue: #2D5FA0;
   --warm: #F0EDE6;
-  --mid: #8C8C88;
+  --mid: #6B6B67;
   --light: #F7F6F2;
   --border: rgba(26,26,24,0.10);
   --fd: 'DM Serif Display', Georgia, 'Times New Roman', serif;
@@ -1712,7 +1712,10 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     <div class="portfolio-item wide">
       <div class="portfolio-bg" style="background: linear-gradient(135deg, #1a2a3a, #2d4a6a, #1a3a5a);">
         <picture>
-          <source srcset="proyecto-larcomar.webp" type="image/webp">
+          <source
+            srcset="proyecto-larcomar-sm.webp 480w, proyecto-larcomar.webp 1400w"
+            sizes="(max-width: 600px) 100vw, 100vw"
+            type="image/webp">
           <img src="proyecto-larcomar.jpg"
                alt="Larcomar vista aérea nocturna"
                loading="lazy"
@@ -1733,7 +1736,10 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     <div class="portfolio-item">
       <div class="portfolio-bg" style="background: linear-gradient(135deg, #2a3a1a, #4a6a2d, #3a5a1a);">
         <picture>
-          <source srcset="proyecto-corporativo.webp" type="image/webp">
+          <source
+            srcset="proyecto-corporativo-sm.webp 480w, proyecto-corporativo.webp 1400w"
+            sizes="(max-width: 600px) 100vw, 50vw"
+            type="image/webp">
           <img src="proyecto-corporativo.jpg"
                alt="Evento corporativo aéreo"
                loading="lazy"
@@ -1754,7 +1760,10 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     <div class="portfolio-item">
       <div class="portfolio-bg" style="background: linear-gradient(135deg, #3a2a1a, #6a4a2d, #5a3a1a);">
         <picture>
-          <source srcset="proyecto-obra.webp" type="image/webp">
+          <source
+            srcset="proyecto-obra-sm.webp 480w, proyecto-obra.webp 1400w"
+            sizes="(max-width: 600px) 100vw, 50vw"
+            type="image/webp">
           <img src="proyecto-obra.jpg"
                alt="Avance de obra Miraflores"
                loading="lazy"
