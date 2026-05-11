@@ -46,9 +46,15 @@
   <meta name="geo.position" content="-12.0464;-77.0428">
   <meta name="ICBM" content="-12.0464, -77.0428">
 
-  <!-- ═══ GOOGLE FONTS — non-blocking ═══ -->
+  <!-- ═══ CACHE & PERFORMANCE HINTS ═══ -->
+  <meta http-equiv="Cache-Control" content="max-age=31536000">
+  <link rel="preload" as="image" href="hero-poster.jpg" fetchpriority="high">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preload critical font files directly to avoid render-blocking -->
+  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/manrope/v15/xn7gYHE41ni1AdIRggexSg.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/dmserifdisplay/v15/nwpRtKu3Ih8D5avB4h2uJ3-IiwU.woff2" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
@@ -218,17 +224,19 @@ body {
 
 /* ═══ HERO ═══ */
 .hero {
-  min-height: 100vh; display: flex; flex-direction: column;
+  min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   background: var(--carbon);
   position: relative; overflow: hidden;
   padding: 6rem 2rem 2rem;
+  contain: layout style;
 }
 /* ── HERO VIDEO ── */
 .hero-video {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; z-index: 0;
   opacity: 0; transition: opacity 1.2s ease;
+  aspect-ratio: 16/9;
 }
 .hero-video.loaded { opacity: 0.45; }
 .hero-video-overlay {
@@ -1017,7 +1025,7 @@ body {
 .comp-opt{font-size:11.0px;font-family:var(--fm);cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--carbon);letter-spacing:.04em}
 .comp-opt input{accent-color:var(--carbon)}
 .user-data-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.calc-label-mini{display:block;font-family:var(--fm);font-size:11px;letter-spacing:.1em;color:var(--mid);margin-bottom:5px;text-transform:uppercase}
+.calc-label-mini{display:block;font-family:var(--fm);font-size:11px;letter-spacing:.1em;color:#5a5a56;margin-bottom:5px;text-transform:uppercase}
 @media(max-width:900px){.user-data-fields{grid-template-columns:1fr}}
 
 /* ── CALCULATOR ── */
@@ -1040,7 +1048,7 @@ body {
 .calc-pkg-btn .cpb-name{font-size:12px;font-weight:500;margin-bottom:2px;display:block}
 .calc-pkg-btn .cpb-price{font-family:var(--fd);font-size:18px;display:block;line-height:1}
 .calc-pkg-btn.active .cpb-price{color:var(--sand)}
-.calc-pkg-btn .cpb-price.muted{color:var(--mid)}
+.calc-pkg-btn .cpb-price.muted{color:#5a5a56}
 
 .calc-label{font-family:var(--fm);font-size:12px;letter-spacing:.12em;color:#5a5a56;margin-bottom:.75rem;display:block}
 .addon-toggle-list{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
@@ -1049,7 +1057,7 @@ body {
 .addon-toggle.active{background:white;border-color:var(--carbon)}
 .at-info{display:flex;flex-direction:column;gap:2px}
 .at-label{font-size:13px;font-weight:500;color:var(--carbon)}
-.at-price{font-family:var(--fm);font-size:11px;color:var(--mid)}
+.at-price{font-family:var(--fm);font-size:11px;color:#5a5a56}
 .at-switch{width:36px;height:20px;border-radius:10px;background:rgba(26,26,24,.1);position:relative;flex-shrink:0;transition:background .2s}
 .addon-toggle.active .at-switch{background:var(--carbon)}
 .at-thumb{width:16px;height:16px;border-radius:50%;background:white;position:absolute;top:2px;left:2px;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
@@ -1133,7 +1141,6 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 .ft-legal{font-family:var(--fm);font-size:12px;color:rgba(225,225,220,.15)}
 
 /* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── RESERVA ── */
 .reserva-section{background:var(--carbon);padding:4rem 0;position:relative;overflow:hidden}
@@ -1437,9 +1444,9 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 /* ═══ CLIENTS BAR ═══ */
 .clients-bar{background:var(--light);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);padding:1rem 2.5rem}
 .clients-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
-.clients-label{font-family:var(--fm);font-size:9px;letter-spacing:0.16em;color:var(--mid);white-space:nowrap;flex-shrink:0}
+.clients-label{font-family:var(--fm);font-size:9px;letter-spacing:0.16em;color:#5a5a56;white-space:nowrap;flex-shrink:0}
 .clients-logos{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.client-logo{font-family:var(--fm);font-size:12px;letter-spacing:0.08em;color:var(--carbon);font-weight:600;opacity:0.45;transition:opacity 0.2s}
+.client-logo{font-family:var(--fm);font-size:12px;letter-spacing:0.08em;color:var(--carbon);font-weight:600;opacity:0.70;transition:opacity 0.2s}
 .client-logo:hover{opacity:0.85}
 .client-sep{color:var(--border);opacity:0.5}
 @media(max-width:600px){.clients-bar-inner{gap:0.75rem}.clients-label{width:100%}}
@@ -1460,7 +1467,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 }
 .pago-opt-icon{font-size:18px;flex-shrink:0;line-height:1}
 .pago-opt-title{font-weight:600;color:var(--carbon);font-size:13px;line-height:1.3}
-.pago-opt-sub{font-size:11px;color:var(--mid);margin-top:2px;font-family:var(--fm);letter-spacing:0.02em}
+.pago-opt-sub{font-size:11px;color:#5a5a56;margin-top:2px;font-family:var(--fm);letter-spacing:0.02em}
 /* Animación entrada opciones factura */
 .pago-factura-only{animation:fadeUp 0.25s ease both}
 </style>
@@ -1509,11 +1516,11 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 
 
 <!-- ═══ URGENCY BANNER ═══ -->
-<div style="background:#2D5FA0;padding:12px 2.5rem;text-align:center;">
-  <p style="font-family:var(--fm);font-size:12px;letter-spacing:0.08em;color:white;margin:0;">
+<div style="background:#2D5FA0;padding:12px 2.5rem;text-align:center;min-height:41px;">
+  <p style="font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;color:white;margin:0;">
     ⚡ DISPONIBILIDAD LIMITADA — Solo <strong>3 slots disponibles</strong> esta semana en Lima · 
     <a href="https://wa.me/51927929541?text=Quiero%20reservar%20mi%20slot%20de%20grabacion"
-       style="color:#E1E1DC;text-decoration:underline;" target="_blank">Reserva el tuyo ahora</a>
+       style="color:#E1E1DC;text-decoration:underline;" target="_blank" rel="noopener">Reserva el tuyo ahora</a>
   </p>
 </div>
 
@@ -1526,9 +1533,12 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     poster="hero-poster.jpg"
     oncanplay="this.play();this.classList.add('loaded')"
     preload="none"
+    width="1920" height="1080"
+    importance="high"
     disablepictureinpicture
     disableremoteplayback>
     <source src="hero-loop.mp4" type="video/mp4">
+    <track kind="captions" src="" srclang="es" label="Español" default>
   </video>
   <div class="hero-video-overlay"></div>
   <div class="hero-grid"></div>
@@ -1634,7 +1644,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         <span class="service-tag">RAW</span>
         <span class="service-tag">Estabilizado</span>
       </div>
-      <a class="service-cta-btn" href="javascript:void(0)" onclick="scrollToPkg(0)">
+      <a class="service-cta-btn" href="#pkg-raw-air" onclick="scrollToPkg(0);return false;">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         Ver paquete
       </a>
@@ -1658,7 +1668,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         <span class="service-tag">Montaje</span>
         <span class="service-tag">Masterización</span>
       </div>
-      <a class="service-cta-btn" href="javascript:void(0)" onclick="scrollToPkg(1)">
+      <a class="service-cta-btn" href="#pkg-aerial-ready" onclick="scrollToPkg(1);return false;">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         Ver paquete
       </a>
@@ -1680,7 +1690,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         <span class="service-tag">1:1</span>
         <span class="service-tag">9:16</span>
       </div>
-      <a class="service-cta-btn" href="javascript:void(0)" onclick="scrollToPkg(2)">
+      <a class="service-cta-btn" href="#pkg-signature" onclick="scrollToPkg(2);return false;">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         Ver paquete
       </a>
@@ -1702,6 +1712,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         <img src="proyecto-larcomar.jpg"
              alt="Larcomar vista aérea nocturna"
              loading="lazy"
+             width="1200" height="514"
              onerror="this.style.display='none'"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
              onload="this.style.opacity='1'">
@@ -1718,6 +1729,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         <img src="proyecto-corporativo.jpg"
              alt="Evento corporativo aéreo"
              loading="lazy"
+             width="710" height="398"
              onerror="this.style.display='none'"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
              onload="this.style.opacity='1'">
@@ -1734,6 +1746,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         <img src="proyecto-obra.jpg"
              alt="Avance de obra Miraflores"
              loading="lazy"
+             width="710" height="398"
              onerror="this.style.display='none'"
              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
              onload="this.style.opacity='1'">
@@ -2108,7 +2121,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     <p class="cta-desc">Respondemos en menos de 10 minutos en horario hábil. Cuéntanos tu proyecto y recibe precio exacto al instante.</p>
     <div class="cta-actions">
       <a href="https://wa.me/51927929541?text=Hola%20Julio%2C%20quiero%20cotizar%20un%20proyecto%20aereo" class="cta-whatsapp" target="_blank">WhatsApp directo</a>
-      <a href="mailto:aerovisuales4k@gmail.com?subject=Cotizacion%20proyecto%20aereo" class="btn-ghost" style="color: rgba(225,225,220,0.80); border-color: rgba(225,225,220,0.15);">aerovisuales4k@gmail.com</a>
+      <a href="mailto:aerovisuales4k@gmail.com?subject=Cotizacion%20proyecto%20aereo" class="btn-ghost" aria-label="Enviar cotización por email a aerovisuales4k@gmail.com" style="color: rgba(225,225,220,0.80); border-color: rgba(225,225,220,0.15);">aerovisuales4k@gmail.com</a>
     </div>
   </div>
 </section>
@@ -2150,7 +2163,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     </div>
     <div class="footer-col">
       <div class="footer-col-title">CONTACTO</div>
-      <a href="mailto:aerovisuales4k@gmail.com">aerovisuales4k@gmail.com</a>
+      <a href="mailto:aerovisuales4k@gmail.com" aria-label="Email de contacto: aerovisuales4k@gmail.com">aerovisuales4k@gmail.com</a>
       <a href="https://wa.me/51927929541">WhatsApp</a>
       <a href="#">aerovisuales4k.com</a>
     </div>
@@ -2785,9 +2798,7 @@ function selectPkgFromCard(pkgId) {
   // Smooth scroll to calculadora section
   const calcSection = document.getElementById('calculadora');
   if (calcSection) {
-    const offset = 80;
-    const top = calcSection.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
+    calcSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   // Visual pulse on calculator after scroll lands
