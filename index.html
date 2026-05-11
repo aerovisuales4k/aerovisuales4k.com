@@ -52,9 +52,6 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Preload critical font files directly to avoid render-blocking -->
-  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/manrope/v15/xn7gYHE41ni1AdIRggexSg.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/dmserifdisplay/v15/nwpRtKu3Ih8D5avB4h2uJ3-IiwU.woff2" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
@@ -151,15 +148,15 @@
   --mid: #8C8C88;
   --light: #F7F6F2;
   --border: rgba(26,26,24,0.10);
-  --fd: 'DM Serif Display', serif;
-  --fb: 'Manrope', sans-serif;
-  --fm: 'DM Mono', monospace;
+  --fd: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  --fb: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --fm: 'DM Mono', ui-monospace, 'Cascadia Code', 'Courier New', monospace;
   --green: #3B6D11;
   --carbon2: #222220;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-anchor: none; }
 body {
   font-family: var(--fb);
   background: var(--light);
@@ -1336,6 +1333,10 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
   /* Hide FAB on mobile since we have bottom bar */
   .wa-float { display: none; }
 }
+/* Pre-reserve space on mobile to prevent CLS from mobile bar appearing */
+@media (max-width: 768px) {
+  html { padding-bottom: 0; }
+}
 
 /* ═══ SERVICE ICONS ═══ */
 .service-icon {
@@ -1537,6 +1538,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     importance="high"
     disablepictureinpicture
     disableremoteplayback>
+    <source src="hero-loop.webm" type="video/webm">
     <source src="hero-loop.mp4" type="video/mp4">
     <track kind="captions" src="" srclang="es" label="Español" default>
   </video>
@@ -1709,13 +1711,17 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     <!-- Card 1 (wide): Reemplaza src con tu foto real en WebP -->
     <div class="portfolio-item wide">
       <div class="portfolio-bg" style="background: linear-gradient(135deg, #1a2a3a, #2d4a6a, #1a3a5a);">
-        <img src="proyecto-larcomar.jpg"
-             alt="Larcomar vista aérea nocturna"
-             loading="lazy"
-             width="1200" height="514"
-             onerror="this.style.display='none'"
-             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
-             onload="this.style.opacity='1'">
+        <picture>
+          <source srcset="proyecto-larcomar.webp" type="image/webp">
+          <img src="proyecto-larcomar.jpg"
+               alt="Larcomar vista aérea nocturna"
+               loading="lazy"
+               decoding="async"
+               width="1200" height="514"
+               onerror="this.style.display='none'"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
+               onload="this.style.opacity='1'">
+        </picture>
       </div>
       <div class="portfolio-overlay">
         <div class="portfolio-tag">EVENTO · LARCOMAR</div>
@@ -1726,13 +1732,17 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     <!-- Card 2: Reemplaza src con tu foto real en WebP -->
     <div class="portfolio-item">
       <div class="portfolio-bg" style="background: linear-gradient(135deg, #2a3a1a, #4a6a2d, #3a5a1a);">
-        <img src="proyecto-corporativo.jpg"
-             alt="Evento corporativo aéreo"
-             loading="lazy"
-             width="710" height="398"
-             onerror="this.style.display='none'"
-             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
-             onload="this.style.opacity='1'">
+        <picture>
+          <source srcset="proyecto-corporativo.webp" type="image/webp">
+          <img src="proyecto-corporativo.jpg"
+               alt="Evento corporativo aéreo"
+               loading="lazy"
+               decoding="async"
+               width="710" height="398"
+               onerror="this.style.display='none'"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
+               onload="this.style.opacity='1'">
+        </picture>
       </div>
       <div class="portfolio-overlay">
         <div class="portfolio-tag">CORPORATIVO · GLORIA S.A.</div>
@@ -1743,13 +1753,17 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     <!-- Card 3: Reemplaza src con tu foto real en WebP -->
     <div class="portfolio-item">
       <div class="portfolio-bg" style="background: linear-gradient(135deg, #3a2a1a, #6a4a2d, #5a3a1a);">
-        <img src="proyecto-obra.jpg"
-             alt="Avance de obra Miraflores"
-             loading="lazy"
-             width="710" height="398"
-             onerror="this.style.display='none'"
-             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
-             onload="this.style.opacity='1'">
+        <picture>
+          <source srcset="proyecto-obra.webp" type="image/webp">
+          <img src="proyecto-obra.jpg"
+               alt="Avance de obra Miraflores"
+               loading="lazy"
+               decoding="async"
+               width="710" height="398"
+               onerror="this.style.display='none'"
+               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s"
+               onload="this.style.opacity='1'">
+        </picture>
       </div>
       <div class="portfolio-overlay">
         <div class="portfolio-tag">INMOBILIARIA · MIRAFLORES</div>
