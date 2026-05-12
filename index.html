@@ -50,11 +50,22 @@
   <meta http-equiv="Cache-Control" content="max-age=31536000">
   <link rel="preload" as="image" href="hero-poster.jpg" fetchpriority="high">
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=optional">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700&display=optional" rel="stylesheet"></noscript>
+  <!-- ═══ FONTS — self-hosted, zero external requests ═══ -->
+  <!-- Sube estos archivos a tu repo (descarga en gwfh.mranftl.com/fonts): -->
+  <!-- dm-serif-display-v16-latin-regular.woff2  -->
+  <!-- dm-serif-display-v16-latin-italic.woff2   -->
+  <!-- manrope-v15-latin-300_400_500_600_700.woff2 -->
+  <!-- dm-mono-v14-latin-regular_500.woff2       -->
+  <style>
+    @font-face{font-family:'DM Serif Display';font-style:normal;font-weight:400;font-display:optional;src:local('DM Serif Display'),url('dm-serif-display-v17-latin-regular.woff2') format('woff2')}
+    @font-face{font-family:'Manrope';font-style:normal;font-weight:300;font-display:optional;src:local('Manrope'),url('manrope-v20-latin-300.woff2') format('woff2')}
+    @font-face{font-family:'Manrope';font-style:normal;font-weight:500;font-display:optional;src:local('Manrope Medium'),url('manrope-v20-latin-500.woff2') format('woff2')}
+    @font-face{font-family:'Manrope';font-style:normal;font-weight:600;font-display:optional;src:local('Manrope SemiBold'),url('manrope-v20-latin-600.woff2') format('woff2')}
+    @font-face{font-family:'Manrope';font-style:normal;font-weight:700;font-display:optional;src:local('Manrope Bold'),url('manrope-v20-latin-700.woff2') format('woff2')}
+    @font-face{font-family:'DM Mono';font-style:normal;font-weight:400;font-display:optional;src:local('DM Mono'),url('dm-mono-v16-latin-regular.woff2') format('woff2')}
+    @font-face{font-family:'DM Mono';font-style:normal;font-weight:500;font-display:optional;src:local('DM Mono Medium'),url('dm-mono-v16-latin-500.woff2') format('woff2')}
+  </style>
+
 
   <!-- ═══ STRUCTURED DATA (JSON-LD) ═══ -->
   <script type="application/ld+json">
