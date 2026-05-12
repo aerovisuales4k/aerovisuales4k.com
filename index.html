@@ -173,6 +173,7 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 0.5px solid rgba(225,225,220,0.08);
   transition: background 0.4s ease;
+  height: 62px;
 }
 .nav.scrolled { background: rgba(26,26,24,0.97); }
 .nav-inner {
@@ -1140,7 +1141,11 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 .ft-brand{font-family:var(--fm);font-size:12px;letter-spacing:.12em;color:rgba(225,225,220,.2)}
 .ft-legal{font-family:var(--fm);font-size:12px;color:rgba(225,225,220,.15)}
 
-/* ── ANIMATIONS ── */
+/* Below-fold sections: skip rendering until near viewport */
+#portafolio, #proceso, #contacto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
 
 /* ── RESERVA ── */
 .reserva-section{background:var(--carbon);padding:4rem 0;position:relative;overflow:hidden}
@@ -1520,7 +1525,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 
 
 <!-- ═══ URGENCY BANNER ═══ -->
-<div style="background:#2D5FA0;padding:12px 2.5rem;text-align:center;min-height:41px;">
+<div style="background:#2D5FA0;padding:0 2.5rem;text-align:center;height:41px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box;">
   <p style="font-family:'DM Mono',ui-monospace,monospace;font-size:12px;letter-spacing:0.08em;color:white;margin:0;">
     ⚡ DISPONIBILIDAD LIMITADA — Solo <strong>3 slots disponibles</strong> esta semana en Lima · 
     <a href="https://wa.me/51927929541?text=Quiero%20reservar%20mi%20slot%20de%20grabacion"
@@ -2216,9 +2221,14 @@ function toggleAccordion(card) {
 
 
 const nav = document.getElementById('nav');
+let rafNav;
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
+  if (rafNav) return;
+  rafNav = requestAnimationFrame(() => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    rafNav = null;
+  });
+}, { passive: true });
 
 const navToggle = document.getElementById('navToggle');
 const mobileNav = document.getElementById('mobileNav');
@@ -2784,16 +2794,24 @@ function toggleFaq(i){
 ══════════════════════════════ */
 function scrollToSection(id){document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'})}
 const sections = [{id:'#quiz',btn:0},{id:'#comparar',btn:1},{id:'#calculadora',btn:2},{id:'#reserva',btn:3},{id:'#casos',btn:4}];
-window.addEventListener('scroll',()=>{
-  const links = document.querySelectorAll('.nav-link');
-  sections.forEach(s=>{
-    const el = document.querySelector(s.id);
-    if(el && window.scrollY >= el.offsetTop - 80) {
-      links.forEach(l=>l.classList.remove('active'));
-      links[s.btn]?.classList.add('active');
+
+// Use IntersectionObserver instead of offsetTop in scroll to avoid forced reflow
+const navLinks = document.querySelectorAll('.nav-link');
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = sections.findIndex(s => s.id === '#' + entry.target.id);
+      if (idx !== -1) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        navLinks[sections[idx].btn]?.classList.add('active');
+      }
     }
   });
-},{passive:true});
+}, { threshold: 0.3, rootMargin: '-80px 0px 0px 0px' });
+sections.forEach(s => {
+  const el = document.querySelector(s.id);
+  if (el) sectionObserver.observe(el);
+});
 
 /* ══════════════════════════════
    INIT
