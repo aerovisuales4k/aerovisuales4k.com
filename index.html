@@ -610,12 +610,6 @@ body {
   background: var(--border); border-radius: 16px; overflow: hidden;
   border: 0.5px solid var(--border);
 }
-.service-card {
-  background: white; padding: 2.5rem 2rem 4rem;
-  transition: background 0.3s;
-  position: relative; cursor: pointer;
-}
-.service-card:hover { background: var(--warm); }
 .service-num {
   font-family: var(--fd); font-size: 48px; color: var(--warm);
   line-height: 1; margin-bottom: 1.5rem;
@@ -1141,11 +1135,6 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 .ft-brand{font-family:var(--fm);font-size:12px;letter-spacing:.12em;color:rgba(225,225,220,.2)}
 .ft-legal{font-family:var(--fm);font-size:12px;color:rgba(225,225,220,.15)}
 
-/* Below-fold sections: skip rendering until near viewport */
-#portafolio, #proceso, #contacto {
-  content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
-}
 
 /* ── RESERVA ── */
 .reserva-section{background:var(--carbon);padding:4rem 0;position:relative;overflow:hidden}
@@ -1365,12 +1354,14 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 /* ═══ CLICKABLE SERVICE CARDS ═══ */
 .service-card {
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
   position: relative;
+  background: white; padding: 2.5rem 2rem 4rem;
 }
 .service-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 32px rgba(26,26,24,0.10);
+  background: var(--warm);
 }
 .service-card-link {
   display: block;
@@ -1722,7 +1713,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         <picture>
           <source
             srcset="proyecto-larcomar-sm.webp 480w, proyecto-larcomar.webp 1400w"
-            sizes="(max-width: 600px) 100vw, 100vw"
+            sizes="(max-width: 768px) 100vw, 1200px"
             type="image/webp">
           <img src="proyecto-larcomar.jpg"
                alt="Larcomar vista aérea nocturna"
@@ -1746,7 +1737,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         <picture>
           <source
             srcset="proyecto-corporativo-sm.webp 480w, proyecto-corporativo.webp 1400w"
-            sizes="(max-width: 600px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 600px"
             type="image/webp">
           <img src="proyecto-corporativo.jpg"
                alt="Evento corporativo aéreo"
@@ -1770,7 +1761,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         <picture>
           <source
             srcset="proyecto-obra-sm.webp 480w, proyecto-obra.webp 1400w"
-            sizes="(max-width: 600px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 600px"
             type="image/webp">
           <img src="proyecto-obra.jpg"
                alt="Avance de obra Miraflores"
@@ -2816,8 +2807,8 @@ sections.forEach(s => {
 /* ══════════════════════════════
    INIT
 ══════════════════════════════ */
-document.addEventListener('DOMContentLoaded',()=>{
-  // Only run comparador functions if their containers exist in the DOM
+// Use requestIdleCallback to defer heavy below-fold JS and reduce TBT
+const _runComparador = () => {
   if(document.getElementById('quiz-content')) renderQuiz();
   if(document.getElementById('cmp-tbody'))    renderTable();
   if(document.getElementById('calc-pkg-toggle')) renderCalcPkgToggle();
@@ -2826,11 +2817,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(document.getElementById('price-display')) updatePriceDisplay();
   if(document.getElementById('cases-grid'))   renderCases();
   if(document.getElementById('faq-list'))     renderFaq();
-  // Set minimum date (today) on the date picker
   const dateInput = document.getElementById('fecha-vuelo');
-  if(dateInput){
-    const today = new Date();
-    dateInput.min = today.toISOString().split('T')[0];
+  if(dateInput){ const today = new Date(); dateInput.min = today.toISOString().split('T')[0]; }
+};
+document.addEventListener('DOMContentLoaded', () => {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(_runComparador, { timeout: 2000 });
+  } else {
+    setTimeout(_runComparador, 200);
   }
 });
 
@@ -2915,18 +2909,6 @@ function validateFecha() {
     msgEl.className = 'fecha-nota ok';
   }
 }
-
-// Set minimum date to today on load (allows same-day booking)
-document.addEventListener('DOMContentLoaded', function() {
-  const fechaEl = document.getElementById('calc-fecha');
-  if (fechaEl) {
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm   = String(today.getMonth()+1).padStart(2,'0');
-    const dd   = String(today.getDate()).padStart(2,'0');
-    fechaEl.min = `${yyyy}-${mm}-${dd}`;
-  }
-});
 
 
 // ── FORCE AUTOPLAY ALL BROWSERS INCLUDING SAFARI ──
