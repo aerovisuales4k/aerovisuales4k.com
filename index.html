@@ -995,72 +995,6 @@ body {
 }
 .footer-socials a:hover { color: var(--sand); }
 
-/* ═══ NEWSLETTER CAPTURE ═══ */
-.newsletter-bar {
-  background: rgba(225,225,220,0.04);
-  border-top: 0.5px solid rgba(225,225,220,0.08);
-  border-bottom: 0.5px solid rgba(225,225,220,0.08);
-  padding: 2.5rem;
-}
-.newsletter-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: flex; align-items: center;
-  justify-content: space-between;
-  gap: 2rem; flex-wrap: wrap;
-}
-.newsletter-copy {}
-.newsletter-eyebrow {
-  font-family: var(--fm); font-size: 9px; letter-spacing: 0.16em;
-  color: rgba(225,225,220,0.35); margin-bottom: 0.4rem;
-}
-.newsletter-title {
-  font-family: var(--fd); font-size: 18px;
-  color: var(--sand); line-height: 1.2;
-}
-.newsletter-sub {
-  font-family: var(--fm); font-size: 11px;
-  color: rgba(225,225,220,0.45); margin-top: 0.3rem;
-  letter-spacing: 0.04em;
-}
-.newsletter-form {
-  display: flex; gap: 8px; align-items: center;
-  flex-shrink: 0; flex-wrap: wrap;
-}
-.newsletter-input {
-  font-family: var(--fm); font-size: 12px;
-  padding: 11px 16px; border-radius: 7px;
-  border: 0.5px solid rgba(225,225,220,0.15);
-  background: rgba(225,225,220,0.06);
-  color: var(--sand); outline: none;
-  width: 240px; transition: border-color 0.2s;
-  letter-spacing: 0.04em;
-}
-.newsletter-input::placeholder { color: rgba(225,225,220,0.3); }
-.newsletter-input:focus { border-color: rgba(225,225,220,0.4); }
-.newsletter-btn {
-  font-family: var(--fm); font-size: 10px; letter-spacing: 0.10em;
-  font-weight: 500; padding: 11px 20px; border-radius: 7px;
-  background: var(--sand); color: var(--carbon);
-  border: none; cursor: pointer;
-  transition: opacity 0.2s, transform 0.2s;
-  white-space: nowrap;
-}
-.newsletter-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-.newsletter-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-.newsletter-msg {
-  font-family: var(--fm); font-size: 11px;
-  margin-top: 0.5rem; letter-spacing: 0.04em;
-  min-height: 16px; display: none;
-}
-.newsletter-msg.ok   { color: #9FE1CB; display: block; }
-.newsletter-msg.err  { color: #F09595; display: block; }
-@media (max-width: 768px) {
-  .newsletter-bar { padding: 2rem 1.5rem; }
-  .newsletter-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
-  .newsletter-form { width: 100%; }
-  .newsletter-input { width: 100%; flex: 1; }
-}
-
 /* ═══ MOBILE NAV ═══ */
 .mobile-nav {
   position: fixed; inset: 0; z-index: 999;
@@ -1565,6 +1499,90 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 .pago-opt-sub{font-size:11px;color:#5a5a56;margin-top:2px;font-family:var(--fm);letter-spacing:0.02em}
 /* Animación entrada opciones factura */
 .pago-factura-only{animation:fadeUp 0.25s ease both}
+
+/* ═══ NEWSLETTER CAPTURE — Carbon dark universe ═══ */
+.newsletter-bar {
+  background: var(--carbon);
+  border-top: 0.5px solid rgba(225,225,220,0.10);
+  border-bottom: 0.5px solid rgba(225,225,220,0.06);
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.newsletter-bar::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(225,225,220,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(225,225,220,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.newsletter-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem; flex-wrap: wrap;
+  position: relative; z-index: 1;
+}
+.newsletter-copy {}
+.newsletter-eyebrow {
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.18em;
+  color: rgba(225,225,220,0.30);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.newsletter-title {
+  font-family: var(--fd); font-size: clamp(18px, 2.5vw, 26px);
+  color: var(--sand); line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.newsletter-sub {
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.05em;
+  color: rgba(225,225,220,0.40);
+  margin-top: 0.5rem; line-height: 1.5;
+}
+.newsletter-form {
+  display: flex; gap: 8px; align-items: center;
+  flex-shrink: 0; flex-wrap: wrap;
+}
+.newsletter-input {
+  font-family: var(--fm); font-size: 12px; letter-spacing: 0.04em;
+  padding: 12px 16px; border-radius: 7px;
+  border: 0.5px solid rgba(225,225,220,0.15);
+  background: rgba(225,225,220,0.07);
+  color: var(--sand); outline: none;
+  width: 260px;
+  transition: border-color 0.25s, background 0.25s;
+}
+.newsletter-input::placeholder { color: rgba(225,225,220,0.25); }
+.newsletter-input:focus {
+  border-color: rgba(225,225,220,0.45);
+  background: rgba(225,225,220,0.10);
+}
+.newsletter-btn {
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.12em;
+  font-weight: 500; padding: 12px 22px; border-radius: 7px;
+  background: var(--sand); color: var(--carbon);
+  border: none; cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.newsletter-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.newsletter-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.newsletter-msg {
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.04em;
+  margin-top: 0.6rem; min-height: 16px; display: none;
+}
+.newsletter-msg.ok  { color: #9FE1CB; display: block; }
+.newsletter-msg.err { color: #F09595; display: block; }
+@media (max-width: 900px) {
+  .newsletter-bar { padding: 2.5rem 2rem; }
+  .newsletter-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .newsletter-form { width: 100%; }
+  .newsletter-input { width: 100%; flex: 1; min-width: 0; }
+  .newsletter-btn { width: 100%; text-align: center; }
+}
 </style>
 </head>
 <body>
@@ -2248,7 +2266,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 <div class="newsletter-bar">
   <div class="newsletter-inner">
     <div class="newsletter-copy">
-      <div class="newsletter-eyebrow">CONTENIDO EXCLUSIVO · SIN SPAM</div>
+      <div class="newsletter-eyebrow">Contenido exclusivo · Sin spam</div>
       <div class="newsletter-title">Casos reales, precios y novedades<br>de producción aérea en Lima.</div>
       <div class="newsletter-sub">Un email al mes. Cancelás cuando quieras.</div>
     </div>
@@ -3038,9 +3056,8 @@ async function submitNewsletter() {
   const emailEl = document.getElementById('nl-email');
   const btnEl   = document.getElementById('nl-btn');
   const msgEl   = document.getElementById('nl-msg');
-  const email   = emailEl.value.trim();
+  const email   = (emailEl.value || '').trim();
 
-  // Basic validation
   const emailRgx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRgx.test(email)) {
     msgEl.textContent = '⚠️ Ingresa un correo válido.';
@@ -3049,24 +3066,22 @@ async function submitNewsletter() {
     return;
   }
 
-  // Optimistic UI
   btnEl.disabled = true;
   btnEl.textContent = 'ENVIANDO...';
   msgEl.className = 'newsletter-msg';
 
-  // ── FASE 1 (actual): guarda en localStorage + abre WhatsApp
-  // ── FASE 2 (con Supabase): reemplaza este bloque por fetch() a tu endpoint
+  // ── FASE 1 (actual): localStorage + notificación WhatsApp
+  // ── FASE 2 (Supabase): reemplaza este bloque por fetch() a tu endpoint
   try {
-    // Guardar localmente hasta tener Supabase
     const leads = JSON.parse(localStorage.getItem('av4k_leads') || '[]');
     leads.push({ email, ts: new Date().toISOString(), source: 'newsletter_footer' });
     localStorage.setItem('av4k_leads', JSON.stringify(leads));
 
-    // Notificar por WhatsApp (puente temporal hasta n8n)
-    const waMsg = encodeURIComponent(`📧 Nuevo suscriptor newsletter:\nEmail: ${email}\nFuente: Footer web\nFecha: ${new Date().toLocaleString('es-PE')}`);
+    const waMsg = encodeURIComponent(
+      `📧 Nuevo suscriptor newsletter:\nEmail: ${email}\nFuente: Footer web\nFecha: ${new Date().toLocaleString('es-PE')}`
+    );
     window.open(`https://wa.me/51927929541?text=${waMsg}`, '_blank');
 
-    // Feedback positivo
     msgEl.textContent = '✅ ¡Listo! Te confirmamos por email en breve.';
     msgEl.className = 'newsletter-msg ok';
     emailEl.value = '';
@@ -3079,7 +3094,6 @@ async function submitNewsletter() {
   }
 }
 
-// Enter key support for newsletter input
 document.addEventListener('DOMContentLoaded', function() {
   const nlInput = document.getElementById('nl-email');
   if (nlInput) {
