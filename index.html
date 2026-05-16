@@ -49,6 +49,7 @@
   <!-- ═══ CACHE & PERFORMANCE HINTS ═══ -->
   <meta http-equiv="Cache-Control" content="max-age=31536000">
   <link rel="preload" as="image" href="hero-poster.jpg" fetchpriority="high">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
   <!-- ═══ FONTS — self-hosted, zero external requests ═══ -->
   <!-- Sube estos archivos a tu repo (descarga en gwfh.mranftl.com/fonts): -->
@@ -2342,6 +2343,19 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 </footer>
 
 <script>
+// ── SUPABASE CLIENT ──
+const SUPABASE_URL = 'https://zfekvffhpqsduwemqdxj.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Bj6OEXGnebWoX1aE5jYS7w_9JrKM0mc';
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function guardarLeadEnSupabase(datos) {
+  const { data, error } = await supabaseClient
+    .from('leads_captacion')
+    .insert([datos]);
+  if (error) console.error('Error guardando lead:', error);
+  else console.log('Lead guardado con éxito en el sistema.');
+}
+
 // ── ACCORDION ──
 function toggleAccordion(card) {
   const isOpen = card.classList.contains('open');
@@ -3236,24 +3250,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 
-<!-- ═══ SUPABASE — Captación de leads ═══ -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  // Configuración técnica (Usa los datos de tu archivo .env)
-  const SUPABASE_URL = 'https://zfekvffhpqsduwemqdxj.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_Bj6OEXGnebWoX1aE5jYS7w_9JrKM0mc';
-  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // Esta función interceptará el envío para guardar en la base de datos
-  async function guardarLeadEnSupabase(datos) {
-    const { data, error } = await supabaseClient
-      .from('leads_captacion')
-      .insert([datos]);
-
-    if (error) console.error('Error guardando lead:', error);
-    else console.log('Lead guardado con éxito en el sistema.');
-  }
-</script>
 
 </body>
 </html>
