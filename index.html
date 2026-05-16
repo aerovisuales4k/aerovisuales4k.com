@@ -1112,8 +1112,8 @@ body {
 .pd-currency{font-family:var(--fm);font-size:14px;color:rgba(225,225,220,.85);margin-right:3px}
 .pd-anticipo{font-family:var(--fm);font-size:13px;color:rgba(225,225,220,.80);margin-bottom:1.5rem}
 .pd-anticipo span{color:rgba(225,225,220,.9)}
-.btn-pd-cta{width:100%;background:var(--sand);color:var(--carbon);border:none;border-radius:9px;font-family:var(--fm);font-size:11px;letter-spacing:.1em;font-weight:500;padding:14px;cursor:pointer;transition:opacity .2s;display:flex;align-items:center;justify-content:center;gap:8px}
-.btn-pd-cta:hover{opacity:.88}
+.btn-pd-cta{width:100%;background:linear-gradient(135deg,#c8922a,#D4A843,#e8c060,#D4A843,#c8922a);background-size:200% auto;color:#1a1a18;border:none;border-radius:12px;font-family:var(--fm);font-size:12px;letter-spacing:.08em;font-weight:700;padding:19px 24px;cursor:pointer;transition:all .3s ease;display:flex;align-items:center;justify-content:center;gap:12px;white-space:nowrap;box-shadow:0 0 24px rgba(212,168,67,0.5),0 0 48px rgba(212,168,67,0.25),0 4px 16px rgba(0,0,0,0.4);text-decoration:none;animation:goldShine 3s linear infinite}
+@keyframes goldShine{0%{background-position:0% center}50%{background-position:100% center}100%{background-position:0% center}}.btn-pd-cta:hover{transform:translateY(-2px);box-shadow:0 0 32px rgba(212,168,67,0.7),0 0 64px rgba(212,168,67,0.35),0 6px 20px rgba(0,0,0,0.5);background-position:right center}@media(min-width:768px){.btn-pd-cta{width:auto;padding:16px 32px;font-size:11px;letter-spacing:.1em;border-radius:10px;margin:0 auto}}
 .pd-note{font-family:var(--fm);font-size:12px;color:rgba(225,225,220,.78);margin-top:.75rem;line-height:1.7;text-align:center}
 
 /* ── USE CASES ── */
@@ -2188,7 +2188,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         </div>
         <div class="pd-anticipo" id="pd-anticipo">Anticipo 50%: <span>S/ 525</span> · Saldo: <span>S/ 525</span></div>
         <a class="btn-pd-cta" id="pd-wa-btn" href="#" target="_blank">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
           Revisar y cerrar pedido por WhatsApp
         </a>
         <div class="pd-note"><span style="color:#D4A843;font-weight:700;letter-spacing:0.1em">IMPORTANTE —</span> <strong>Al enviar tu pedido, nuestro equipo recibirá tu información por WhatsApp, resolverá tus dudas y te enviará los datos de pago exactos.</strong></div>
@@ -2356,6 +2356,49 @@ async function guardarLeadEnSupabase(datos) {
   if (error) console.error('Error guardando lead:', error);
   else console.log('Lead guardado con éxito en el sistema.');
 }
+
+// ── CAPTURA SILENCIOSA EN TIEMPO REAL ──
+// Guarda el lead 3 segundos después de que el usuario deja de escribir
+let autoSaveTimer = null;
+let autoSaveHecho = false; // Solo guarda una vez por sesión
+
+function autoGuardarLead() {
+  const nombre = document.getElementById('user-nombre')?.value || '';
+  const email  = document.getElementById('user-email')?.value  || '';
+  const ruc    = document.getElementById('user-ruc')?.value    || '';
+
+  // Solo dispara si hay al menos un dato útil
+  if (!nombre && !email && !ruc) return;
+  // No vuelve a guardar si ya lo hizo en esta sesión
+  if (autoSaveHecho) return;
+
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = setTimeout(async () => {
+    const pkg = PACKAGES.find(p => p.id === calcPkg) || PACKAGES[0];
+    const distrito = document.getElementById('calc-distrito')?.value || '';
+    const distritoName = document.getElementById('calc-distrito')?.selectedOptions[0]?.text || '';
+
+    const leadData = {
+      nombre:     nombre || ruc || 'Lead Web (parcial)',
+      email:      email || '',
+      ruc_dni:    ruc   || '',
+      distrito:   distritoName || 'No seleccionado',
+      paquete:    pkg.name,
+      total:      0,
+      mensaje_wa: '[Lead capturado antes de enviar por WhatsApp]',
+    };
+    console.log('Auto-guardando lead parcial...', leadData);
+    await guardarLeadEnSupabase(leadData);
+    autoSaveHecho = true;
+  }, 3000); // 3 segundos de inactividad
+}
+
+// Escucha cambios en los campos clave
+document.addEventListener('DOMContentLoaded', () => {
+  ['user-nombre','user-email','user-ruc'].forEach(id => {
+    document.getElementById(id)?.addEventListener('input', autoGuardarLead);
+  });
+});
 
 // ── ACCORDION ──
 function toggleAccordion(card) {
