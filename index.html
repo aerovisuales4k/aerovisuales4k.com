@@ -2495,7 +2495,7 @@ const QUIZ_STEPS = [
   {
     q:'¿Tienes equipo de post-producción propio?',
     opts:[
-      {icon:'✔️',label:'Sí, tenemos editor y colorista',sub:'Recibimos el RAW y lo procesamos',val:'tiene_post'},
+      {icon:'▸',label:'Sí, tenemos editor y colorista',sub:'Recibimos el RAW y lo procesamos',val:'tiene_post'},
       {icon:'⚡',label:'No, necesitamos material listo',sub:'Queremos recibir el video terminado',val:'sin_post'},
       {icon:'🎯',label:'Necesitamos producción completa',sub:'Brief, música, motion graphics',val:'full'},
     ]
@@ -2784,26 +2784,26 @@ function updatePriceDisplay(){
   const waLines = [
     `¡Hola Julio! Quiero cotizar y reservar un vuelo:`,
     ``,
-    `✔️ Paquete: ${pkg.name} (S/ ${pkg.price.toLocaleString()})`,
-    `✔️ Adicionales: ${addonsLabel}`,
-    distritoName ? `✔️ Traslado: ${distritoName} — S/ ${transporteTotal.toFixed(2)}` : '',
-    direccion ? `✔️ Dirección exacta: ${direccion}` : '',
-    horarioSurcharge > 0 ? `✔️ Horario extralaboral: +S/ 100` : '',
-    `✔️ Comprobante: ${esFactura?'Factura + IGV':'Boleta / RxH'}`,
+    `▸ Paquete: ${pkg.name} (S/ ${pkg.price.toLocaleString()})`,
+    `▸ Adicionales: ${addonsLabel}`,
+    distritoName ? `▸ Traslado: ${distritoName} — S/ ${transporteTotal.toFixed(2)}` : '',
+    direccion ? `▸ Dirección exacta: ${direccion}` : '',
+    horarioSurcharge > 0 ? `▸ Horario extralaboral: +S/ 100` : '',
+    `▸ Comprobante: ${esFactura?'Factura + IGV':'Boleta / RxH'}`,
     ``,
-    `✔️ TOTAL: S/ ${Math.round(total).toLocaleString()}`,
+    `▸ TOTAL: S/ ${Math.round(total).toLocaleString()}`,
     `   Anticipo (50%): S/ ${anticipo.toLocaleString()}`,
     `   Saldo contra entrega: S/ ${(Math.round(total)-anticipo).toLocaleString()}`,
     ``,
-    `✔️ Fecha de vuelo: ${fechaStr}`,
-    horario ? `✔️ Horario preferido: ${horario}` : '',
-    nota ? `✔️ Notas: ${nota}` : '',
+    `▸ Fecha de vuelo: ${fechaStr}`,
+    horario ? `▸ Horario preferido: ${horario}` : '',
+    nota ? `▸ Notas: ${nota}` : '',
     ``,
     `-------------------------`,
-    nombre ? `✔️ Nombre: ${nombre}` : '',
-    `✔️ Enviar proforma a: ${email}`,
-    cc ? `✔️ CC: ${cc}` : '',
-    `✔️ RUC/DNI: ${ruc}`,
+    nombre ? `▸ Nombre: ${nombre}` : '',
+    `▸ Enviar proforma a: ${email}`,
+    cc ? `▸ CC: ${cc}` : '',
+    `▸ RUC/DNI: ${ruc}`,
   ].filter(l => l !== null && l !== undefined && l !== '');
 
   const waMsg = encodeURIComponent(waLines.join('\n'));
@@ -3104,7 +3104,7 @@ function validateFecha() {
     const opts = { weekday:'long', day:'numeric', month:'long' };
     const label = selected.toLocaleDateString('es-PE', opts);
     const isToday = diffDays === 0;
-    msgEl.textContent = `✔️ Fecha seleccionada: ${label}${isToday ? ' · ⚡ Mismo día: +S/ 150 por urgencia' : ''} · Confirmaremos disponibilidad por WhatsApp.`;
+    msgEl.textContent = `▸ Fecha seleccionada: ${label}${isToday ? ' · ⚡ Mismo día: +S/ 150 por urgencia' : ''} · Confirmaremos disponibilidad por WhatsApp.`;
     msgEl.className = 'fecha-nota ok';
   }
 }
@@ -3141,7 +3141,7 @@ async function submitNewsletter() {
     );
     window.open(`https://wa.me/51927929541?text=${waMsg}`, '_blank');
 
-    msgEl.textContent = '✔️ ¡Listo! Te confirmamos por email en breve.';
+    msgEl.textContent = '▸ ¡Listo! Te confirmamos por email en breve.';
     msgEl.className = 'newsletter-msg ok';
     emailEl.value = '';
     btnEl.textContent = '✓ SUSCRITO';
