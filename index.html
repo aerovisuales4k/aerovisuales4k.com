@@ -2799,32 +2799,13 @@ function updatePriceDisplay(){
 
   // Construye el objeto lead con todos los datos del cotizador
   const leadData = {
-    ts:         new Date().toISOString(),
-    source:     'cotizador_web',
-    // Paquete
-    paquete:    pkg.name,
-    precio_base: pkg.price,
-    // Adicionales
-    adicionales: addonsLabel,
-    adicionales_precio: addonsTotal,
-    // Localización
-    distrito:   distritoName || 'No seleccionado',
-    traslado:   transporteTotal,
-    direccion:  direccion || '',
-    // Horario
-    fecha_vuelo: fechaVal || 'Por confirmar',
-    hora_vuelo:  horaVal  || 'Por confirmar',
-    horario_extra: horarioSurcharge > 0,
-    // Financiero
-    comprobante: esFactura ? 'Factura' : 'Boleta',
-    metodo_pago: metodoPago,
-    igv:        Math.round(igv),
-    total:      Math.round(total),
-    anticipo:   anticipo,
-    // Contacto
+    nombre:     ruc   !== 'No provisto' ? ruc   : 'Lead Web',
     email:      email !== 'No provisto' ? email : '',
-    ruc:        ruc   !== 'No provisto' ? ruc   : '',
-    cc:         cc    || '',
+    ruc_dni:    ruc   !== 'No provisto' ? ruc   : '',
+    distrito:   distritoName || 'No seleccionado',
+    paquete:    pkg.name,
+    total:      Math.round(total),
+    mensaje_wa: waLines.join('\n'),
   };
 
   waBtnClone.addEventListener('click', async function(e) {
