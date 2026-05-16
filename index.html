@@ -995,6 +995,72 @@ body {
 }
 .footer-socials a:hover { color: var(--sand); }
 
+/* ═══ NEWSLETTER CAPTURE ═══ */
+.newsletter-bar {
+  background: rgba(225,225,220,0.04);
+  border-top: 0.5px solid rgba(225,225,220,0.08);
+  border-bottom: 0.5px solid rgba(225,225,220,0.08);
+  padding: 2.5rem;
+}
+.newsletter-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 2rem; flex-wrap: wrap;
+}
+.newsletter-copy {}
+.newsletter-eyebrow {
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.16em;
+  color: rgba(225,225,220,0.35); margin-bottom: 0.4rem;
+}
+.newsletter-title {
+  font-family: var(--fd); font-size: 18px;
+  color: var(--sand); line-height: 1.2;
+}
+.newsletter-sub {
+  font-family: var(--fm); font-size: 11px;
+  color: rgba(225,225,220,0.45); margin-top: 0.3rem;
+  letter-spacing: 0.04em;
+}
+.newsletter-form {
+  display: flex; gap: 8px; align-items: center;
+  flex-shrink: 0; flex-wrap: wrap;
+}
+.newsletter-input {
+  font-family: var(--fm); font-size: 12px;
+  padding: 11px 16px; border-radius: 7px;
+  border: 0.5px solid rgba(225,225,220,0.15);
+  background: rgba(225,225,220,0.06);
+  color: var(--sand); outline: none;
+  width: 240px; transition: border-color 0.2s;
+  letter-spacing: 0.04em;
+}
+.newsletter-input::placeholder { color: rgba(225,225,220,0.3); }
+.newsletter-input:focus { border-color: rgba(225,225,220,0.4); }
+.newsletter-btn {
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.10em;
+  font-weight: 500; padding: 11px 20px; border-radius: 7px;
+  background: var(--sand); color: var(--carbon);
+  border: none; cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+.newsletter-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.newsletter-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.newsletter-msg {
+  font-family: var(--fm); font-size: 11px;
+  margin-top: 0.5rem; letter-spacing: 0.04em;
+  min-height: 16px; display: none;
+}
+.newsletter-msg.ok   { color: #9FE1CB; display: block; }
+.newsletter-msg.err  { color: #F09595; display: block; }
+@media (max-width: 768px) {
+  .newsletter-bar { padding: 2rem 1.5rem; }
+  .newsletter-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .newsletter-form { width: 100%; }
+  .newsletter-input { width: 100%; flex: 1; }
+}
+
 /* ═══ MOBILE NAV ═══ */
 .mobile-nav {
   position: fixed; inset: 0; z-index: 999;
@@ -2178,6 +2244,33 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
 </section>
 
 <!-- ═══ FOOTER ═══ -->
+<!-- ═══ NEWSLETTER CAPTURE ═══ -->
+<div class="newsletter-bar">
+  <div class="newsletter-inner">
+    <div class="newsletter-copy">
+      <div class="newsletter-eyebrow">CONTENIDO EXCLUSIVO · SIN SPAM</div>
+      <div class="newsletter-title">Casos reales, precios y novedades<br>de producción aérea en Lima.</div>
+      <div class="newsletter-sub">Un email al mes. Cancelás cuando quieras.</div>
+    </div>
+    <div>
+      <div class="newsletter-form">
+        <input
+          type="email"
+          id="nl-email"
+          class="newsletter-input"
+          placeholder="tucorreo@empresa.com"
+          autocomplete="email"
+          aria-label="Tu correo electrónico"
+        />
+        <button class="newsletter-btn" id="nl-btn" onclick="submitNewsletter()">
+          SUSCRIBIRME →
+        </button>
+      </div>
+      <div class="newsletter-msg" id="nl-msg"></div>
+    </div>
+  </div>
+</div>
+
 <footer class="footer">
   <div class="footer-inner">
     <div>
@@ -2939,6 +3032,62 @@ function validateFecha() {
   }
 }
 
+
+// ── NEWSLETTER CAPTURE ──
+async function submitNewsletter() {
+  const emailEl = document.getElementById('nl-email');
+  const btnEl   = document.getElementById('nl-btn');
+  const msgEl   = document.getElementById('nl-msg');
+  const email   = emailEl.value.trim();
+
+  // Basic validation
+  const emailRgx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRgx.test(email)) {
+    msgEl.textContent = '⚠️ Ingresa un correo válido.';
+    msgEl.className = 'newsletter-msg err';
+    emailEl.focus();
+    return;
+  }
+
+  // Optimistic UI
+  btnEl.disabled = true;
+  btnEl.textContent = 'ENVIANDO...';
+  msgEl.className = 'newsletter-msg';
+
+  // ── FASE 1 (actual): guarda en localStorage + abre WhatsApp
+  // ── FASE 2 (con Supabase): reemplaza este bloque por fetch() a tu endpoint
+  try {
+    // Guardar localmente hasta tener Supabase
+    const leads = JSON.parse(localStorage.getItem('av4k_leads') || '[]');
+    leads.push({ email, ts: new Date().toISOString(), source: 'newsletter_footer' });
+    localStorage.setItem('av4k_leads', JSON.stringify(leads));
+
+    // Notificar por WhatsApp (puente temporal hasta n8n)
+    const waMsg = encodeURIComponent(`📧 Nuevo suscriptor newsletter:\nEmail: ${email}\nFuente: Footer web\nFecha: ${new Date().toLocaleString('es-PE')}`);
+    window.open(`https://wa.me/51927929541?text=${waMsg}`, '_blank');
+
+    // Feedback positivo
+    msgEl.textContent = '✅ ¡Listo! Te confirmamos por email en breve.';
+    msgEl.className = 'newsletter-msg ok';
+    emailEl.value = '';
+    btnEl.textContent = '✓ SUSCRITO';
+  } catch(e) {
+    msgEl.textContent = '❌ Algo salió mal. Escríbenos por WhatsApp.';
+    msgEl.className = 'newsletter-msg err';
+    btnEl.disabled = false;
+    btnEl.textContent = 'SUSCRIBIRME →';
+  }
+}
+
+// Enter key support for newsletter input
+document.addEventListener('DOMContentLoaded', function() {
+  const nlInput = document.getElementById('nl-email');
+  if (nlInput) {
+    nlInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') submitNewsletter();
+    });
+  }
+});
 
 // ── FORCE AUTOPLAY ALL BROWSERS INCLUDING SAFARI ──
 (function() {
