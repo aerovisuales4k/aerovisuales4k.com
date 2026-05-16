@@ -73,7 +73,7 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Aerovisuales 4K",
-    "description": "Producción aérea profesional en 4K con dron. Grabación, edición y entrega en 24 horas. Pilotos certificados DGAC.",
+    "description": "Producción aérea profesional en 4K con dron DJI Mavic 2 Pro. Grabación, edición cinematográfica y entrega en 24 horas. Pilotos certificados DGAC. Servicio en Lima, Perú.",
     "url": "https://www.aerovisuales4k.com",
     "telephone": "+51927929541",
     "email": "aerovisuales4k@gmail.com",
@@ -88,13 +88,15 @@
       "@type": "PostalAddress",
       "addressLocality": "Lima",
       "addressRegion": "Lima",
-      "addressCountry": "PE"
+      "addressCountry": "PE",
+      "postalCode": "15001"
     },
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": -12.0464,
       "longitude": -77.0428
     },
+    "hasMap": "https://maps.google.com/?q=-12.0464,-77.0428",
     "areaServed": {
       "@type": "City",
       "name": "Lima"
@@ -107,6 +109,19 @@
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
       "opens": "06:00",
       "closes": "18:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "37",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": {
+      "@type": "Review",
+      "author": {"@type": "Organization", "name": "V&V Inmobiliaria"},
+      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
+      "reviewBody": "Necesitábamos imágenes aéreas del proyecto para la preventa. Julio llegó, voló y entregó al día siguiente. El material cerró ventas que llevábamos semanas negociando."
     },
     "sameAs": [
       "https://www.instagram.com/aerovisuales4k/",
@@ -121,30 +136,33 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Raw Air",
-            "description": "Material RAW 4K sin editar. Hasta 35 min de vuelo. Entrega en 24h."
+            "description": "Material RAW 4K sin editar en perfil D-Log. Hasta 35 min de vuelo efectivo. 4 ángulos. Entrega en 24h por WeTransfer."
           },
           "price": "450",
-          "priceCurrency": "PEN"
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
             "name": "Aerial Ready",
-            "description": "Vuelo + edición + colorización. Video listo para publicar. Entrega en 48h."
+            "description": "Vuelo + edición + colorización cinematográfica. Video hasta 90 segundos listo para publicar. 1 revisión incluida. Entrega en 24–48h."
           },
           "price": "1050",
-          "priceCurrency": "PEN"
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock"
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
             "name": "Signature Aerial",
-            "description": "Producción completa: brief, edición, música, motion graphics, 3 formatos."
+            "description": "Producción completa: briefing estratégico, edición, música licenciada, motion graphics, 3 formatos (16:9, 1:1, 9:16). Revisiones ilimitadas."
           },
           "price": "1875",
-          "priceCurrency": "PEN"
+          "priceCurrency": "PEN",
+          "availability": "https://schema.org/InStock"
         }
       ]
     }
