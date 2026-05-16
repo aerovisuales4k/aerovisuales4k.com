@@ -3261,5 +3261,25 @@ document.addEventListener('DOMContentLoaded', function() {
   </a>
 </div>
 
+
+<!-- ═══ SUPABASE — Captación de leads ═══ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // Configuración técnica (Usa los datos de tu archivo .env)
+  const SUPABASE_URL = 'https://zfekvffhpqsduwemqdxj.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_Bj6OEXGnebWoX1aE5jYS7w_9JrKM0mc';
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // Esta función interceptará el envío para guardar en la base de datos
+  async function guardarLeadEnSupabase(datos) {
+    const { data, error } = await supabaseClient
+      .from('leads_captacion')
+      .insert([datos]);
+
+    if (error) console.error('Error guardando lead:', error);
+    else console.log('Lead guardado con éxito en el sistema.');
+  }
+</script>
+
 </body>
 </html>
