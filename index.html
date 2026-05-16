@@ -2162,6 +2162,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         </div>
 
         <div class="user-data-fields">
+          <input type="text" id="user-nombre" placeholder="Nombre completo o razón social" class="calc-input-text" style="grid-column:1/-1" oninput="updatePriceDisplay()">
           <input type="text" id="user-ruc" placeholder="RUC o DNI" class="calc-input-text" oninput="updatePriceDisplay()">
           <input type="email" id="user-email" placeholder="Correo Principal" class="calc-input-text" oninput="updatePriceDisplay()">
           <div style="grid-column:1/-1">
@@ -2761,6 +2762,7 @@ function updatePriceDisplay(){
     anticipoHTML = `Anticipo 50%: <span>S/ ${anticipo.toLocaleString()}</span> · Saldo: <span>S/ ${(Math.round(total)-anticipo).toLocaleString()}</span>`;
   }
   document.getElementById('pd-anticipo').innerHTML = anticipoHTML;
+  const nombre = document.getElementById('user-nombre').value||'';
   const ruc    = document.getElementById('user-ruc').value||'No provisto';
   const email  = document.getElementById('user-email').value||'No provisto';
   const cc     = document.getElementById('user-cc-email').value;
@@ -2782,25 +2784,26 @@ function updatePriceDisplay(){
   const waLines = [
     `¡Hola Julio! Quiero cotizar y reservar un vuelo:`,
     ``,
-    `📦 Paquete: ${pkg.name} (S/ ${pkg.price.toLocaleString()})`,
-    `➕ Adicionales: ${addonsLabel}`,
-    distritoName ? `🚗 Traslado: ${distritoName} — S/ ${transporteTotal.toFixed(2)}` : '',
-    direccion ? `📍 Dirección exacta: ${direccion}` : '',
-    horarioSurcharge > 0 ? `🌙 Horario extralaboral: +S/ 100` : '',
-    `🧾 Comprobante: ${esFactura?'Factura + IGV':'Boleta / RxH'}`,
+    `✅ Paquete: ${pkg.name} (S/ ${pkg.price.toLocaleString()})`,
+    `✅ Adicionales: ${addonsLabel}`,
+    distritoName ? `✅ Traslado: ${distritoName} — S/ ${transporteTotal.toFixed(2)}` : '',
+    direccion ? `✅ Dirección exacta: ${direccion}` : '',
+    horarioSurcharge > 0 ? `✅ Horario extralaboral: +S/ 100` : '',
+    `✅ Comprobante: ${esFactura?'Factura + IGV':'Boleta / RxH'}`,
     ``,
-    `💰 TOTAL: S/ ${Math.round(total).toLocaleString()}`,
+    `✅ TOTAL: S/ ${Math.round(total).toLocaleString()}`,
     `   Anticipo (50%): S/ ${anticipo.toLocaleString()}`,
     `   Saldo contra entrega: S/ ${(Math.round(total)-anticipo).toLocaleString()}`,
     ``,
-    `📅 Fecha de vuelo: ${fechaStr}`,
-    horario ? `⏰ Horario preferido: ${horario}` : '',
-    nota ? `📝 Notas: ${nota}` : '',
+    `✅ Fecha de vuelo: ${fechaStr}`,
+    horario ? `✅ Horario preferido: ${horario}` : '',
+    nota ? `✅ Notas: ${nota}` : '',
     ``,
     `-------------------------`,
-    `📧 Enviar proforma a: ${email}`,
-    cc ? `📩 CC: ${cc}` : '',
-    `📄 RUC/DNI: ${ruc}`,
+    nombre ? `✅ Nombre: ${nombre}` : '',
+    `✅ Enviar proforma a: ${email}`,
+    cc ? `✅ CC: ${cc}` : '',
+    `✅ RUC/DNI: ${ruc}`,
   ].filter(l => l !== null && l !== undefined && l !== '');
 
   const waMsg = encodeURIComponent(waLines.join('\n'));
@@ -2813,7 +2816,7 @@ function updatePriceDisplay(){
 
   // Construye el objeto lead con todos los datos del cotizador
   const leadData = {
-    nombre:     ruc   !== 'No provisto' ? ruc   : 'Lead Web',
+    nombre:     nombre || ruc || 'Lead Web',
     email:      email !== 'No provisto' ? email : '',
     ruc_dni:    ruc   !== 'No provisto' ? ruc   : '',
     distrito:   distritoName || 'No seleccionado',
