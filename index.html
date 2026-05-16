@@ -2791,7 +2791,71 @@ function updatePriceDisplay(){
 
   const waMsg = encodeURIComponent(waLines.join('\n'));
   const waBtn = document.getElementById('pd-wa-btn');
-  waBtn.href = `https://wa.me/51927929541?text=${waMsg}`;
+
+  // ── LEAD CAPTURE: intercepta el clic para guardar antes de abrir WhatsApp ──
+  // Clona el botón para eliminar listeners previos sin acumularlos
+  const waBtnClone = waBtn.cloneNode(true);
+  waBtn.parentNode.replaceChild(waBtnClone, waBtn);
+
+  // Construye el objeto lead con todos los datos del cotizador
+  const leadData = {
+    ts:         new Date().toISOString(),
+    source:     'cotizador_web',
+    // Paquete
+    paquete:    pkg.name,
+    precio_base: pkg.price,
+    // Adicionales
+    adicionales: addonsLabel,
+    adicionales_precio: addonsTotal,
+    // Localización
+    distrito:   distritoName || 'No seleccionado',
+    traslado:   transporteTotal,
+    direccion:  direccion || '',
+    // Horario
+    fecha_vuelo: fechaVal || 'Por confirmar',
+    hora_vuelo:  horaVal  || 'Por confirmar',
+    horario_extra: horarioSurcharge > 0,
+    // Financiero
+    comprobante: esFactura ? 'Factura' : 'Boleta',
+    metodo_pago: metodoPago,
+    igv:        Math.round(igv),
+    total:      Math.round(total),
+    anticipo:   anticipo,
+    // Contacto
+    email:      email !== 'No provisto' ? email : '',
+    ruc:        ruc   !== 'No provisto' ? ruc   : '',
+    cc:         cc    || '',
+  };
+
+  waBtnClone.addEventListener('click', async function(e) {
+    e.preventDefault();
+
+    // 1. Guardar en localStorage (Fase 1 · sin backend)
+    //    ── FASE 2: reemplaza este bloque por fetch() a Supabase ──
+    try {
+      const leads = JSON.parse(localStorage.getItem('av4k_cotizador_leads') || '[]');
+      leads.push(leadData);
+      localStorage.setItem('av4k_cotizador_leads', JSON.stringify(leads));
+    } catch(storageErr) {
+      console.warn('localStorage no disponible:', storageErr);
+    }
+
+    // 2. Feedback visual inmediato en el botón
+    const originalHTML = waBtnClone.innerHTML;
+    waBtnClone.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> ✓ ABRIENDO WHATSAPP...`;
+    waBtnClone.style.opacity = '0.75';
+
+    // 3. Abrir WhatsApp con el mensaje completo
+    const finalUrl = `https://wa.me/51927929541?text=${waMsg}`;
+    setTimeout(() => {
+      window.open(finalUrl, '_blank');
+      // Restaurar botón tras 2.5s
+      setTimeout(() => {
+        waBtnClone.innerHTML = originalHTML;
+        waBtnClone.style.opacity = '1';
+      }, 2500);
+    }, 180); // pequeño delay para que el feedback visual sea perceptible
+  });
 
   // ── UPDATE ORDER SUMMARY BOX ──
   const sumPkg = document.getElementById('sum-pkg');
@@ -2825,12 +2889,16 @@ function updatePriceDisplay(){
   }
 
 
-  // 6. Feedback visual del botón
+  // 6. Feedback visual del botón (label + opacidad según campos rellenos)
   const hasEmail = email.includes('@');
-  const hasFecha = fecha && document.getElementById('date-msg')?.classList.contains('ok');
-  const btnLabel = 'ENVIAR MI PRE-RESERVA POR WHATSAPP';
-  waBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> ${btnLabel}`;
-  waBtn.style.opacity = (hasEmail && hasFecha) ? '1' : '0.65';
+  const hasFecha = !!fechaVal;
+  const btnLabel = 'REVISAR Y CERRAR PEDIDO POR WHATSAPP';
+  const btnIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>`;
+  waBtnClone.innerHTML = `${btnIcon} ${btnLabel}`;
+  waBtnClone.style.opacity = (hasEmail && hasFecha) ? '1' : '0.65';
+  waBtnClone.title = (!hasEmail || !hasFecha)
+    ? 'Completa el email y la fecha para activar el botón'
+    : 'Enviar cotización por WhatsApp';
 
   // 7. Actualizar resumen de reserva
   updateReservaSummary(pkg, Math.round(total), anticipo, fechaStr, horario, distritoName);
