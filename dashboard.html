@@ -418,6 +418,93 @@ td.fecha-cell {
 .toast.ok  { border-color: rgba(159,225,203,0.3); }
 .toast.err { border-color: rgba(240,149,149,0.3); }
 
+/* ── LOGIN SCREEN ── */
+.login-screen {
+  position: fixed; inset: 0; z-index: 999;
+  background: var(--carbon);
+  display: flex; align-items: center; justify-content: center;
+}
+.login-screen.hidden { display: none; }
+.login-box {
+  width: 380px; max-width: calc(100vw - 2rem);
+  background: var(--carbon2);
+  border: 0.5px solid rgba(225,225,220,0.10);
+  border-radius: 16px;
+  padding: 2.5rem;
+  position: relative; overflow: hidden;
+}
+.login-box::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(225,225,220,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(225,225,220,0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.login-logo {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 2rem; position: relative;
+}
+.login-logo svg { width: 24px; height: 24px; flex-shrink: 0; }
+.login-logo-text {
+  font-family: var(--fm); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.14em; color: var(--sand);
+}
+.login-title {
+  font-family: var(--fd); font-size: 26px;
+  color: var(--sand); line-height: 1.1;
+  letter-spacing: -0.02em; margin-bottom: 0.4rem;
+  position: relative;
+}
+.login-sub {
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.08em;
+  color: rgba(225,225,220,0.30); margin-bottom: 2rem;
+  position: relative;
+}
+.login-label {
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.14em;
+  color: rgba(225,225,220,0.35); display: block;
+  margin-bottom: 0.4rem; text-transform: uppercase;
+  position: relative;
+}
+.login-input {
+  width: 100%; font-family: var(--fm); font-size: 13px;
+  padding: 12px 14px; border-radius: 8px;
+  border: 0.5px solid rgba(225,225,220,0.12);
+  background: rgba(225,225,220,0.06); color: var(--sand);
+  outline: none; margin-bottom: 1rem;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+.login-input::placeholder { color: rgba(225,225,220,0.20); }
+.login-input:focus {
+  border-color: rgba(225,225,220,0.35);
+  background: rgba(225,225,220,0.09);
+}
+.login-btn {
+  width: 100%; font-family: var(--fm); font-size: 10px;
+  letter-spacing: 0.12em; font-weight: 500;
+  padding: 13px; border-radius: 8px;
+  background: var(--sand); color: var(--carbon);
+  border: none; cursor: pointer;
+  transition: opacity 0.2s; margin-top: 0.5rem;
+  position: relative;
+}
+.login-btn:hover { opacity: 0.85; }
+.login-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.login-error {
+  font-family: var(--fm); font-size: 11px;
+  color: var(--red); margin-top: 0.75rem;
+  text-align: center; min-height: 16px;
+  letter-spacing: 0.04em; position: relative;
+}
+.login-footer {
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.10em;
+  color: rgba(225,225,220,0.15); text-align: center;
+  margin-top: 1.5rem; position: relative;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .metrics-grid { grid-template-columns: 1fr 1fr; }
@@ -433,6 +520,45 @@ td.fecha-cell {
 </style>
 </head>
 <body>
+
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <svg viewBox="0 0 100 100" fill="none">
+        <g stroke="#E1E1DC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M42 35 v30 a8 8 0 0 0 16 0 v-30 a8 8 0 0 0 -16 0 z"/>
+          <path d="M46 35 v-6 h8 v6"/>
+          <circle cx="50" cy="27" r="2.5" fill="#E1E1DC" stroke="none"/>
+          <path d="M42 42 L25 25"/><path d="M58 42 L75 25"/>
+          <path d="M42 58 L25 75"/><path d="M58 58 L75 75"/>
+          <path d="M14 25 L36 25" stroke-width="4"/><path d="M64 25 L86 25" stroke-width="4"/>
+          <path d="M14 75 L36 75" stroke-width="4"/><path d="M64 75 L86 75" stroke-width="4"/>
+        </g>
+      </svg>
+      <span class="login-logo-text">AEROVISUALES 4K</span>
+    </div>
+    <div class="login-title">Panel de control</div>
+    <div class="login-sub">ACCESO RESTRINGIDO · SOLO ADMINISTRADOR</div>
+    <label class="login-label" for="login-email">Email</label>
+    <input
+      type="email" id="login-email" class="login-input"
+      placeholder="aerovisuales4k@gmail.com"
+      autocomplete="email"
+    />
+    <label class="login-label" for="login-pass">Contraseña</label>
+    <input
+      type="password" id="login-pass" class="login-input"
+      placeholder="••••••••••••"
+      autocomplete="current-password"
+    />
+    <button class="login-btn" id="login-btn" onclick="hacerLogin()">
+      ENTRAR AL DASHBOARD →
+    </button>
+    <div class="login-error" id="login-error"></div>
+    <div class="login-footer">aerovisuales4k.com · Sistema interno</div>
+  </div>
+</div>
 
 <!-- TOPBAR -->
 <nav class="topbar">
@@ -453,6 +579,7 @@ td.fecha-cell {
   <div class="topbar-right">
     <div class="live-badge"><div class="live-dot"></div>EN VIVO</div>
     <button class="btn-refresh" onclick="cargarLeads()">↻ Actualizar</button>
+    <button class="btn-refresh" onclick="cerrarSesion()" style="color:var(--red);border-color:rgba(240,149,149,0.2)">⎋ Salir</button>
     <a class="btn-ir-web" href="https://www.aerovisuales4k.com" target="_blank">→ Ir al sitio</a>
   </div>
 </nav>
@@ -818,13 +945,75 @@ function iniciarRealtime() {
     .subscribe();
 }
 
+// ── AUTH ──
+async function hacerLogin() {
+  const email = document.getElementById('login-email').value.trim();
+  const pass  = document.getElementById('login-pass').value;
+  const btn   = document.getElementById('login-btn');
+  const err   = document.getElementById('login-error');
+
+  if (!email || !pass) {
+    err.textContent = 'Completa email y contraseña.'; return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'ENTRANDO...';
+  err.textContent = '';
+
+  const { data, error } = await sb.auth.signInWithPassword({ email, password: pass });
+
+  if (error) {
+    err.textContent = '❌ ' + (error.message.includes('Invalid') ? 'Email o contraseña incorrectos.' : error.message);
+    btn.disabled = false;
+    btn.textContent = 'ENTRAR AL DASHBOARD →';
+    return;
+  }
+
+  mostrarDashboard();
+}
+
+async function cerrarSesion() {
+  await sb.auth.signOut();
+  document.getElementById('login-screen').classList.remove('hidden');
+  document.getElementById('login-pass').value = '';
+  document.getElementById('login-error').textContent = '';
+  document.getElementById('login-btn').disabled = false;
+  document.getElementById('login-btn').textContent = 'ENTRAR AL DASHBOARD →';
+}
+
+function mostrarDashboard() {
+  document.getElementById('login-screen').classList.add('hidden');
+}
+
 // ── INIT ──
 document.addEventListener('DOMContentLoaded', async () => {
-  await cargarLeads();
-  iniciarRealtime();
+  // Comprueba si ya hay sesión activa (refresh de página)
+  const { data: { session } } = await sb.auth.getSession();
 
-  // Política de lectura: si falla, muestra aviso útil
-  document.getElementById('leads-tbody').addEventListener('click', () => {});
+  if (session) {
+    mostrarDashboard();
+    await cargarLeads();
+    iniciarRealtime();
+  }
+
+  // Escucha cambios de sesión (login / logout)
+  sb.auth.onAuthStateChange(async (event, session) => {
+    if (event === 'SIGNED_IN' && session) {
+      mostrarDashboard();
+      await cargarLeads();
+      iniciarRealtime();
+    }
+    if (event === 'SIGNED_OUT') {
+      document.getElementById('login-screen').classList.remove('hidden');
+    }
+  });
+
+  // Enter key en login
+  ['login-email', 'login-pass'].forEach(id => {
+    document.getElementById(id)?.addEventListener('keydown', e => {
+      if (e.key === 'Enter') hacerLogin();
+    });
+  });
 });
 </script>
 </body>
