@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Aerovisuales 4K</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+@font-face{font-family:'DM Serif Display';font-style:normal;font-weight:400;font-display:swap;src:url('dm-serif-display-v17-latin-regular.woff2') format('woff2')}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:400;font-display:swap;src:url('manrope-v20-latin-400.woff2') format('woff2')}
+@font-face{font-family:'Manrope';font-style:normal;font-weight:600;font-display:swap;src:url('manrope-v20-latin-600.woff2') format('woff2')}
+@font-face{font-family:'DM Mono';font-style:normal;font-weight:400;font-display:swap;src:url('dm-mono-v16-latin-regular.woff2') format('woff2')}
+@font-face{font-family:'DM Mono';font-style:normal;font-weight:500;font-display:swap;src:url('dm-mono-v16-latin-500.woff2') format('woff2')}
+
+:root {
+  --carbon:  #1A1A18;
+  --carbon2: #222220;
+  --carbon3: #2A2A28;
+  --sand:    #E1E1DC;
+  --sand2:   #C8C8C2;
+  --mid:     #6B6B67;
+  --blue:    #2D5FA0;
+  --green:   #3B6D11;
+  --green2:  #9FE1CB;
+  --amber:   #D4A843;
+  --red:     #F09595;
+  --border:  rgba(225,225,220,0.08);
+  --fd: 'DM Serif Display', Georgia, serif;
+  --fb: 'Manrope', system-ui, sans-serif;
+  --fm: 'DM Mono', ui-monospace, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body {
+  font-family: var(--fb);
+  background: var(--carbon);
+  color: var(--sand);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 56px;
+  background: rgba(26,26,24,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+}
+.topbar-brand {
+  display: flex; align-items: center; gap: 10px;
+}
+.topbar-brand svg { width: 20px; height: 20px; flex-shrink: 0; }
+.topbar-brand-text {
+  font-family: var(--fm); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.14em; color: var(--sand);
+}
+.topbar-right {
+  display: flex; align-items: center; gap: 1rem;
+}
+.live-badge {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.12em;
+  color: var(--green2);
+  padding: 4px 10px;
+  border: 0.5px solid rgba(159,225,203,0.25);
+  border-radius: 20px;
+}
+.live-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--green2);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.btn-refresh {
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.10em;
+  color: rgba(225,225,220,0.5);
+  background: none; border: 0.5px solid var(--border);
+  border-radius: 6px; padding: 6px 12px; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-refresh:hover { color: var(--sand); border-color: rgba(225,225,220,0.3); }
+.btn-ir-web {
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.10em;
+  color: var(--carbon); background: var(--sand);
+  border: none; border-radius: 6px; padding: 6px 14px;
+  cursor: pointer; transition: opacity 0.2s; text-decoration: none;
+  display: inline-flex; align-items: center;
+}
+.btn-ir-web:hover { opacity: 0.85; }
+
+/* ── LAYOUT ── */
+.main {
+  padding: 80px 2rem 3rem;
+  max-width: 1400px; margin: 0 auto;
+}
+
+/* ── MÉTRICAS ── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-radius: 14px; overflow: hidden;
+  border: 0.5px solid var(--border);
+  margin-bottom: 2rem;
+}
+.metric-card {
+  background: var(--carbon2);
+  padding: 1.5rem;
+  position: relative; overflow: hidden;
+}
+.metric-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(225,225,220,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(225,225,220,0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+.metric-label {
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.14em;
+  color: rgba(225,225,220,0.35); margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+.metric-value {
+  font-family: var(--fd); font-size: 38px; color: var(--sand);
+  line-height: 1; letter-spacing: -0.03em;
+}
+.metric-sub {
+  font-family: var(--fm); font-size: 10px;
+  color: rgba(225,225,220,0.35); margin-top: 0.5rem;
+  letter-spacing: 0.06em;
+}
+.metric-card.highlight .metric-value { color: var(--green2); }
+.metric-card.amber .metric-value { color: var(--amber); }
+
+/* ── FILTROS ── */
+.filters-bar {
+  display: flex; align-items: center; gap: 0.75rem;
+  flex-wrap: wrap; margin-bottom: 1.5rem;
+}
+.filter-label {
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.14em;
+  color: rgba(225,225,220,0.30); flex-shrink: 0;
+}
+.filter-btn {
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.08em;
+  padding: 5px 12px; border-radius: 20px;
+  border: 0.5px solid var(--border);
+  background: transparent; color: rgba(225,225,220,0.45);
+  cursor: pointer; transition: all 0.15s;
+}
+.filter-btn:hover { border-color: rgba(225,225,220,0.25); color: var(--sand2); }
+.filter-btn.active { background: var(--sand); color: var(--carbon); border-color: var(--sand); }
+.filter-search {
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.04em;
+  padding: 6px 14px; border-radius: 20px;
+  border: 0.5px solid var(--border);
+  background: rgba(225,225,220,0.04); color: var(--sand);
+  outline: none; width: 200px; transition: all 0.2s;
+  margin-left: auto;
+}
+.filter-search::placeholder { color: rgba(225,225,220,0.2); }
+.filter-search:focus { border-color: rgba(225,225,220,0.3); background: rgba(225,225,220,0.07); }
+
+/* ── TABLA ── */
+.table-wrap {
+  background: var(--carbon2);
+  border: 0.5px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+}
+.table-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 0.5px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.table-title {
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.14em;
+  color: rgba(225,225,220,0.40);
+}
+.table-count {
+  font-family: var(--fd); font-size: 13px; color: var(--sand2);
+}
+.table-scroll { overflow-x: auto; }
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 13px;
+}
+thead th {
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.12em;
+  color: rgba(225,225,220,0.30); text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 0.5px solid var(--border);
+  white-space: nowrap; text-transform: uppercase;
+  background: var(--carbon2);
+  position: sticky; top: 0;
+}
+tbody tr {
+  border-bottom: 0.5px solid rgba(225,225,220,0.04);
+  transition: background 0.15s;
+  cursor: pointer;
+}
+tbody tr:hover { background: rgba(225,225,220,0.03); }
+tbody tr:last-child { border-bottom: none; }
+td {
+  padding: 0.875rem 1rem;
+  color: rgba(225,225,220,0.80);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+td.nombre-cell {
+  color: var(--sand); font-weight: 600;
+  max-width: 160px; overflow: hidden; text-overflow: ellipsis;
+}
+td.email-cell {
+  font-family: var(--fm); font-size: 11px;
+  color: rgba(225,225,220,0.50);
+  max-width: 180px; overflow: hidden; text-overflow: ellipsis;
+}
+td.total-cell {
+  font-family: var(--fd); font-size: 16px; color: var(--sand);
+  letter-spacing: -0.02em;
+}
+td.fecha-cell {
+  font-family: var(--fm); font-size: 10px;
+  color: rgba(225,225,220,0.35); letter-spacing: 0.04em;
+}
+
+/* ── PKG BADGE ── */
+.pkg-badge {
+  display: inline-block;
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.10em;
+  padding: 3px 10px; border-radius: 20px;
+  white-space: nowrap;
+}
+.pkg-raw    { background: rgba(69,120,192,0.15); color: #7EB3E8; border: 0.5px solid rgba(69,120,192,0.3); }
+.pkg-aerial { background: rgba(26,26,24,0.6);    color: var(--sand2); border: 0.5px solid rgba(225,225,220,0.15); }
+.pkg-sig    { background: rgba(212,168,67,0.12); color: var(--amber); border: 0.5px solid rgba(212,168,67,0.3); }
+
+/* ── ESTADO BADGE ── */
+.estado-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.08em;
+  padding: 3px 10px; border-radius: 20px; cursor: pointer;
+  transition: opacity 0.2s; white-space: nowrap;
+}
+.estado-badge:hover { opacity: 0.75; }
+.estado-nuevo       { background: rgba(69,120,192,0.15); color: #7EB3E8; border: 0.5px solid rgba(69,120,192,0.25); }
+.estado-contactado  { background: rgba(212,168,67,0.12); color: var(--amber); border: 0.5px solid rgba(212,168,67,0.25); }
+.estado-cerrado     { background: rgba(59,109,17,0.15);  color: var(--green2); border: 0.5px solid rgba(59,109,17,0.3); }
+.estado-perdido     { background: rgba(240,149,149,0.10); color: var(--red); border: 0.5px solid rgba(240,149,149,0.2); }
+.estado-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.dot-nuevo      { background: #7EB3E8; }
+.dot-contactado { background: var(--amber); }
+.dot-cerrado    { background: var(--green2); }
+.dot-perdido    { background: var(--red); }
+
+/* ── MODAL DETALLE ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(26,26,24,0.85);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s;
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--carbon2);
+  border: 0.5px solid rgba(225,225,220,0.12);
+  border-radius: 16px;
+  width: 540px; max-width: calc(100vw - 2rem);
+  max-height: 85vh; overflow-y: auto;
+  transform: translateY(16px);
+  transition: transform 0.25s;
+}
+.modal-overlay.active .modal { transform: translateY(0); }
+.modal-top {
+  padding: 1.75rem 2rem 1.25rem;
+  border-bottom: 0.5px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+}
+.modal-nombre {
+  font-family: var(--fd); font-size: 24px; color: var(--sand);
+  line-height: 1.1; letter-spacing: -0.02em;
+}
+.modal-email {
+  font-family: var(--fm); font-size: 11px;
+  color: rgba(225,225,220,0.40); margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+.modal-close {
+  background: none; border: none; cursor: pointer;
+  color: rgba(225,225,220,0.35); font-size: 20px; line-height: 1;
+  flex-shrink: 0; padding: 4px; transition: color 0.2s;
+}
+.modal-close:hover { color: var(--sand); }
+.modal-body { padding: 1.5rem 2rem; }
+.modal-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; margin-bottom: 1.5rem;
+}
+.modal-field {}
+.modal-field-label {
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.14em;
+  color: rgba(225,225,220,0.30); margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+.modal-field-value {
+  font-size: 14px; color: var(--sand);
+  line-height: 1.4;
+}
+.modal-field-value.mono {
+  font-family: var(--fm); font-size: 12px;
+  color: rgba(225,225,220,0.70);
+}
+.modal-total {
+  background: var(--carbon3);
+  border: 0.5px solid var(--border);
+  border-radius: 10px; padding: 1rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+.modal-total-label {
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.10em;
+  color: rgba(225,225,220,0.40);
+}
+.modal-total-val {
+  font-family: var(--fd); font-size: 32px; color: var(--sand);
+  letter-spacing: -0.03em; line-height: 1;
+}
+.modal-total-anticipo {
+  font-family: var(--fm); font-size: 10px;
+  color: rgba(225,225,220,0.35); margin-top: 2px;
+}
+.modal-msg {
+  background: rgba(225,225,220,0.04);
+  border: 0.5px solid var(--border);
+  border-radius: 8px; padding: 0.875rem 1rem;
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.03em;
+  color: rgba(225,225,220,0.40); line-height: 1.7;
+  max-height: 120px; overflow-y: auto;
+  margin-bottom: 1.25rem; white-space: pre-wrap;
+}
+.modal-actions {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.btn-action {
+  flex: 1; min-width: 100px;
+  font-family: var(--fm); font-size: 9px; letter-spacing: 0.10em;
+  padding: 10px 14px; border-radius: 8px; cursor: pointer;
+  border: 0.5px solid var(--border);
+  background: rgba(225,225,220,0.05); color: rgba(225,225,220,0.55);
+  transition: all 0.15s; text-align: center;
+}
+.btn-action:hover { border-color: rgba(225,225,220,0.25); color: var(--sand); }
+.btn-action.wa {
+  background: #25D366; color: white; border-color: #25D366;
+  flex: 2;
+}
+.btn-action.wa:hover { opacity: 0.88; }
+.estado-select {
+  font-family: var(--fm); font-size: 10px; letter-spacing: 0.08em;
+  padding: 9px 12px; border-radius: 8px;
+  border: 0.5px solid var(--border);
+  background: rgba(225,225,220,0.06); color: var(--sand);
+  outline: none; cursor: pointer; flex: 1;
+}
+.estado-select option { background: var(--carbon2); color: var(--sand); }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  text-align: center; padding: 5rem 2rem;
+}
+.empty-icon {
+  font-size: 48px; margin-bottom: 1rem; opacity: 0.2;
+}
+.empty-title {
+  font-family: var(--fd); font-size: 22px;
+  color: rgba(225,225,220,0.30); margin-bottom: 0.5rem;
+}
+.empty-sub {
+  font-family: var(--fm); font-size: 11px;
+  color: rgba(225,225,220,0.20); letter-spacing: 0.06em;
+}
+
+/* ── LOADING ── */
+.loading-row td {
+  padding: 3rem; text-align: center;
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.10em;
+  color: rgba(225,225,220,0.20);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  display: inline-block; width: 14px; height: 14px;
+  border: 1.5px solid rgba(225,225,220,0.15);
+  border-top-color: rgba(225,225,220,0.5);
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+  margin-right: 8px; vertical-align: middle;
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 300;
+  background: var(--carbon2); border: 0.5px solid var(--border);
+  border-radius: 10px; padding: 12px 18px;
+  font-family: var(--fm); font-size: 11px; letter-spacing: 0.06em;
+  color: var(--sand); display: flex; align-items: center; gap: 10px;
+  transform: translateY(80px); opacity: 0;
+  transition: all 0.3s; pointer-events: none;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.ok  { border-color: rgba(159,225,203,0.3); }
+.toast.err { border-color: rgba(240,149,149,0.3); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .main { padding: 72px 1rem 3rem; }
+  .topbar { padding: 0 1rem; }
+  .filter-search { width: 100%; margin-left: 0; margin-top: 0.5rem; }
+  .modal-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .topbar-brand-text { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-brand">
+    <svg viewBox="0 0 100 100" fill="none">
+      <g stroke="#E1E1DC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M42 35 v30 a8 8 0 0 0 16 0 v-30 a8 8 0 0 0 -16 0 z"/>
+        <path d="M46 35 v-6 h8 v6"/>
+        <circle cx="50" cy="27" r="2.5" fill="#E1E1DC" stroke="none"/>
+        <path d="M42 42 L25 25"/><path d="M58 42 L75 25"/>
+        <path d="M42 58 L25 75"/><path d="M58 58 L75 75"/>
+        <path d="M14 25 L36 25" stroke-width="4"/><path d="M64 25 L86 25" stroke-width="4"/>
+        <path d="M14 75 L36 75" stroke-width="4"/><path d="M64 75 L86 75" stroke-width="4"/>
+      </g>
+    </svg>
+    <span class="topbar-brand-text">AEROVISUALES 4K · DASHBOARD</span>
+  </div>
+  <div class="topbar-right">
+    <div class="live-badge"><div class="live-dot"></div>EN VIVO</div>
+    <button class="btn-refresh" onclick="cargarLeads()">↻ Actualizar</button>
+    <a class="btn-ir-web" href="https://www.aerovisuales4k.com" target="_blank">→ Ir al sitio</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- MÉTRICAS -->
+  <div class="metrics-grid" id="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-label">Total leads</div>
+      <div class="metric-value" id="m-total">—</div>
+      <div class="metric-sub">Desde el inicio</div>
+    </div>
+    <div class="metric-card amber">
+      <div class="metric-label">Revenue potencial</div>
+      <div class="metric-value" id="m-revenue">—</div>
+      <div class="metric-sub">Suma de cotizaciones</div>
+    </div>
+    <div class="metric-card highlight">
+      <div class="metric-label">Leads nuevos</div>
+      <div class="metric-value" id="m-nuevos">—</div>
+      <div class="metric-sub">Sin contactar</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Ticket promedio</div>
+      <div class="metric-value" id="m-ticket">—</div>
+      <div class="metric-sub">S/ por cotización</div>
+    </div>
+  </div>
+
+  <!-- FILTROS -->
+  <div class="filters-bar">
+    <span class="filter-label">FILTRAR</span>
+    <button class="filter-btn active" onclick="setFiltro('todos', this)">Todos</button>
+    <button class="filter-btn" onclick="setFiltro('nuevo', this)">Nuevos</button>
+    <button class="filter-btn" onclick="setFiltro('contactado', this)">Contactados</button>
+    <button class="filter-btn" onclick="setFiltro('cerrado', this)">Cerrados</button>
+    <button class="filter-btn" onclick="setFiltro('perdido', this)">Perdidos</button>
+    <input
+      type="text"
+      class="filter-search"
+      id="search-input"
+      placeholder="Buscar nombre, email, distrito..."
+      oninput="filtrarTabla()"
+    />
+  </div>
+
+  <!-- TABLA -->
+  <div class="table-wrap">
+    <div class="table-header">
+      <span class="table-title">LEADS CAPTADOS</span>
+      <span class="table-count" id="table-count">— registros</span>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha Lima</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Distrito</th>
+            <th>Paquete</th>
+            <th>Total</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="leads-tbody">
+          <tr class="loading-row">
+            <td colspan="7"><span class="spinner"></span>Cargando leads...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<!-- MODAL DETALLE -->
+<div class="modal-overlay" id="modal-overlay" onclick="cerrarModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-top">
+      <div>
+        <div class="modal-nombre" id="m-nombre">—</div>
+        <div class="modal-email" id="m-email">—</div>
+      </div>
+      <button class="modal-close" onclick="cerrarModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-total">
+        <div>
+          <div class="modal-total-label">TOTAL COTIZADO</div>
+          <div class="modal-total-anticipo" id="m-anticipo">Anticipo 50%: S/ —</div>
+        </div>
+        <div style="text-align:right">
+          <div class="modal-total-val" id="m-total-val">S/ —</div>
+          <div id="m-pkg-badge" style="margin-top:4px"></div>
+        </div>
+      </div>
+      <div class="modal-grid">
+        <div class="modal-field">
+          <div class="modal-field-label">RUC / DNI</div>
+          <div class="modal-field-value mono" id="m-ruc">—</div>
+        </div>
+        <div class="modal-field">
+          <div class="modal-field-label">Distrito</div>
+          <div class="modal-field-value" id="m-distrito">—</div>
+        </div>
+        <div class="modal-field">
+          <div class="modal-field-label">Fecha del lead</div>
+          <div class="modal-field-value mono" id="m-fecha">—</div>
+        </div>
+        <div class="modal-field">
+          <div class="modal-field-label">Estado actual</div>
+          <div class="modal-field-value" id="m-estado-text">—</div>
+        </div>
+      </div>
+      <div class="modal-field" style="margin-bottom:1rem">
+        <div class="modal-field-label" style="margin-bottom:0.5rem">Mensaje WhatsApp enviado</div>
+        <div class="modal-msg" id="m-msg">—</div>
+      </div>
+      <div class="modal-actions">
+        <a class="btn-action wa" id="m-wa-btn" href="#" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:5px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          Abrir WhatsApp
+        </a>
+        <select class="estado-select" id="m-estado-select" onchange="cambiarEstado()">
+          <option value="nuevo">🔵 Nuevo</option>
+          <option value="contactado">🟡 Contactado</option>
+          <option value="cerrado">🟢 Cerrado ✓</option>
+          <option value="perdido">🔴 Perdido</option>
+        </select>
+        <button class="btn-action" onclick="copiarEmail()">📋 Copiar email</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── CONFIG ──
+const SUPABASE_URL = 'https://zfekvffhpqsduwemqdxj.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Bj6OEXGnebWoX1aE5jYS7w_9JrKM0mc';
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// ── STATE ──
+let allLeads = [];
+let filtroEstado = 'todos';
+let leadActivo = null;
+
+// ── UTILS ──
+function fmtFecha(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  return d.toLocaleDateString('es-PE', {
+    day: '2-digit', month: 'short', year: 'numeric',
+    hour: '2-digit', minute: '2-digit', timeZone: 'America/Lima'
+  });
+}
+function fmtMoney(n) {
+  if (!n && n !== 0) return '—';
+  return 'S/ ' + Number(n).toLocaleString('es-PE');
+}
+function pkgClass(p) {
+  if (!p) return '';
+  if (p.includes('Raw'))       return 'pkg-raw';
+  if (p.includes('Signature')) return 'pkg-sig';
+  return 'pkg-aerial';
+}
+function estadoClass(e) {
+  const map = { nuevo:'estado-nuevo', contactado:'estado-contactado', cerrado:'estado-cerrado', perdido:'estado-perdido' };
+  return map[e] || 'estado-nuevo';
+}
+function dotClass(e) {
+  const map = { nuevo:'dot-nuevo', contactado:'dot-contactado', cerrado:'dot-cerrado', perdido:'dot-perdido' };
+  return map[e] || 'dot-nuevo';
+}
+function estadoLabel(e) {
+  const map = { nuevo:'NUEVO', contactado:'CONTACTADO', cerrado:'CERRADO', perdido:'PERDIDO' };
+  return map[e] || 'NUEVO';
+}
+
+// ── TOAST ──
+function showToast(msg, tipo = 'ok') {
+  const t = document.getElementById('toast');
+  t.textContent = (tipo === 'ok' ? '✅ ' : '❌ ') + msg;
+  t.className = `toast ${tipo} show`;
+  setTimeout(() => t.className = 'toast', 3000);
+}
+
+// ── CARGAR LEADS ──
+async function cargarLeads() {
+  const tbody = document.getElementById('leads-tbody');
+  tbody.innerHTML = '<tr class="loading-row"><td colspan="7"><span class="spinner"></span>Cargando leads...</td></tr>';
+
+  const { data, error } = await sb
+    .from('leads_captacion')
+    .select('*')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    tbody.innerHTML = `<tr class="loading-row"><td colspan="7">❌ Error al cargar: ${error.message}</td></tr>`;
+    return;
+  }
+
+  allLeads = data || [];
+  actualizarMetricas();
+  renderTabla();
+}
+
+// ── MÉTRICAS ──
+function actualizarMetricas() {
+  const total    = allLeads.length;
+  const revenue  = allLeads.reduce((s, l) => s + (Number(l.total) || 0), 0);
+  const nuevos   = allLeads.filter(l => (l.estado || 'nuevo') === 'nuevo').length;
+  const ticket   = total > 0 ? Math.round(revenue / total) : 0;
+
+  document.getElementById('m-total').textContent   = total;
+  document.getElementById('m-revenue').textContent = revenue > 0 ? 'S/ ' + revenue.toLocaleString('es-PE') : '—';
+  document.getElementById('m-nuevos').textContent  = nuevos;
+  document.getElementById('m-ticket').textContent  = ticket > 0 ? 'S/ ' + ticket.toLocaleString('es-PE') : '—';
+}
+
+// ── RENDER TABLA ──
+function renderTabla() {
+  const q = (document.getElementById('search-input').value || '').toLowerCase().trim();
+  const filtered = allLeads.filter(l => {
+    const estadoMatch = filtroEstado === 'todos' || (l.estado || 'nuevo') === filtroEstado;
+    const searchMatch = !q || [l.nombre, l.email, l.distrito, l.paquete, l.ruc_dni]
+      .some(v => (v || '').toLowerCase().includes(q));
+    return estadoMatch && searchMatch;
+  });
+
+  document.getElementById('table-count').textContent =
+    `${filtered.length} registro${filtered.length !== 1 ? 's' : ''}`;
+
+  const tbody = document.getElementById('leads-tbody');
+  if (filtered.length === 0) {
+    tbody.innerHTML = `
+      <tr><td colspan="7">
+        <div class="empty-state">
+          <div class="empty-icon">✈️</div>
+          <div class="empty-title">Sin leads todavía</div>
+          <div class="empty-sub">Cuando alguien use el cotizador aparecerá aquí en segundos</div>
+        </div>
+      </td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(l => `
+    <tr onclick="abrirModal('${l.id}')">
+      <td class="fecha-cell">${fmtFecha(l.created_at)}</td>
+      <td class="nombre-cell">${l.nombre || '—'}</td>
+      <td class="email-cell">${l.email || '—'}</td>
+      <td>${l.distrito || '—'}</td>
+      <td><span class="pkg-badge ${pkgClass(l.paquete)}">${l.paquete || '—'}</span></td>
+      <td class="total-cell">${l.total ? 'S/ ' + Number(l.total).toLocaleString('es-PE') : '—'}</td>
+      <td>
+        <span class="estado-badge ${estadoClass(l.estado || 'nuevo')}">
+          <span class="estado-dot ${dotClass(l.estado || 'nuevo')}"></span>
+          ${estadoLabel(l.estado || 'nuevo')}
+        </span>
+      </td>
+    </tr>`).join('');
+}
+
+// ── FILTROS ──
+function setFiltro(estado, btn) {
+  filtroEstado = estado;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTabla();
+}
+function filtrarTabla() { renderTabla(); }
+
+// ── MODAL ──
+function abrirModal(id) {
+  const l = allLeads.find(x => x.id === id);
+  if (!l) return;
+  leadActivo = l;
+
+  document.getElementById('m-nombre').textContent    = l.nombre || 'Sin nombre';
+  document.getElementById('m-email').textContent     = l.email  || 'Sin email';
+  document.getElementById('m-ruc').textContent       = l.ruc_dni || '—';
+  document.getElementById('m-distrito').textContent  = l.distrito || '—';
+  document.getElementById('m-fecha').textContent     = fmtFecha(l.created_at);
+  document.getElementById('m-estado-text').textContent = estadoLabel(l.estado || 'nuevo');
+  document.getElementById('m-total-val').textContent = fmtMoney(l.total);
+  document.getElementById('m-anticipo').textContent  = l.total
+    ? `Anticipo 50%: S/ ${Math.round(l.total / 2).toLocaleString('es-PE')}`
+    : 'Anticipo 50%: —';
+  document.getElementById('m-msg').textContent       = l.mensaje_wa || '—';
+  document.getElementById('m-pkg-badge').innerHTML   =
+    `<span class="pkg-badge ${pkgClass(l.paquete)}">${l.paquete || '—'}</span>`;
+
+  // WhatsApp link
+  const waNum = (l.email || l.nombre || '').trim();
+  const waMsg = encodeURIComponent(
+    `Hola ${l.nombre || 'cliente'}, te escribo de Aerovisuales 4K respecto a tu cotización de ${l.paquete || 'servicios aéreos'}.`
+  );
+  document.getElementById('m-wa-btn').href = `https://wa.me/51927929541?text=${waMsg}`;
+
+  // Estado select
+  document.getElementById('m-estado-select').value = l.estado || 'nuevo';
+
+  document.getElementById('modal-overlay').classList.add('active');
+}
+
+function cerrarModal(e) {
+  if (e && e.target !== document.getElementById('modal-overlay')) return;
+  document.getElementById('modal-overlay').classList.remove('active');
+  leadActivo = null;
+}
+
+// ── CAMBIAR ESTADO ──
+async function cambiarEstado() {
+  if (!leadActivo) return;
+  const nuevoEstado = document.getElementById('m-estado-select').value;
+
+  const { error } = await sb
+    .from('leads_captacion')
+    .update({ estado: nuevoEstado })
+    .eq('id', leadActivo.id);
+
+  if (error) {
+    showToast('Error al actualizar estado', 'err');
+    return;
+  }
+
+  // Actualiza en memoria
+  const idx = allLeads.findIndex(l => l.id === leadActivo.id);
+  if (idx !== -1) allLeads[idx].estado = nuevoEstado;
+  leadActivo.estado = nuevoEstado;
+
+  document.getElementById('m-estado-text').textContent = estadoLabel(nuevoEstado);
+  actualizarMetricas();
+  renderTabla();
+  showToast(`Estado actualizado a "${estadoLabel(nuevoEstado)}"`, 'ok');
+}
+
+// ── COPIAR EMAIL ──
+function copiarEmail() {
+  if (!leadActivo?.email) { showToast('Sin email registrado', 'err'); return; }
+  navigator.clipboard.writeText(leadActivo.email)
+    .then(() => showToast('Email copiado al portapapeles', 'ok'))
+    .catch(() => showToast('No se pudo copiar', 'err'));
+}
+
+// ── REALTIME SUSCRIPCIÓN ──
+function iniciarRealtime() {
+  sb.channel('leads_captacion_cambios')
+    .on('postgres_changes', {
+      event: 'INSERT',
+      schema: 'public',
+      table: 'leads_captacion'
+    }, (payload) => {
+      allLeads.unshift(payload.new);
+      actualizarMetricas();
+      renderTabla();
+      showToast(`Nuevo lead: ${payload.new.nombre || payload.new.email || 'Anónimo'}`, 'ok');
+    })
+    .subscribe();
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', async () => {
+  await cargarLeads();
+  iniciarRealtime();
+
+  // Política de lectura: si falla, muestra aviso útil
+  document.getElementById('leads-tbody').addEventListener('click', () => {});
+});
+</script>
+</body>
+</html>
