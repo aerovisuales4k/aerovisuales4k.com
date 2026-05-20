@@ -3705,27 +3705,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Force load before playing — critical for Safari
     video.load();
 
-    // Intento inmediato post-load
-    video.addEventListener('loadedmetadata', function() {
-      tryPlay();
-    }, { once: true });
-    video.addEventListener('canplay', function() {
-      tryPlay();
-    }, { once: true });
+    // Eventos de carga
+    video.addEventListener('loadedmetadata', function() { if (video.paused) tryPlay(); }, { once: true });
+    video.addEventListener('canplay',         function() { if (video.paused) tryPlay(); }, { once: true });
+    video.addEventListener('canplaythrough',  function() { if (video.paused) tryPlay(); }, { once: true });
 
-    // Safari en iOS/macOS a veces necesita un tick extra tras load()
-    setTimeout(function() {
+    // pageshow: Safari lo dispara cuando la página es visible por primera vez
+    // y también al volver desde bfcache (back/forward)
+    window.addEventListener('pageshow', function() {
       if (video.paused) tryPlay();
-    }, 100);
-    setTimeout(function() {
-      if (video.paused) tryPlay();
-    }, 500);
-    setTimeout(function() {
-      if (video.paused) tryPlay();
-    }, 1200);
-    setTimeout(function() {
-      if (video.paused) tryPlay();
-    }, 3000);
+    });
+
+    // visibilitychange: cuando el usuario vuelve a la pestaña
+    document.addEventListener('visibilitychange', function() {
+      if (!document.hidden && video.paused) tryPlay();
+    });
+
+    // Retries escalonados — solo actúan si el video sigue pausado
+    [100, 400, 900, 2000, 4000].forEach(function(ms) {
+      setTimeout(function() { if (video.paused) tryPlay(); }, ms);
+    });
   }
 
   if (document.readyState === 'loading') {
