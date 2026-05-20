@@ -3705,16 +3705,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Force load before playing — critical for Safari
     video.load();
 
-    if (video.readyState >= 3) {
+    // Intento inmediato post-load
+    video.addEventListener('loadedmetadata', function() {
       tryPlay();
-    } else {
-      video.addEventListener('canplaythrough', tryPlay, { once: true });
-      video.addEventListener('canplay', tryPlay, { once: true });
-    }
+    }, { once: true });
+    video.addEventListener('canplay', function() {
+      tryPlay();
+    }, { once: true });
 
-    // Fallback retries for slow connections
-    setTimeout(tryPlay, 500);
-    setTimeout(tryPlay, 1500);
+    // Safari en iOS/macOS a veces necesita un tick extra tras load()
+    setTimeout(function() {
+      if (video.paused) tryPlay();
+    }, 100);
+    setTimeout(function() {
+      if (video.paused) tryPlay();
+    }, 500);
+    setTimeout(function() {
+      if (video.paused) tryPlay();
+    }, 1200);
+    setTimeout(function() {
+      if (video.paused) tryPlay();
+    }, 3000);
   }
 
   if (document.readyState === 'loading') {
