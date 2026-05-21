@@ -3911,17 +3911,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function tryPlay() {
-      // Must call load() first on Safari when sources are set dynamically
+      // Show hint immediately — always. Hide it only once video confirms playing.
+      showPlayHint();
+
       const promise = video.play();
       if (promise !== undefined) {
         promise.then(function() {
-          // Autoplay succeeded — no hint needed
-          showVideo();
-          hidePlayHint();
+          // Autoplay succeeded — video is running, remove hint after short delay
+          // so the user at least sees it once (helps discoverability on first load)
+          setTimeout(function() {
+            hidePlayHint();
+            showVideo();
+          }, 1800);
         }).catch(function() {
-          // Autoplay blocked (iOS / Safari strict) — show logo as play button
-          showPlayHint();
-          // Also listen for any scroll/key gesture as fallback
+          // Autoplay blocked (iOS strict) — keep hint visible, wait for tap
           ['scroll','keydown'].forEach(function(ev) {
             document.addEventListener(ev, function handler() {
               activateVideo();
@@ -3930,7 +3933,7 @@ document.addEventListener('DOMContentLoaded', function() {
           });
         });
       } else {
-        showVideo();
+        setTimeout(function() { hidePlayHint(); showVideo(); }, 1800);
       }
     }
 
