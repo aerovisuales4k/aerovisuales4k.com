@@ -159,7 +159,7 @@
           "itemOffered": {
             "@type": "Service",
             "name": "Signature Aerial",
-            "description": "Producción completa: briefing estratégico, edición, música licenciada, motion graphics, 3 formatos (16:9, 1:1, 9:16). Revisiones ilimitadas."
+            "description": "Producción completa: piloto de dron + filmmaker en tierra, edición cinematográfica, música licenciada, 3 videos de 1 min en 16:9, 1:1 y 9:16. Estándar inmobiliario Perú."
           },
           "price": "1875",
           "priceCurrency": "PEN",
@@ -1195,6 +1195,28 @@ body {
 .user-data-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
 .calc-label-mini{display:block;font-family:var(--fm);font-size:11px;letter-spacing:.1em;color:#5a5a56;margin-bottom:5px;text-transform:uppercase}
 @media(max-width:900px){.user-data-fields{grid-template-columns:1fr}}
+
+/* ── DURATION TOGGLE ── */
+.dur-toggle{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.6rem}
+.dur-btn{font-family:var(--fm);font-size:12px;letter-spacing:.06em;padding:9px 14px;border-radius:8px;border:.5px solid var(--border);background:var(--light);color:var(--mid);cursor:pointer;transition:all .15s;text-align:center;flex:1;min-width:70px}
+.dur-btn:hover{border-color:rgba(26,26,24,.25);color:var(--carbon)}
+.dur-btn.active{background:var(--carbon);color:var(--sand);border-color:var(--carbon)}
+.dur-btn .dur-h{font-size:14px;font-weight:600;display:block;margin-bottom:1px}
+.dur-btn .dur-extra{font-size:10px;opacity:.7;display:block}
+
+/* ── FOTO PACKAGE ── */
+.foto-cant-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:.5rem}
+.foto-cant-btn{font-family:var(--fm);font-size:11px;padding:7px 4px;border-radius:7px;border:.5px solid var(--border);background:white;color:var(--mid);cursor:pointer;transition:all .15s;text-align:center}
+.foto-cant-btn:hover{border-color:rgba(26,26,24,.25);color:var(--carbon)}
+.foto-cant-btn.active{background:var(--carbon);color:var(--sand);border-color:var(--carbon)}
+.foto-tipo-list{display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem}
+.foto-tipo-opt{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem;background:white;border:.5px solid var(--border);border-radius:8px;cursor:pointer;transition:all .15s}
+.foto-tipo-opt:hover{border-color:rgba(26,26,24,.25)}
+.foto-tipo-opt.active{border-color:var(--carbon);background:var(--warm)}
+.foto-tipo-opt input{accent-color:var(--carbon);margin-top:2px;flex-shrink:0}
+.foto-tipo-label{font-size:13px;font-weight:500;color:var(--carbon)}
+.foto-tipo-desc{font-family:var(--fm);font-size:10px;color:var(--mid);margin-top:2px}
+.foto-tipo-precio{font-family:var(--fd);font-size:16px;color:var(--carbon);margin-left:auto;flex-shrink:0;align-self:center}
 
 /* ── CALCULATOR ── */
 .calc-section{background:white;padding:4rem 0}
@@ -2304,7 +2326,7 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         <li><span class="pkg-inc">✓</span>Colorización cinematográfica</li>
         <li><span class="pkg-inc">✓</span>1 revisión sin costo</li>
         <li><span class="pkg-inc">✓</span>Entrega en 24–48h</li>
-        <li><span class="pkg-exc">✕</span>Versiones para redes (vertical)</li>
+        <li><span class="pkg-exc">✕</span>Filmmaker en tierra</li>
         <li><span class="pkg-exc">✕</span>Traslado fuera Lima Centro*</li>
       </ul>
       <div class="pkg-ideal">Ideal para: inmobiliarias y marcas que publican en web o redes.</div>
@@ -2313,26 +2335,26 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
     <div class="pkg" id="pkg-signature">
       <div class="pkg-tag">PREMIUM</div>
       <div class="pkg-name">Signature Aerial</div>
-      <div class="pkg-subtitle">Producción completa para campaña. Todos los formatos.</div>
+      <div class="pkg-subtitle">Producción completa: dron + filmmaker en tierra. El estándar del sector.</div>
       <div class="pkg-price-row">
         <span class="pkg-price">S/ 1,875</span>
         <span class="pkg-currency">PEN</span>
       </div>
-      <div class="pkg-usd">aprox. $500 USD</div>
+      <div class="pkg-usd">aprox. $500 USD · estándar inmobiliario Perú</div>
       <ul class="pkg-features">
-        <li><span class="pkg-inc">✓</span>Todo lo de Aerial Ready</li>
-        <li><span class="pkg-inc">✓</span>3 formatos: H · cuadrado · vertical</li>
+        <li><span class="pkg-inc">✓</span>Piloto de dron + filmmaker en tierra</li>
+        <li><span class="pkg-inc">✓</span>3 videos de 1 min · 16:9 · 1:1 · 9:16</li>
+        <li><span class="pkg-inc">✓</span>Edición + colorización cinematográfica</li>
         <li><span class="pkg-inc">✓</span>Música licenciada incluida</li>
-        <li><span class="pkg-inc">✓</span>Briefing previo 30 min</li>
+        <li><span class="pkg-inc">✓</span>Briefing estratégico previo 30 min</li>
         <li><span class="pkg-inc">✓</span>2 revisiones sin costo</li>
         <li><span class="pkg-inc">✓</span>Traslado Lima incluido</li>
-        <li><span class="pkg-inc">✓</span>Archivos RAW al finalizar</li>
       </ul>
-      <div class="pkg-ideal">Ideal para: campañas publicitarias, lanzamientos, marcas de viaje.</div>
+      <div class="pkg-ideal">Ideal para: inmobiliarias, campañas publicitarias y lanzamientos de proyecto.</div>
       <a href="#calculadora" class="pkg-btn" onclick="selectPkgFromCard(2);return false;">Elegir Signature <span style="font-size:10px;opacity:0.7;">↓ Ver precio exacto</span></a>
     </div>
   </div>
-  <p class="pkg-note reveal">* Traslado fuera Lima Centro: desde S/ 40 adicionales · Revisión extra: S/ 80 c/u · Reprogramación por clima: sin penalidad · Anticipo: 50% para confirmar · Validez: 7 días</p>
+  <p class="pkg-note reveal">* Traslado fuera Lima Centro: desde S/ 40 adicionales · Revisión extra (Aerial Ready): S/ 80 c/u · Reprogramación por clima: sin penalidad · Anticipo: 50% para confirmar · Validez: 7 días</p>
 </section>
 
 
@@ -2353,8 +2375,39 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
       <div class="calc-controls">
         <div class="calc-pkg-toggle" id="calc-pkg-toggle"></div>
 
+        <!-- ── DURACIÓN DEL VUELO ── -->
+        <span class="calc-label" style="margin-bottom:.6rem">DURACIÓN DEL VUELO</span>
+        <div class="dur-toggle" id="dur-toggle"></div>
+        <div class="fecha-nota" id="dur-msg" style="margin-bottom:1.5rem">📌 1 hora incluida en todos los paquetes · Hora adicional: +S/ 350</div>
+
         <span class="calc-label" role="group" aria-label="Servicios adicionales">SERVICIOS ADICIONALES</span>
         <div class="addon-toggle-list" id="addon-toggle-list"></div>
+
+        <!-- ── PAQUETE DE FOTOGRAFÍA AÉREA ── -->
+        <span class="calc-label" style="margin-top:1.5rem">FOTOGRAFÍA AÉREA (OPCIONAL)</span>
+        <div class="foto-pkg-wrap" id="foto-pkg-wrap">
+          <div class="addon-toggle" id="foto-toggle-btn" onclick="toggleFoto()">
+            <div class="at-info">
+              <span class="at-label">Agregar paquete de fotografía</span>
+              <span class="at-price" id="foto-toggle-desc">Fotos aéreas profesionales · personalizable</span>
+            </div>
+            <div class="at-switch" id="foto-switch"><div class="at-thumb"></div></div>
+          </div>
+          <div class="foto-config" id="foto-config" style="display:none;margin-top:.75rem;background:var(--light);border:.5px solid var(--border);border-radius:10px;padding:1rem;">
+            <div style="margin-bottom:.75rem">
+              <span class="calc-label-mini">CANTIDAD DE FOTOS</span>
+              <div class="foto-cant-grid" id="foto-cant-grid"></div>
+            </div>
+            <div>
+              <span class="calc-label-mini" style="margin-top:.75rem;display:block">TIPO DE ENTREGA</span>
+              <div class="foto-tipo-list" id="foto-tipo-list"></div>
+            </div>
+            <div class="pd-row" style="margin-top:.75rem;padding:.5rem .75rem;background:white;border-radius:8px;border:.5px solid var(--border)">
+              <span class="pd-row-label" style="color:var(--carbon);font-size:13px">Subtotal fotografía</span>
+              <span class="pd-row-val" style="color:var(--carbon);font-weight:600" id="foto-subtotal-label">S/ 200</span>
+            </div>
+          </div>
+        </div>
 
         <label class="calc-label" for="calc-direccion" style="margin-top:1.5rem">DISTRITO DE DESPEGUE</label>
         <input 
@@ -2921,14 +2974,27 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 const PKGS = [
   {id:0, name:'Raw Air',        tagline:'El vuelo. Sin más.',          price:450,  delivery:'24h', eyebrow:'BÁSICO'},
   {id:1, name:'Aerial Ready',   tagline:'Listo para publicar.',         price:1050, delivery:'48h', eyebrow:'MÁS POPULAR'},
-  {id:2, name:'Signature Aerial',tagline:'Producción a medida.',       price:1875, delivery:'5 días', eyebrow:'COMPLETO'},
+  {id:2, name:'Signature Aerial',tagline:'Dron + filmmaker. 3 formatos.',price:1875, delivery:'5 días', eyebrow:'COMPLETO'},
 ];
 const ADDONS = [
   {id:'urgencia',  label:'Urgencia / mismo día',         price:150, desc:'Confirmación en menos de 2h'},
   {id:'publi',     label:'Licencia publicidad pagada',   price:200, desc:'Ads, TV, uso comercial ampliado'},
-  {id:'vertical',  label:'Formato vertical adicional',   price:100, desc:'9:16 para Stories / Reels extra'},
-  {id:'foto',      label:'Fotografía aérea seleccionada',price:150, desc:'JPG + DNG editados, 20 tomas'},
 ];
+
+// ── PHOTO PACKAGES ──
+const FOTO_CANTIDADES = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+const FOTO_TIPOS = [
+  { id: 'raw',       label: 'Solo RAW',            precioUnitario: 20, desc: 'Archivos RAW sin editar · S/ 20 por foto' },
+  { id: 'raw_edit',  label: 'RAW + Editadas',       precioUnitario: 30, desc: 'RAW + versión editada · S/ 30 por foto' },
+  { id: 'panorama',  label: 'Panorámicas',          precioFijo: 100,    desc: '180°/360° captura + stitching + edición · S/ 100 c/u' },
+];
+let fotoActiva = false;
+let fotoCantidad = 10;
+let fotoTipo = 'raw';
+
+// ── FLIGHT DURATION HOURS ──
+const HORA_EXTRA_PRECIO = 350; // precio por hora adicional
+let horasVuelo = 1; // 1 hora base (incluida en paquete)
 const TABLE_ROWS = [
   {group:'Vuelo', rows:[
     {label:'Equipo',      sub:'',            vals:['DJI Mavic 2 Pro','DJI Mavic 2 Pro','DJI Mavic 2 Pro'],                 types:['text','text','text']},
@@ -2942,11 +3008,12 @@ const TABLE_ROWS = [
     {label:'Edición',      sub:'',               vals:[false,true,true],                                                   types:['bool','bool','bool']},
     {label:'Colorización', sub:'',               vals:[false,true,true],                                                   types:['bool','bool','bool']},
     {label:'Versión horizontal', sub:'16:9',     vals:[false,true,true],                                                   types:['bool','bool','bool']},
-    {label:'Versión vertical',   sub:'9:16',     vals:[false,true,true],                                                   types:['bool','bool','bool']},
+    {label:'Formato cuadrado',   sub:'1:1',       vals:[false,false,true],                                                  types:['bool','bool','bool']},
+    {label:'Formato vertical',   sub:'9:16',      vals:[false,false,true],                                                  types:['bool','bool','bool']},
+    {label:'Filmmaker en tierra',sub:'operador de cámara', vals:[false,false,true],                                        types:['bool','bool','bool']},
     {label:'Música',       sub:'',               vals:[false,false,true],                                                  types:['bool','bool','bool']},
     {label:'Motion graphics',sub:'',             vals:[false,false,true],                                                  types:['bool','bool','bool']},
-    {label:'Fotografía aérea',sub:'seleccionada',vals:[false,false,true],                                                  types:['bool','bool','bool']},
-    {label:'Revisiones',   sub:'',               vals:['—','1 revisión','Ilimitadas'],                                    types:['text','text','text-best']},
+    {label:'Revisiones',   sub:'',               vals:['—','1 revisión','2 revisiones'],                                  types:['text','text','text-best']},
   ]},
   {group:'Plazos y proceso', rows:[
     {label:'Entrega',      sub:'',            vals:['24 horas','48 horas','5 días hábiles'],                               types:['text-best','text','text']},
@@ -3147,6 +3214,84 @@ let calcPkg = 1;
 let activeAddons = new Set();
 let activeSector = 'Todos';
 
+/* ── DURATION RENDER ── */
+function renderDurToggle(){
+  const horas = [1,2,3,4,5,6,7,8];
+  document.getElementById('dur-toggle').innerHTML = horas.map(h=>`
+    <div class="dur-btn ${h===horasVuelo?'active':''}" onclick="setHoras(${h})">
+      <span class="dur-h">${h}h</span>
+      <span class="dur-extra">${h===1?'Incluida':'+S/'+((h-1)*HORA_EXTRA_PRECIO).toLocaleString()}</span>
+    </div>`).join('');
+}
+function setHoras(h){
+  horasVuelo=h;
+  renderDurToggle();
+  const msg=document.getElementById('dur-msg');
+  if(msg){
+    if(h===1) msg.textContent='📌 1 hora incluida en todos los paquetes · Hora adicional: +S/ 350';
+    else msg.textContent=`▸ ${h} horas de vuelo · ${h-1} hora${h-1>1?'s':''} extra · +S/ ${((h-1)*HORA_EXTRA_PRECIO).toLocaleString()} adicionales`;
+  }
+  updatePriceDisplay();
+}
+
+/* ── FOTO PACKAGE RENDER ── */
+function calcFotoPrice(){
+  if(!fotoActiva) return 0;
+  const tipo = FOTO_TIPOS.find(t=>t.id===fotoTipo);
+  if(!tipo) return 0;
+  if(tipo.precioFijo!==undefined) return tipo.precioFijo * fotoCantidad;
+  return tipo.precioUnitario * fotoCantidad;
+}
+function renderFotoCantGrid(){
+  document.getElementById('foto-cant-grid').innerHTML = FOTO_CANTIDADES.map(n=>`
+    <div class="foto-cant-btn ${n===fotoCantidad?'active':''}" onclick="setFotoCant(${n})">${n}</div>`).join('');
+}
+function renderFotoTipoList(){
+  document.getElementById('foto-tipo-list').innerHTML = FOTO_TIPOS.map(t=>{
+    const precio = t.precioFijo!==undefined
+      ? `S/${(t.precioFijo*fotoCantidad).toLocaleString()}`
+      : `S/${(t.precioUnitario*fotoCantidad).toLocaleString()}`;
+    return `
+      <label class="foto-tipo-opt ${t.id===fotoTipo?'active':''}" onclick="setFotoTipo('${t.id}')">
+        <input type="radio" name="foto_tipo" value="${t.id}" ${t.id===fotoTipo?'checked':''}>
+        <div style="flex:1">
+          <div class="foto-tipo-label">${t.label}</div>
+          <div class="foto-tipo-desc">${t.desc}</div>
+        </div>
+        <span class="foto-tipo-precio">${precio}</span>
+      </label>`;
+  }).join('');
+}
+function setFotoCant(n){fotoCantidad=n;renderFotoCantGrid();renderFotoTipoList();updateFotoSubtotal();updatePriceDisplay();}
+function setFotoTipo(t){fotoTipo=t;renderFotoTipoList();updateFotoSubtotal();updatePriceDisplay();}
+function updateFotoSubtotal(){
+  const p=calcFotoPrice();
+  const el=document.getElementById('foto-subtotal-label');
+  if(el) el.textContent='S/ '+p.toLocaleString();
+  const desc=document.getElementById('foto-toggle-desc');
+  if(desc && fotoActiva){
+    const tipo=FOTO_TIPOS.find(t=>t.id===fotoTipo);
+    desc.textContent=`${fotoCantidad} fotos ${tipo?tipo.label:''} · S/ ${p.toLocaleString()}`;
+  }
+}
+function toggleFoto(){
+  fotoActiva=!fotoActiva;
+  const sw=document.getElementById('foto-switch');
+  const btn=document.getElementById('foto-toggle-btn');
+  const config=document.getElementById('foto-config');
+  if(sw) sw.parentElement.classList.toggle('active',fotoActiva), btn.classList.toggle('active',fotoActiva);
+  if(config){
+    config.style.display=fotoActiva?'block':'none';
+    if(fotoActiva){renderFotoCantGrid();renderFotoTipoList();updateFotoSubtotal();}
+  }
+  const desc=document.getElementById('foto-toggle-desc');
+  if(desc){
+    if(!fotoActiva) desc.textContent='Fotos aéreas profesionales · personalizable';
+    else updateFotoSubtotal();
+  }
+  updatePriceDisplay();
+}
+
 function renderCalcPkgToggle(){
   document.getElementById('calc-pkg-toggle').innerHTML = PKGS.map(p=>`
     <div class="calc-pkg-btn ${p.id===calcPkg?'active':''}" onclick="setCalcPkg(${p.id})">
@@ -3232,7 +3377,9 @@ function updatePriceDisplay(){
   const sameDaySurcharge = getSameDaySurcharge();
 
   // 3. Cálculo de impuestos
-  const subtotal = pkg.price + addonsTotal + transporteTotal + horarioSurcharge + sameDaySurcharge;
+  const horasExtra = (horasVuelo - 1) * HORA_EXTRA_PRECIO;
+  const fotoTotal = calcFotoPrice();
+  const subtotal = pkg.price + addonsTotal + transporteTotal + horarioSurcharge + sameDaySurcharge + horasExtra + fotoTotal;
   const esFactura = document.querySelector('input[name="tipo_doc"]:checked').value==='factura';
   const igv = esFactura ? (subtotal*0.18) : 0;
   const total = subtotal + igv;
@@ -3250,6 +3397,8 @@ function updatePriceDisplay(){
   if(transporteTotal>0) breakdown += `<div class="pd-row"><span class="pd-row-label">Transporte · ${distritoName}</span><span class="pd-row-val">S/ ${transporteTotal.toFixed(2)}</span></div>`;
   if(horarioSurcharge>0) breakdown += `<div class="pd-row addon"><span class="pd-row-label">🌙 Horario extralaboral</span><span class="pd-row-val addon-val">+S/ 100.00</span></div>`;
   if(sameDaySurcharge>0) breakdown += `<div class="pd-row addon"><span class="pd-row-label">⚡ Urgencia mismo día</span><span class="pd-row-val addon-val">+S/ 150</span></div>`;
+  if(horasExtra>0) breakdown += `<div class="pd-row addon"><span class="pd-row-label">⏱ Horas adicionales (${horasVuelo-1}h × S/ ${HORA_EXTRA_PRECIO})</span><span class="pd-row-val addon-val">+S/ ${horasExtra.toLocaleString()}</span></div>`;
+  if(fotoTotal>0){const tipo=FOTO_TIPOS.find(t=>t.id===fotoTipo);breakdown+=`<div class="pd-row addon"><span class="pd-row-label">📷 Fotografía · ${fotoCantidad} fotos ${tipo?tipo.label:''}</span><span class="pd-row-val addon-val">+S/ ${fotoTotal.toLocaleString()}</span></div>`;}
   if(esFactura) breakdown += `<div class="pd-row"><span class="pd-row-label">IGV (18%)</span><span class="pd-row-val">S/ ${igv.toFixed(2)}</span></div>`;
 
   document.getElementById('pd-breakdown').innerHTML = breakdown;
@@ -3288,6 +3437,8 @@ function updatePriceDisplay(){
     `¡Hola Julio! Quiero cotizar y reservar un vuelo:`,
     ``,
     `▸ Paquete: ${pkg.name} (S/ ${pkg.price.toLocaleString()})`,
+    `▸ Duración: ${horasVuelo} hora${horasVuelo>1?'s':''}${horasVuelo>1?' · +S/ '+((horasVuelo-1)*HORA_EXTRA_PRECIO).toLocaleString():''}`,
+    fotoActiva ? `▸ Fotografía: ${fotoCantidad} fotos ${FOTO_TIPOS.find(t=>t.id===fotoTipo)?.label||''} — S/ ${calcFotoPrice().toLocaleString()}` : '',
     `▸ Adicionales: ${addonsLabel}`,
     distritoName ? `▸ Traslado: ${distritoName} — S/ ${transporteTotal.toFixed(2)}` : '',
     direccion ? `▸ Dirección exacta: ${direccion}` : '',
@@ -3369,7 +3520,7 @@ function updatePriceDisplay(){
     const igv = useIGV ? Math.round((pkg.price + addonTotal + distritoPrice) * 0.18) : 0;
     const total = pkg.price + addonTotal + distritoPrice + igv;
     sumPkg.textContent = pkg.name;
-    sumDuration.textContent = 'Hasta 35 min de vuelo efectivo';
+    sumDuration.textContent = horasVuelo === 1 ? 'Hasta 35 min de vuelo efectivo' : `${horasVuelo} horas de vuelo`;
     sumDelivery.textContent = pkg.delivery;
     const fv = document.getElementById('calc-fecha')?.value;
     const hv = document.getElementById('calc-hora')?.value;
@@ -3513,6 +3664,7 @@ sections.forEach(s => {
 const _runComparador = () => {
   if(document.getElementById('quiz-content')) renderQuiz();
   if(document.getElementById('cmp-tbody'))    renderTable();
+  if(document.getElementById('dur-toggle')) renderDurToggle();
   if(document.getElementById('calc-pkg-toggle')) renderCalcPkgToggle();
   if(document.getElementById('addon-toggle-list')) renderAddonToggles();
   if(document.getElementById('sector-filter')) renderSectorFilter();
