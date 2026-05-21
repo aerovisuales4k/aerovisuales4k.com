@@ -318,6 +318,49 @@ body {
   border: 0.5px solid rgba(225,225,220,0.15); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   animation: logoReveal 1s ease 0.3s both;
+  position: relative;
+  transition: border-color .3s;
+  cursor: default;
+}
+/* Play-hint ring — only shown when autoplay is blocked */
+.hero-logo::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(225,225,220,0);
+  transition: border-color .4s;
+  pointer-events: none;
+}
+.hero-logo::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(225,225,220,0.12) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity .4s;
+  pointer-events: none;
+}
+.hero-logo.play-hint {
+  border-color: rgba(225,225,220,0.45);
+  cursor: pointer;
+  animation: logoReveal 1s ease 0.3s both, logoPulse 2.4s ease-in-out 1.5s infinite;
+}
+.hero-logo.play-hint::before {
+  border-color: rgba(225,225,220,0.35);
+  animation: ringPulse 2.4s ease-in-out 1.5s infinite;
+}
+.hero-logo.play-hint::after { opacity: 1; }
+.hero-logo.play-hint:hover::after,
+.hero-logo.play-hint:active::after { opacity: 1; background: radial-gradient(circle, rgba(225,225,220,0.22) 0%, transparent 70%); }
+@keyframes logoPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(225,225,220,0); }
+  50%      { box-shadow: 0 0 0 10px rgba(225,225,220,0.08), 0 0 24px 4px rgba(225,225,220,0.06); }
+}
+@keyframes ringPulse {
+  0%,100% { transform: scale(1);   opacity: .35; }
+  50%      { transform: scale(1.18); opacity: .08; }
 }
 @keyframes logoReveal {
   from { opacity: 0; transform: scale(0.8); }
@@ -3836,15 +3879,52 @@ document.addEventListener('DOMContentLoaded', function() {
       video.classList.add('loaded');
     }
 
+    var logo = document.querySelector('.hero-logo');
+
+    function showPlayHint() {
+      if (logo) {
+        logo.classList.add('play-hint');
+        logo.setAttribute('role', 'button');
+        logo.setAttribute('aria-label', 'Reproducir video');
+        logo.setAttribute('tabindex', '0');
+        logo.addEventListener('click', activateVideo, { once: true });
+        logo.addEventListener('keydown', function(e){
+          if(e.key==='Enter'||e.key===' ') activateVideo();
+        }, { once: true });
+      }
+    }
+
+    function hidePlayHint() {
+      if (logo) {
+        logo.classList.remove('play-hint');
+        logo.removeAttribute('role');
+        logo.removeAttribute('aria-label');
+        logo.removeAttribute('tabindex');
+      }
+    }
+
+    function activateVideo() {
+      hidePlayHint();
+      video.play().then(function() {
+        showVideo();
+      }).catch(function(){});
+    }
+
     function tryPlay() {
       // Must call load() first on Safari when sources are set dynamically
       const promise = video.play();
       if (promise !== undefined) {
-        promise.then(showVideo).catch(function() {
-          // Autoplay blocked — trigger on first user gesture
-          ['touchstart','click','scroll','keydown','mousemove'].forEach(function(ev) {
+        promise.then(function() {
+          // Autoplay succeeded — no hint needed
+          showVideo();
+          hidePlayHint();
+        }).catch(function() {
+          // Autoplay blocked (iOS / Safari strict) — show logo as play button
+          showPlayHint();
+          // Also listen for any scroll/key gesture as fallback
+          ['scroll','keydown'].forEach(function(ev) {
             document.addEventListener(ev, function handler() {
-              video.play().then(showVideo).catch(function(){});
+              activateVideo();
               document.removeEventListener(ev, handler);
             }, { once: true, passive: true });
           });
