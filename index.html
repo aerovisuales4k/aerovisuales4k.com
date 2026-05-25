@@ -6,11 +6,20 @@
 
   <!-- ═══ SEO BÁSICO ═══ -->
   <title>Aerovisuales 4K — Grabación y fotografía aérea con dron en Lima, Perú</title>
-  <meta name="description" content="Producción aérea profesional en 4K con dron DJI Mavic 2 Pro. Grabación, edición y entrega en 24h. Pilotos certificados DGAC. Desde S/ 450. Lima, Perú.">
+  <meta name="description" content="Grabación y fotografía aérea con dron en Lima, Perú. Pilotos certificados DGAC con 6 años de experiencia. Video 4K con DJI Mavic 2 Pro. Entrega en 24h. Cotiza desde S/ 450 sin llamadas.">
   <meta name="keywords" content="dron lima, grabación aérea 4K, video con dron peru, fotografía aérea lima, drone video peru, pilotos certificados DGAC, producción aérea profesional, inmobiliaria video aéreo, evento aéreo lima">
   <meta name="author" content="Julio César Cornejo — Aerovisuales 4K">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.aerovisuales4k.com/">
+
+  <!-- ═══ GOOGLE ANALYTICS 4 ═══ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ER6HD62CR3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ER6HD62CR3');
+  </script>
 
   <!-- ═══ FAVICON ═══ -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -24,8 +33,8 @@
   <!-- ═══ OPEN GRAPH (Facebook, LinkedIn, WhatsApp) ═══ -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.aerovisuales4k.com/">
-  <meta property="og:title" content="Aerovisuales 4K — Grabación aérea profesional en Lima">
-  <meta property="og:description" content="Video y fotografía con dron en 4K. Pilotos certificados DGAC. Entrega en 24h. Desde S/ 450. Lima, Perú.">
+  <meta property="og:title" content="Aerovisuales 4K — Grabación con Dron en Lima, Perú | Pilotos DGAC">
+  <meta property="og:description" content="Video y fotografía aérea 4K con DJI Mavic 2 Pro. Pilotos certificados DGAC. Entrega en 24h. Desde S/ 450. Cotiza en tiempo real sin llamadas.">
   <meta property="og:image" content="https://www.aerovisuales4k.com/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -251,6 +260,20 @@ body {
 .nav-toggle.active span:nth-child(2) { opacity: 0; }
 .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
+/* ── SEO H1 OCULTO VISUALMENTE · visible para crawlers ── */
+.hero-h1-seo {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.hero-h1-visual {
+  font-family: var(--fd);
+  font-size: clamp(38px, 10vw, 110px);
+  color: var(--sand); line-height: 0.92;
+  letter-spacing: -0.03em; margin-bottom: 1rem;
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+
 /* ═══ HERO ═══ */
 .hero {
   min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column;
@@ -318,60 +341,10 @@ body {
   border: 0.5px solid rgba(225,225,220,0.15); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   animation: logoReveal 1s ease 0.3s both;
-  position: relative;
-  transition: border-color .3s;
-  cursor: default;
-}
-/* Play-hint ring — only shown when autoplay is blocked */
-.hero-logo::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(225,225,220,0);
-  transition: border-color .4s;
-  pointer-events: none;
-}
-.hero-logo::after {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(225,225,220,0.12) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity .4s;
-  pointer-events: none;
-}
-.hero-logo.play-hint {
-  border-color: rgba(225,225,220,0.45);
-  cursor: pointer;
-  animation: logoReveal 1s ease 0.3s both, logoPulse 2.4s ease-in-out 1.5s infinite;
-}
-.hero-logo.play-hint::before {
-  border-color: rgba(225,225,220,0.35);
-  animation: ringPulse 2.4s ease-in-out 1.5s infinite;
-}
-.hero-logo.play-hint::after { opacity: 1; }
-.hero-logo.play-hint:hover::after,
-.hero-logo.play-hint:active::after { opacity: 1; background: radial-gradient(circle, rgba(225,225,220,0.22) 0%, transparent 70%); }
-@keyframes logoPulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(225,225,220,0); }
-  50%      { box-shadow: 0 0 0 10px rgba(225,225,220,0.08), 0 0 24px 4px rgba(225,225,220,0.06); }
-}
-@keyframes ringPulse {
-  0%,100% { transform: scale(1);   opacity: .35; }
-  50%      { transform: scale(1.18); opacity: .08; }
 }
 @keyframes logoReveal {
   from { opacity: 0; transform: scale(0.8); }
   to { opacity: 1; transform: scale(1); }
-}
-.hero h1 {
-  font-family: var(--fd); font-size: clamp(38px, 10vw, 110px);
-  color: var(--sand); line-height: 0.92;
-  letter-spacing: -0.03em;
-  margin-bottom: 1rem;
-  animation: fadeUp 0.8s ease 0.5s both;
 }
 .hero-tagline {
   font-family: var(--fm); font-size: 11px; letter-spacing: 0.12em;
@@ -1897,7 +1870,8 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
         </g>
       </svg>
     </div>
-    <h1>Aerovisuales</h1>
+    <h1 class="hero-h1-seo">Grabación y Fotografía Aérea con Dron en Lima, Perú — Aerovisuales 4K</h1>
+    <p class="hero-h1-visual" aria-hidden="true">Aerovisuales</p>
     <div class="hero-claim">
       <p class="hero-claim-line1">Mira el problema desde arriba.</p>
       <p class="hero-claim-line2">Nosotros ya estamos ahí.</p>
@@ -2652,10 +2626,6 @@ footer{background:var(--carbon);border-top:.5px solid rgba(225,225,220,.08);padd
           Revisar y cerrar pedido por WhatsApp
         </a>
         <div class="pd-note"><span style="color:#D4A843;font-weight:700;letter-spacing:0.1em">IMPORTANTE —</span> <strong>Al enviar tu pedido, nuestro equipo recibirá tu información por WhatsApp, resolverá tus dudas y te enviará los datos de pago exactos.</strong></div>
-        <div id="wa-popup-hint" style="display:none;align-items:flex-start;gap:.6rem;margin-top:.75rem;padding:.75rem 1rem;background:rgba(212,168,67,0.08);border:.5px solid rgba(212,168,67,0.3);border-radius:8px;">
-          <span style="font-size:16px;flex-shrink:0">⚠️</span>
-          <span style="font-family:var(--fm);font-size:11px;color:rgba(225,225,220,0.75);line-height:1.6">Tu navegador bloqueó la ventana emergente. <a id="wa-popup-link" href="#" target="_blank" style="color:#D4A843;text-decoration:underline;font-weight:600">Toca aquí para abrir WhatsApp</a> con tu presupuesto completo.</span>
-        </div>
       </div>
     </div>
   </div>
@@ -3526,37 +3496,27 @@ function updatePriceDisplay(){
     mensaje_wa: waLines.join('\n'),
   };
 
-  waBtnClone.addEventListener('click', function(e) {
+  waBtnClone.addEventListener('click', async function(e) {
     e.preventDefault();
 
-    // 1. Feedback visual inmediato
+    // 1. Feedback visual inmediato en el botón
     const originalHTML = waBtnClone.innerHTML;
     waBtnClone.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg> ✓ ABRIENDO WHATSAPP...`;
     waBtnClone.style.opacity = '0.75';
 
-    // 2. Abrir WhatsApp SINCRÓNICAMENTE dentro del evento click
-    // (antes de cualquier await — Safari/Mac bloquea popups si hay async en medio)
-    const finalUrl = `https://wa.me/51927929541?text=${waMsg}`;
-    const newTab = window.open(finalUrl, '_blank');
+    // 3. Guardar silenciosamente en Supabase antes de ir a WhatsApp
+    await guardarLeadEnSupabase(leadData);
 
-    // 3. Si el navegador bloqueó el popup igual, mostrar mensaje con link directo
-    if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
-      waBtnClone.innerHTML = originalHTML;
-      waBtnClone.style.opacity = '1';
-      const waHint = document.getElementById('wa-popup-hint');
-      if (waHint) {
-        waHint.style.display = 'flex';
-        waHint.querySelector('a').href = finalUrl;
-      }
-    } else {
+    // 4. Abrir WhatsApp con el mensaje completo
+    const finalUrl = `https://wa.me/51927929541?text=${waMsg}`;
+    setTimeout(() => {
+      window.open(finalUrl, '_blank');
+      // Restaurar botón tras 2.5s
       setTimeout(() => {
         waBtnClone.innerHTML = originalHTML;
         waBtnClone.style.opacity = '1';
       }, 2500);
-    }
-
-    // 4. Guardar lead en Supabase en paralelo (no bloquea la apertura)
-    guardarLeadEnSupabase(leadData).catch(function(){});
+    }, 180); // pequeño delay para que el feedback visual sea perceptible
   });
 
   // ── UPDATE ORDER SUMMARY BOX ──
@@ -3893,61 +3853,21 @@ document.addEventListener('DOMContentLoaded', function() {
       video.classList.add('loaded');
     }
 
-    var logo = document.querySelector('.hero-logo');
-
-    function showPlayHint() {
-      if (logo) {
-        logo.classList.add('play-hint');
-        logo.setAttribute('role', 'button');
-        logo.setAttribute('aria-label', 'Reproducir video');
-        logo.setAttribute('tabindex', '0');
-        logo.addEventListener('click', activateVideo, { once: true });
-        logo.addEventListener('keydown', function(e){
-          if(e.key==='Enter'||e.key===' ') activateVideo();
-        }, { once: true });
-      }
-    }
-
-    function hidePlayHint() {
-      if (logo) {
-        logo.classList.remove('play-hint');
-        logo.removeAttribute('role');
-        logo.removeAttribute('aria-label');
-        logo.removeAttribute('tabindex');
-      }
-    }
-
-    function activateVideo() {
-      hidePlayHint();
-      video.play().then(function() {
-        showVideo();
-      }).catch(function(){});
-    }
-
     function tryPlay() {
-      // Show hint immediately — always. Hide it only once video confirms playing.
-      showPlayHint();
-
+      // Must call load() first on Safari when sources are set dynamically
       const promise = video.play();
       if (promise !== undefined) {
-        promise.then(function() {
-          // Autoplay succeeded — video is running, remove hint after short delay
-          // so the user at least sees it once (helps discoverability on first load)
-          setTimeout(function() {
-            hidePlayHint();
-            showVideo();
-          }, 1800);
-        }).catch(function() {
-          // Autoplay blocked (iOS strict) — keep hint visible, wait for tap
-          ['scroll','keydown'].forEach(function(ev) {
+        promise.then(showVideo).catch(function() {
+          // Autoplay blocked — trigger on first user gesture
+          ['touchstart','click','scroll','keydown','mousemove'].forEach(function(ev) {
             document.addEventListener(ev, function handler() {
-              activateVideo();
+              video.play().then(showVideo).catch(function(){});
               document.removeEventListener(ev, handler);
             }, { once: true, passive: true });
           });
         });
       } else {
-        setTimeout(function() { hidePlayHint(); showVideo(); }, 1800);
+        showVideo();
       }
     }
 
