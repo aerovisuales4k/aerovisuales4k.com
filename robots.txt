@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.aerovisuales4k.com/sitemap.xml
+
+# Bloquear archivos que no deben indexarse
+Disallow: /dashboard.html
+Disallow: /dashboard
